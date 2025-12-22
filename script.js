@@ -2,7 +2,7 @@ const heroImages = [
     "heroine1.avif",
     "heroine2.jpg",
     "heroine3.jpg",
-    "forenssic4.webp"
+    "heroine4.webp"
 ];
 
 let index = 0;
