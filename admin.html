@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel | ForensicBuzz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="login-container" style="width:500px">
+
+    <h2>Add Daily MCQ</h2>
+    <p>Fill once → Click save → Done</p>
+
+    <input id="question" placeholder="Enter Question">
+
+    <input id="a" placeholder="Option A">
+    <input id="b" placeholder="Option B">
+    <input id="c" placeholder="Option C">
+    <input id="d" placeholder="Option D">
+
+    <input id="answer" placeholder="Correct Answer (A/B/C/D)">
+    <textarea id="note" placeholder="Notes / Explanation" rows="4"></textarea>
+
+    <button onclick="saveMCQ()">Save MCQ</button>
+    <button onclick="logout()" style="background:#e74c3c;margin-top:10px">Logout</button>
+
+</div>
+
+<script type="module" src="admin.js"></script>
+<script type="module" src="admin-auth.js"></script>
+</body>
+</html>
