@@ -15,7 +15,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 30px 40px;
-    background: rgb(13, 72, 237);
+    background: rgb(255, 255, 255);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -27,25 +27,25 @@ body {
 }
 
 .logo span {
-    color: white;
+    color: black;
 }
 
 .navbar nav a {
-    margin-left: 30px;
-    text-decoration: none;
-    padding: 30px ;
-    color: white;
+    margin-left: 40px;
+    text-decoration: 50px;
+    padding: 20px ;
+    color: black;
     font-weight: 1000;
 }
 
 .navbar nav a:hover {
-    color: #1a73e8;
+    color: #224470;
 }
 
 /* ===== HERO ===== */
 .hero {
     height: 75vh;
-    background-image: url("hero1.jpg");
+    background-image: url("heroine1.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -92,15 +92,15 @@ body {
     width: fit-content;
     padding: 12px 30px;
     border-radius: 30px;
-    border: none;
-    background: #7c5cff;
-    color: white;
-    font-size: 16px;
+    border: 5px solid black;
+    background: white;
+    color: black;
+    font-size: 20px;
     cursor: pointer;
 }
 
 .hero-content button:hover {
-    background: #6848ff;
+    background:   blue ;
 }
 
 /* ===== FEATURES ===== */
@@ -143,7 +143,7 @@ body {
 .orange { background: #f39c12; }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
+@media (max-width: 700px) {
     .hero-content {
         padding: 30px;
         align-items: center;
@@ -160,7 +160,7 @@ body {
     }
 }
 .admin-btn {
-    background: #150068;
+    background: black;
     color: #ffffff !important;
     padding: 20px 16px;
     border-radius: 12px;
@@ -169,7 +169,7 @@ body {
 }
 
 .admin-btn:hover {
-    background: #2ef507;
+    background: blue;
 }
 /* ===== ABOUT SECTION ===== */
 .about-section {
