@@ -210,3 +210,42 @@ body {
     border-left-color: #e74c3c;
     background: #fff5f5;
 }
+/* ================= FIX HEADER RESPONSIVE ISSUE ================= */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  flex-wrap: wrap;
+}
+
+/* menu links */
+.nav-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* login + admin buttons */
+.auth-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .auth-buttons {
+    margin-top: 8px;
+  }
+}
