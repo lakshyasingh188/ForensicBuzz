@@ -39,7 +39,7 @@ body {
 }
 
 .navbar nav a:hover {
-    color: #224470;
+    color: #fdfdfd;
 }
 
 /* ===== HERO ===== */
@@ -239,12 +239,12 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  background: #0f172a;
-  color: white;
+  background: white;
+  color: black;
 }
 
 .logo {
-  font-size: 18px;
+  font-size: 40px;
   font-weight: bold;
 }
 
@@ -256,12 +256,12 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: white;
-  font-size: 14px;
+  color: black;
+  font-size: 20px;
 }
 
 .admin-btn {
-  background: #22c55e;
+  background: rgb(252, 10, 123);
   padding: 6px 12px;
   border-radius: 20px;
 }
@@ -271,8 +271,8 @@ nav a {
   display: none;
   font-size: 22px;
   background: none;
-  border: none;
-  color: white;
+  border: 10px;
+  color: black;
 }
 
 /* RESPONSIVE */
@@ -286,7 +286,7 @@ nav a {
     top: 60px;
     left: 0;
     width: 100%;
-    background: #020617;
+    background: #fcfcfd;
     flex-direction: column;
     display: none;
   }
