@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | ForensicBuzz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+        }
+
+        header {
+            background: #0f5132;
+            color: #fff;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            padding: 8px 15px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>🛠 Admin Dashboard</h2>
+    <button onclick="logout()">Logout</button>
+</header>
+
+<div class="content">
+    <div class="card">
+        <h3>Welcome Admin 👋</h3>
+        <p>You have successfully logged in.</p>
+        <p>Next step: Add MCQs & Notes</p>
+    </div>
+</div>
+
+<!-- 🔥 Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+
+<script>
+    // 🔴 SAME CONFIG AS LOGIN PAGE
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT.firebaseapp.com",
+        projectId: "YOUR_PROJECT"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // 🔐 YOUR ADMIN UID
+    const ADMIN_UID = "uIl4l6VwxxcmsewGifMKnXvVEey1";
+
+    // 🔒 PROTECT DASHBOARD
+    auth.onAuthStateChanged(user => {
+        if (!user || user.uid !== ADMIN_UID) {
+            window.location.href = "admin-login.html";
+        }
+    });
+
+    function logout() {
+        auth.signOut().then(() => {
+            window.location.href = "admin-login.html";
+        });
+    }
+</script>
+
+</body>
+</html>
 
