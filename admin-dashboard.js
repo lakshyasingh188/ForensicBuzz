@@ -50,7 +50,7 @@ window.addMCQ = async function () {
   alert("MCQ saved to Firebase");
 };
 
-// 🔹 DELETE MCQ (admin. only)
+// 🔹 DELETE MCQ (admin only)
 window.deleteMCQ = async function (id) {
   if (confirm("Delete this MCQ?")) {
     await deleteDoc(doc(db, "mcqs", id));
