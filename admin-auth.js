@@ -1,32 +1,25 @@
 import { auth } from "./firebase.js";
 import {
   signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 
-// LOGIN
-window.login = async function () {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    window.location.href = "admin.html";
-  } catch (e) {
-    document.getElementById("msg").innerText = "Invalid Admin Credentials";
-  }
-};
-
-// PROTECT ADMIN PAGE
-onAuthStateChanged(auth, (user) => {
-  if (!user && location.pathname.includes("admin.html")) {
-    window.location.href = "admin-login.html";
+// Auto redirect if already logged in
+onAuthStateChanged(auth, user => {
+  if (user) {
+    location.href = "admin-dashboard.html";
   }
 });
 
-// LOGOUT
-window.logout = async function () {
-  await signOut(auth);
-  window.location.href = "admin-login.html";
+window.login = async function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const err = document.getElementById("err");
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    location.href = "admin-dashboard.html";
+  } catch (e) {
+    err.innerText = "Invalid email or password";
+  }
 };
