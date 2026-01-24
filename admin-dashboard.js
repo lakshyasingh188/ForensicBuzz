@@ -1,60 +1,48 @@
-import { db, auth } from "./firebase.js";
-import {
-  collection,
-  addDoc,
-  getDocs,
-  deleteDoc,
-  doc
-} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+import { supabase } from "./supabase.js";
 
-// 🔐 protect dashboard
-onAuthStateChanged(auth, user => {
-  if (!user) location.href = "admin-login.html";
-});
+// 🔐 protect page
+const { data } = await supabase.auth.getUser();
+if (!data.user) location.href = "admin-login.html";
 
-// 🔹 ADD TOPIC
-window.addTopic = async function () {
-  await addDoc(collection(db, "topics"), {
-    title: topicTitle.value,
-    desc: topicDesc.value,
-    createdAt: Date.now()
-  });
-  alert("Topic saved to Firebase");
-  location.reload();
-};
+const topicSelect = document.getElementById("topicSelect");
 
-// 🔹 LOAD TOPICS (admin dropdown)
+// load topics
 async function loadTopics() {
-  const snap = await getDocs(collection(db, "topics"));
+  const { data } = await supabase.from("topics").select("*");
   topicSelect.innerHTML = "";
-  snap.forEach(d => {
-    topicSelect.innerHTML += `
-      <option value="${d.id}">${d.data().title}</option>
-    `;
+  data.forEach(t => {
+    topicSelect.innerHTML += `<option value="${t.id}">${t.title}</option>`;
   });
 }
 loadTopics();
 
-// 🔹 ADD MCQ
-window.addMCQ = async function () {
-  await addDoc(collection(db, "mcqs"), {
-    topicId: topicSelect.value,
-    question: q.value,
-    a: a.value,
-    b: b.value,
-    c: c.value,
-    d: d.value,
-    createdAt: Date.now()
+// add topic
+window.addTopic = async () => {
+  if (!topicTitle.value) return alert("Enter topic");
+
+  await supabase.from("topics").insert({
+    title: topicTitle.value
   });
-  alert("MCQ saved to Firebase");
+
+  topicTitle.value = "";
+  loadTopics();
+  alert("✅ Topic saved");
 };
 
-// 🔹 DELETE MCQ (admin only)
-window.deleteMCQ = async function (id) {
-  if (confirm("Delete this MCQ?")) {
-    await deleteDoc(doc(db, "mcqs", id));
-    alert("MCQ deleted");
-    location.reload();
-  }
+// add mcq
+window.addMCQ = async () => {
+  if (!topicSelect.value) return alert("Select topic");
+
+  await supabase.from("mcqs").insert({
+    topic_id: topicSelect.value,
+    question: q.value,
+    option_a: a.value,
+    option_b: b.value,
+    option_c: c.value,
+    option_d: d.value,
+    correct_option: ans.value
+  });
+
+  q.value = a.value = b.value = c.value = d.value = ans.value = "";
+  alert("✅ MCQ saved");
 };
