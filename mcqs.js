@@ -1,20 +1,19 @@
-const mcqs = JSON.parse(localStorage.getItem("mcqs")) || [];
-const box = document.getElementById("mcqsList");
+import { supabase } from "./supabase.js";
 
-if (mcqs.length === 0) {
-  box.innerHTML = "<p>No MCQs available yet.</p>";
-}
+const mcqList = document.getElementById("mcqList");
 
-mcqs.forEach((m, i) => {
-  box.innerHTML += `
-    <div class="mcq">
-      <p><b>Q${i + 1}.</b> ${m.q}</p>
-      <ul>
-        <li>${m.a}</li>
-        <li>${m.b}</li>
-        <li>${m.c}</li>
-        <li>${m.d}</li>
-      </ul>
+const { data } = await supabase
+  .from("mcqs")
+  .select("question, option_a, option_b, option_c, option_d");
+
+data.forEach(m => {
+  mcqList.innerHTML += `
+    <div class="box">
+      <p><b>${m.question}</b></p>
+      <p>A. ${m.option_a}</p>
+      <p>B. ${m.option_b}</p>
+      <p>C. ${m.option_c}</p>
+      <p>D. ${m.option_d}</p>
     </div>
   `;
 });
