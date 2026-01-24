@@ -2,20 +2,19 @@
 <html>
 <head>
   <title>Admin Login</title>
-  <link rel="stylesheet" href="mcq.css">
+  <link rel="stylesheet" href="admin.css">
 </head>
-<body class="center">
+<body>
 
-<div class="login-box">
+<div class="box">
   <h2>Admin Login</h2>
 
-  <input type="email" id="email" placeholder="Admin Email">
-  <input type="password" id="password" placeholder="Password">
+  <input id="emailInput" placeholder="Admin Email">
+  <input id="passwordInput" type="password" placeholder="Password">
 
   <button onclick="login()">Login</button>
-  <p id="err" class="err"></p>
 </div>
 
-<script type="module" src="admin-auth.js"></script>
+<script type="module" src="admin-login.js"></script>
 </body>
 </html>
