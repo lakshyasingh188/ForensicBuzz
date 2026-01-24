@@ -1,11 +1,17 @@
-function login() {
-  const pin = document.getElementById("pin").value;
-  const err = document.getElementById("err");
+import { supabase } from "./supabase.js";
 
-  if (pin === "7860") {
-    localStorage.setItem("adminLoggedIn", "yes");
-    location.href = "admin-dashboard.html";
+window.login = async () => {
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    alert("❌ Invalid email or password");
   } else {
-    err.innerText = "Invalid PIN";
+    location.href = "admin-dashboard.html";
   }
-}
+};
