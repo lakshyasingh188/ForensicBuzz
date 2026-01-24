@@ -1,0 +1,68 @@
+body {
+  font-family: Arial;
+  background: #f4f6f8;
+  padding: 20px;
+}
+
+h2 { margin-bottom: 15px; }
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+}
+
+button {
+  padding: 8px 16px;
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.box {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.logout {
+  background: crimson;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap: 20px;
+}
+
+.tool-card {
+  background: linear-gradient(135deg,#8ec5fc,#e0c3fc);
+  padding: 20px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.tool-card:hover {
+  transform: scale(1.05);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.err {
+  color: red;
+}
