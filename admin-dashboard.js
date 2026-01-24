@@ -1,48 +1,60 @@
-import { db } from "./firebase.js";
+import { db, auth } from "./firebase.js";
 import {
-    collection,
-    addDoc
-} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 
-/* ================= NOTES ================= */
-window.saveNotes = async function () {
+// 🔐 protect dashboard
+onAuthStateChanged(auth, user => {
+  if (!user) location.href = "admin-login.html";
+});
 
-    await addDoc(collection(db, "notes"), {
-        text: noteText.value || "",
-        createdAt: Date.now()
-    });
-
-    alert("Notes saved ✅");
-    noteText.value = "";
+// 🔹 ADD TOPIC
+window.addTopic = async function () {
+  await addDoc(collection(db, "topics"), {
+    title: topicTitle.value,
+    desc: topicDesc.value,
+    createdAt: Date.now()
+  });
+  alert("Topic saved to Firebase");
+  location.reload();
 };
 
-/* ================= MCQ ================= */
-window.saveMCQ = async function () {
+// 🔹 LOAD TOPICS (admin dropdown)
+async function loadTopics() {
+  const snap = await getDocs(collection(db, "topics"));
+  topicSelect.innerHTML = "";
+  snap.forEach(d => {
+    topicSelect.innerHTML += `
+      <option value="${d.id}">${d.data().title}</option>
+    `;
+  });
+}
+loadTopics();
 
-    await addDoc(collection(db, "daily_mcqs"), {
-        question: question.value,
-        options: [a.value, b.value, c.value, d.value],
-        answer: answer.value,
-        note: mcqNote.value,
-        createdAt: Date.now()
-    });
-
-    alert("MCQ saved ✅");
-
-    question.value = "";
-    a.value = b.value = c.value = d.value = "";
-    answer.value = "";
-    mcqNote.value = "";
+// 🔹 ADD MCQ
+window.addMCQ = async function () {
+  await addDoc(collection(db, "mcqs"), {
+    topicId: topicSelect.value,
+    question: q.value,
+    a: a.value,
+    b: b.value,
+    c: c.value,
+    d: d.value,
+    createdAt: Date.now()
+  });
+  alert("MCQ saved to Firebase");
 };
 
-/* ================= QUIZ ================= */
-window.saveQuiz = async function () {
-
-    await addDoc(collection(db, "quizzes"), {
-        content: quizText.value,
-        createdAt: Date.now()
-    });
-
-    alert("Quiz content saved ✅");
-    quizText.value = "";
+// 🔹 DELETE MCQ (admin only)
+window.deleteMCQ = async function (id) {
+  if (confirm("Delete this MCQ?")) {
+    await deleteDoc(doc(db, "mcqs", id));
+    alert("MCQ deleted");
+    location.reload();
+  }
 };
