@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Admin Login</title>
   <link rel="stylesheet" href="admin.css">
 </head>
@@ -9,9 +10,19 @@
 <div class="box">
   <h2>Admin Login</h2>
 
-  <input id="emailInput" placeholder="Admin Email">
-  <input id="passwordInput" type="password" placeholder="Password">
+  <input
+    type="email"
+    id="emailInput"
+    placeholder="Admin Email"
+  >
 
+  <input
+    type="password"
+    id="passwordInput"
+    placeholder="Password"
+  >
+
+  <!-- 🔴 MOST IMPORTANT LINE -->
   <button onclick="login()">Login</button>
 </div>
 
