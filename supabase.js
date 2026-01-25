@@ -1,6 +1,7 @@
-import { createClient } from "https://unpkg.com/@supabase/supabase-js@2";
+// supabase.js
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-export const supabase = createClient(
-  "https://bmmtjsxwufevufovzkst.supabase.co",
-  "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBVl"
-);
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+export const supabase = createClient(supabaseUrl, supabaseKey);
