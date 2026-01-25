@@ -1,7 +1,14 @@
 import { supabase } from "./supabase.js";
 
-const { data } = await supabase.auth.getUser();
+async function protectDashboard() {
+  const { data, error } = await supabase.auth.getUser();
 
-if (!data.user) {
-  window.location.href = "admin-login.html";
+  if (error || !data.user) {
+    window.location.href = "admin-login.html";
+    return;
+  }
+
+  console.log("Admin logged in:", data.user.email);
 }
+
+protectDashboard();
