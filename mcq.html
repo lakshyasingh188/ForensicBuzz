@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>MCQs</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="UTF-8">
+  <title>MCQ Practice</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>MCQ Practice</h2>
-<div id="mcqBox"></div>
+  <h1>MCQ Practice</h1>
 
-<script src="mcqs.js"></script>
+  <select id="topicSelect">
+    <option value="">Select Topic</option>
+  </select>
+
+  <div id="mcq-list"></div>
+
+  <script type="module" src="mcqs.js"></script>
 </body>
 </html>
