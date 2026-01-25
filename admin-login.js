@@ -5,7 +5,7 @@ window.login = async function () {
   const password = document.getElementById("passwordInput").value.trim();
 
   if (!email || !password) {
-    alert("Email aur password required hai");
+    alert("Email aur password required");
     return;
   }
 
