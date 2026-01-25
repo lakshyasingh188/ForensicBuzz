@@ -1,19 +1,35 @@
-import { supabase } from "./supabase.js";
+const supabase = supabaseJs.createClient(
+  "https://bmmtjsxwufeuvfozkst.supabase.co",
+  "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBVl"
+);
 
-const mcqList = document.getElementById("mcqList");
+async function loadMCQs() {
+  const { data, error } = await supabase
+    .from("mcqs")
+    .select("*")
+    .order("id", { ascending: false });
 
-const { data } = await supabase
-  .from("mcqs")
-  .select("question, option_a, option_b, option_c, option_d");
+  if (error) {
+    console.error(error);
+    return;
+  }
 
-data.forEach(m => {
-  mcqList.innerHTML += `
-    <div class="box">
-      <p><b>${m.question}</b></p>
-      <p>A. ${m.option_a}</p>
-      <p>B. ${m.option_b}</p>
-      <p>C. ${m.option_c}</p>
-      <p>D. ${m.option_d}</p>
-    </div>
-  `;
-});
+  const box = document.getElementById("mcqBox");
+  box.innerHTML = "";
+
+  data.forEach(m => {
+    box.innerHTML += `
+      <div class="mcq">
+        <h3>${m.question}</h3>
+        <ul>
+          <li>A. ${m.option_a}</li>
+          <li>B. ${m.option_b}</li>
+          <li>C. ${m.option_c}</li>
+          <li>D. ${m.option_d}</li>
+        </ul>
+      </div>
+    `;
+  });
+}
+
+loadMCQs();
