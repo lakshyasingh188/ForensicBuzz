@@ -1,13 +1,15 @@
-const supabase = supabaseJs.createClient(
-  "https://bmmtjsxwufeuvfozkst.supabase.co",
-  "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBVl"
-);
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabaseUrl = "https://bmmmtjsxwufeuvfozkst.supabase.co";
+const supabaseKey = "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBVl";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function loadMCQs() {
   const { data, error } = await supabase
     .from("mcqs")
-    .select("*")
-    .order("id", { ascending: false });
+    .select("id, question, option_a, option_b, option_c, option_d");
 
   if (error) {
     console.error(error);
@@ -17,15 +19,15 @@ async function loadMCQs() {
   const box = document.getElementById("mcqBox");
   box.innerHTML = "";
 
-  data.forEach(m => {
+  data.forEach((q, i) => {
     box.innerHTML += `
-      <div class="mcq">
-        <h3>${m.question}</h3>
+      <div style="margin-bottom:20px">
+        <h3>Q${i + 1}. ${q.question}</h3>
         <ul>
-          <li>A. ${m.option_a}</li>
-          <li>B. ${m.option_b}</li>
-          <li>C. ${m.option_c}</li>
-          <li>D. ${m.option_d}</li>
+          <li>${q.option_a}</li>
+          <li>${q.option_b}</li>
+          <li>${q.option_c}</li>
+          <li>${q.option_d}</li>
         </ul>
       </div>
     `;
@@ -33,3 +35,4 @@ async function loadMCQs() {
 }
 
 loadMCQs();
+</script>
