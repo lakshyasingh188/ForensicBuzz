@@ -1,4 +1,3 @@
-// admin-login.js
 import { supabase } from "./supabase.js";
 
 window.login = async function () {
@@ -10,15 +9,19 @@ window.login = async function () {
     return;
   }
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  });
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  if (error) {
-    alert(error.message);
-    return;
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    window.location.href = "admin-dashboard.html";
+  } catch (e) {
+    alert("Network error: " + e.message);
   }
-
-  window.location.href = "admin-dashboard.html";
 };
