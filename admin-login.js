@@ -2,7 +2,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 const supabase = createClient(
   "https://bmmmtjsxwufevufovzkst.supabase.co",
-  "sb_publishable_XXXXXXXXXXXXXXXXXXXX"
+  "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBVl"
 );
 
 // 🔒 ONLY THIS EMAIL IS ADMIN
