@@ -1,12 +1,13 @@
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import { supabase } from "./supabase.js";
 
-const supabase = createClient(
-  "https://bmmmtjsxwufevufvzkst.supabase.co",
-  "sb_publishable_R1ZNtQDpXve8h6d1ajrFA_xienSBVI"
-);
+window.sendLink = async function () {
+  const email = document.getElementById("email").value.trim();
+  const msg = document.getElementById("msg");
 
-window.login = async function () {
-  const email = document.getElementById("emailInput").value.trim();
+  if (!email) {
+    msg.innerText = "Email required";
+    return;
+  }
 
   const { error } = await supabase.auth.signInWithOtp({
     email,
@@ -16,8 +17,8 @@ window.login = async function () {
   });
 
   if (error) {
-    alert(error.message);
+    msg.innerText = error.message;
   } else {
-    alert("Check your email for login link");
+    msg.innerText = "Login link sent to email 📩";
   }
 };
