@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Admin Login</title>
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
-<div class="box">
-  <h2>Admin Login</h2>
+  <div class="box">
+    <h2>Admin Login</h2>
 
-  <input
-    type="email"
-    id="emailInput"
-    placeholder="Admin Email"
-  >
+    <input id="emailInput" type="email" placeholder="Admin Email" />
+    <input id="passwordInput" type="password" placeholder="Password" />
 
-  <input
-    type="password"
-    id="passwordInput"
-    placeholder="Password"
-  >
+    <button id="loginBtn">Login</button>
+  </div>
 
-  <!-- 🔴 MOST IMPORTANT LINE -->
-  <button onclick="login()">Login</button>
-</div>
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-<script type="module" src="admin-login.js"></script>
+    const supabase = createClient(
+      "https://bmmtjsxwufevufovzkst.supabase.co",
+      "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBVl"
+    );
+
+    document.getElementById("loginBtn").addEventListener("click", async () => {
+      const email = document.getElementById("emailInput").value.trim();
+      const password = document.getElementById("passwordInput").value.trim();
+
+      if (!email || !password) {
+        alert("Email & password required");
+        return;
+      }
+
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      window.location.href = "admin-dashboard.html";
+    });
+  </script>
+
 </body>
 </html>
