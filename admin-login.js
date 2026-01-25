@@ -15,9 +15,11 @@ window.login = async function () {
   });
 
   if (error) {
-    alert("Login failed: " + error.message);
-    return;
-  }
+  console.error(error);
+  alert(error.message);
+  return;
+}
+
 
   alert("Login successful!");
   window.location.href = "admin-dashboard.html";
