@@ -1,23 +1,23 @@
-import { supabase } from "./supabase.js";
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabase = createClient(
+  "https://bmmmtjsxwufevufvzkst.supabase.co",
+  "sb_publishable_R1ZNtQDpXve8h6d1ajrFA_xienSBVI"
+);
 
 window.login = async function () {
   const email = document.getElementById("emailInput").value.trim();
-  const password = document.getElementById("passwordInput").value.trim();
 
-  if (!email || !password) {
-    alert("Email aur password required");
-    return;
-  }
-
-  const { error } = await supabase.auth.signInWithPassword({
+  const { error } = await supabase.auth.signInWithOtp({
     email,
-    password
+    options: {
+      emailRedirectTo: "https://www.forensicbuzz.com/admin-dashboard.html"
+    }
   });
 
   if (error) {
     alert(error.message);
-    return;
+  } else {
+    alert("Check your email for login link");
   }
-
-  window.location.href = "admin-dashboard.html";
 };
