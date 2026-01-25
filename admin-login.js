@@ -1,22 +1,17 @@
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-
-const supabase = createClient(
-  "https://bmmtjsxwufevufovzkst.supabase.co",
-  "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBVl"
-);
+import { supabase } from "./supabase.js";
 
 window.login = async function () {
   const email = document.getElementById("emailInput").value.trim();
   const password = document.getElementById("passwordInput").value.trim();
 
   if (!email || !password) {
-    alert("Email aur password required");
+    alert("Email aur password required hai");
     return;
   }
 
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const { error } = await supabase.auth.signInWithPassword({
     email,
-    password,
+    password
   });
 
   if (error) {
