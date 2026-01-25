@@ -1,13 +1,11 @@
+// admin-dashboard.js
 import { supabase } from "./supabase.js";
 
 // protect page
-async function protect() {
-  const { data } = await supabase.auth.getUser();
-  if (!data.user) {
-    window.location.href = "admin-login.html";
-  }
+const { data } = await supabase.auth.getUser();
+if (!data.user) {
+  window.location.href = "admin-login.html";
 }
-protect();
 
 // elements
 const topicTitle = document.getElementById("topicTitle");
@@ -27,7 +25,7 @@ async function loadTopics() {
 
   topicSelect.innerHTML = "";
   data.forEach(t => {
-    topicSelect.innerHTML += `<option value="${t.id}">${t.title}</option>`;
+    topicSelect.innerHTML += `<option>${t.title}</option>`;
   });
 }
 loadTopics();
