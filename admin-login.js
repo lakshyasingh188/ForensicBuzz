@@ -1,17 +1,24 @@
-import { supabase } from "./supabase.js";
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-window.login = async () => {
-  const email = emailInput.value.trim();
-  const password = passwordInput.value.trim();
+const supabaseUrl = "https://bmmtjsxwufevufozkst.supabase.co";
+const supabaseKey = "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBVl";
 
-  const { error } = await supabase.auth.signInWithPassword({
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+window.login = async function () {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  const { data, error } = await supabase.auth.signInWithPassword({
     email,
-    password
+    password,
   });
 
   if (error) {
-    alert("❌ Invalid email or password");
-  } else {
-    location.href = "admin-dashboard.html";
+    alert("Login failed: " + error.message);
+    return;
   }
+
+  alert("Login successful!");
+  window.location.href = "admin-dashboard.html";
 };
