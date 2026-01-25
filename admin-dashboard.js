@@ -1,14 +1,30 @@
 import { supabase } from "./supabase.js";
 
-// 🔐 protect page
-const { data } = await supabase.auth.getUser();
-if (!data.user) location.href = "admin-login.html";
+// protect page
+async function protect() {
+  const { data } = await supabase.auth.getUser();
+  if (!data.user) {
+    window.location.href = "admin-login.html";
+  }
+}
+protect();
 
+// elements
+const topicTitle = document.getElementById("topicTitle");
 const topicSelect = document.getElementById("topicSelect");
 
 // load topics
 async function loadTopics() {
-  const { data } = await supabase.from("topics").select("*");
+  const { data, error } = await supabase
+    .from("topics")
+    .select("*")
+    .order("id");
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
   topicSelect.innerHTML = "";
   data.forEach(t => {
     topicSelect.innerHTML += `<option value="${t.id}">${t.title}</option>`;
@@ -17,32 +33,21 @@ async function loadTopics() {
 loadTopics();
 
 // add topic
-window.addTopic = async () => {
-  if (!topicTitle.value) return alert("Enter topic");
+window.addTopic = async function () {
+  if (!topicTitle.value.trim()) {
+    alert("Enter topic");
+    return;
+  }
 
-  await supabase.from("topics").insert({
-    title: topicTitle.value
-  });
+  const { error } = await supabase
+    .from("topics")
+    .insert({ title: topicTitle.value.trim() });
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
 
   topicTitle.value = "";
   loadTopics();
-  alert("✅ Topic saved");
-};
-
-// add mcq
-window.addMCQ = async () => {
-  if (!topicSelect.value) return alert("Select topic");
-
-  await supabase.from("mcqs").insert({
-    topic_id: topicSelect.value,
-    question: q.value,
-    option_a: a.value,
-    option_b: b.value,
-    option_c: c.value,
-    option_d: d.value,
-    correct_option: ans.value
-  });
-
-  q.value = a.value = b.value = c.value = d.value = ans.value = "";
-  alert("✅ MCQ saved");
 };
