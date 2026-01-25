@@ -1,6 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-// 🔑 Supabase credentials
 const supabaseUrl = "https://bmmntjsxwufeuvfozkst.supabase.co";
 const supabaseKey = "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBVl";
 
@@ -13,7 +12,7 @@ async function loadTopics() {
     .select("*");
 
   if (error) {
-    console.error(error);
+    console.error("Topic error:", error);
     return;
   }
 
@@ -27,7 +26,7 @@ async function loadTopics() {
   });
 }
 
-// Load MCQs by topic
+// Load MCQs
 async function loadMCQs(topicId) {
   const { data, error } = await supabase
     .from("mcqs")
@@ -35,7 +34,7 @@ async function loadMCQs(topicId) {
     .eq("topic_id", topicId);
 
   if (error) {
-    console.error(error);
+    console.error("MCQ error:", error);
     return;
   }
 
@@ -43,8 +42,7 @@ async function loadMCQs(topicId) {
   container.innerHTML = "";
 
   data.forEach((q, i) => {
-    const div = document.createElement("div");
-    div.innerHTML = `
+    container.innerHTML += `
       <p><b>${i + 1}. ${q.question}</b></p>
       <ul>
         <li>A. ${q.option_a}</li>
@@ -54,16 +52,13 @@ async function loadMCQs(topicId) {
       </ul>
       <hr>
     `;
-    container.appendChild(div);
   });
 }
 
-// Events
-document.getElementById("topicSelect").addEventListener("change", (e) => {
+document.getElementById("topicSelect").addEventListener("change", e => {
   if (e.target.value) {
     loadMCQs(e.target.value);
   }
 });
 
-// Init
 loadTopics();
