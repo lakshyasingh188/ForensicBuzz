@@ -18,10 +18,17 @@ async function loadTopics() {
 
   const select = document.getElementById("topicSelect");
 
+  // 🔴 IMPORTANT: purane options remove karo (safety)
+  select.innerHTML = `<option value="">Select Topic</option>`;
+
   data.forEach(topic => {
     const opt = document.createElement("option");
     opt.value = topic.id;
-    opt.textContent = topic.name;
+
+    // ✅ YAHI MAIN FIX HAI
+    opt.textContent =
+      topic.topic_name || topic.name || topic.title || "Untitled Topic";
+
     select.appendChild(opt);
   });
 }
@@ -41,6 +48,11 @@ async function loadMCQs(topicId) {
   const container = document.getElementById("mcq-list");
   container.innerHTML = "";
 
+  if (data.length === 0) {
+    container.innerHTML = "<p>No MCQs found.</p>";
+    return;
+  }
+
   data.forEach((q, i) => {
     container.innerHTML += `
       <p><b>${i + 1}. ${q.question}</b></p>
@@ -55,10 +67,14 @@ async function loadMCQs(topicId) {
   });
 }
 
-document.getElementById("topicSelect").addEventListener("change", e => {
-  if (e.target.value) {
-    loadMCQs(e.target.value);
-  }
-});
+document
+  .getElementById("topicSelect")
+  .addEventListener("change", e => {
+    if (e.target.value) {
+      loadMCQs(e.target.value);
+    } else {
+      document.getElementById("mcq-list").innerHTML = "";
+    }
+  });
 
 loadTopics();
