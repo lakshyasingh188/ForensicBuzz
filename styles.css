@@ -22,7 +22,7 @@ body {
   backdrop-filter: blur(22px) saturate(160%);
   -webkit-backdrop-filter: blur(22px) saturate(160%);
   border-radius: 26px;
-  padding: 16px 22px;
+  padding: 35px 33px;
   display: flex;
   align-items: center;
   justify-content: space-between;
