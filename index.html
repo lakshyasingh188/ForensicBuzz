@@ -2,132 +2,134 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>ForensicBuzz – Forensic Science Platform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>ForensicBuzz</title>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KG92RRRTNS"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-KG92RRRTNS');
-  </script>
 
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
-<!-- ===== NAVBAR ===== -->
-<header class="navbar">
-  <div class="logo">🔍 ForensicBuzz</div>
+<!-- ===== GLASS HEADER (TOOLS24 STYLE) ===== -->
+<header class="glass-header">
+  <div class="glass-inner">
 
-  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="glass-logo">
+      <div class="logo-circle">🔍</div>
+      <span>ForensicBuzz</span>
+    </div>
 
-  <nav id="navMenu">
-    <a href="index.html">Home</a>
-    <a href="mcq.html">MCQs</a>
-    <a href="mock.html">Mock Tests</a>
-    <a href="contact.html">Contact</a>
-    <a class="admin-btn" href="admin-login.html">Admin Login</a>
-  </nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <nav class="glass-nav" id="glassNav">
+      <a href="index.html">Home</a>
+      <a href="mcq.html">MCQs</a>
+      <a href="mock.html">Mock Tests</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+  </div>
 </header>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
+
+  <!-- BIG BACKGROUND IMAGE -->
+  <div class="hero-bg-image"></div>
+
   <div class="hero-content">
     <h1>FORENSIC SCIENCE</h1>
-    <p>Practice Questions & Mock Tests to Boost Your Exam Performance</p>
-
-    <!-- ✅ FIXED: Start Your Journey → MCQ SYSTEM -->
+    <p>
+      India’s Modern Platform for Forensic Science MCQs,  
+      Mock Tests & Exam Preparation
+    </p>
     <button onclick="window.location.href='mcq.html'">
       Start Your Journey
     </button>
   </div>
-</section>
 
-<!-- ===== FEATURES ===== -->
+  <!-- SMALL 4 IMAGES (UNCHANGED) -->
+  <div class="hero-images">
+    <img src="images/forensic1.jpg">
+    <img src="images/forensic2.jpg">
+    <img src="images/forensic3.jpg">
+    <img src="images/forensic4.jpg">
+  </div>
+
+</section>
+<!-- ===== FEATURE CARDS ===== -->
 <section class="features">
 
   <div class="card blue">
-    <i class="fas fa-calendar-day"></i>
     <h3>Daily MCQs</h3>
-
-    <!-- ✅ FIXED -->
-    <button onclick="window.location.href='mcq.html'">Start Now</button>
+    <p>Fresh questions updated every day</p>
+    <button onclick="window.location.href='daily-mcq.html'">
+      Start Now
+    </button>
   </div>
 
   <div class="card green">
-    <i class="fas fa-book"></i>
-    <h3>Previous Year Questions (PYQs)</h3>
-    <button onclick="window.location.href='pyqs.html'">Start Now</button>
+    <h3>Previous Year Questions</h3>
+    <p>PYQs for competitive exams</p>
+    <button onclick="window.location.href='pyqs.html'">
+      Start Now
+    </button>
   </div>
 
   <div class="card orange">
-    <i class="fas fa-file-alt"></i>
-    <h3>Full-Length Mock Tests</h3>
-    <button onclick="window.location.href='mock.html'">Start Now</button>
+    <h3>Mock Tests</h3>
+    <p>Full-length exam simulation</p>
+    <button onclick="window.location.href='mock.html'">
+      Start Now
+    </button>
   </div>
 
 </section>
+<!-- ===== LONG INFO SECTION ===== -->
+<section class="long-section">
+  <h2>Why Choose ForensicBuzz?</h2>
 
-<!-- ===== ABOUT / INFO SECTION ===== -->
-<section class="about-section">
+  <div class="long-grid">
+    <div class="info-box">
+      <h3>Exam Focused Content</h3>
+      <p>
+        All MCQs and mock tests are prepared strictly
+        according to forensic science syllabus.
+      </p>
+    </div>
 
-  <div class="info-box">
-    <h2>About Forensic Science</h2>
-    <p>
-      Forensic Science is the application of scientific methods and principles
-      to investigate crimes and support the justice system.
-    </p>
-    <p>
-      Major areas include fingerprint analysis, DNA examination,
-      digital forensics, toxicology, questioned documents,
-      and crime scene investigation.
-    </p>
+    <div class="info-box">
+      <h3>Simple & Clean Interface</h3>
+      <p>
+        Apple-style clean design so students can focus
+        only on learning, not distractions.
+      </p>
+    </div>
+
+    <div class="info-box">
+      <h3>Free Access</h3>
+      <p>
+        No login required for MCQs and PDFs.
+        Learn anytime, anywhere.
+      </p>
+    </div>
+
+    <div class="info-box">
+      <h3>Regular Updates</h3>
+      <p>
+        Daily MCQs and new content added frequently
+        by admin panel.
+      </p>
+    </div>
   </div>
-
-  <div class="info-box">
-    <h2>About ForensicBuzz</h2>
-    <p>
-      <strong>ForensicBuzz</strong> is an educational platform designed to help
-      students and professionals prepare for forensic science examinations.
-    </p>
-  </div>
-
-  <div class="info-box">
-    <h2>Instructions for Users</h2>
-    <ul>
-      <li>This website is for educational and exam preparation purposes only.</li>
-      <li>No login is required to access MCQs and study materials.</li>
-      <li>Practice Daily MCQs regularly for better preparation.</li>
-      <li>Use “Show Answer & Notes” to understand concepts clearly.</li>
-    </ul>
-  </div>
-
-  <div class="info-box">
-    <h2>Daily MCQs Information</h2>
-    <p>
-      Daily MCQs are updated by the admin on a regular basis.
-      All previous questions remain available for revision.
-    </p>
-  </div>
-
-  <div class="info-box disclaimer">
-    <h2>Disclaimer</h2>
-    <p>
-      All content on ForensicBuzz is provided for educational purposes only.
-      We are not officially associated with any examination authority.
-    </p>
-  </div>
-
 </section>
 
-<script src="script.js"></script>
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p>© 2026 ForensicBuzz • Educational Purpose Only</p>
+</footer>
 
 </body>
 </html>
