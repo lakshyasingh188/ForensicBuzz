@@ -21,8 +21,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ===== MOBILE MENU =====
 function toggleMenu() {
-  const nav = document.getElementById("navMenu");
-  if (nav) {
-    nav.classList.toggle("show");
-  }
+  document.getElementById("glassNav").classList.toggle("show");
 }
