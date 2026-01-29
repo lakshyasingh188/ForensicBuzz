@@ -53,18 +53,27 @@ async function loadMCQs(topicId) {
     return;
   }
 
-  data.forEach((q, i) => {
-    container.innerHTML += `
+ data.forEach((q, i) => {
+  container.innerHTML += `
+    <div class="mcq-box">
       <p><b>${i + 1}. ${q.question}</b></p>
+
       <ul>
         <li>A. ${q.option_a}</li>
         <li>B. ${q.option_b}</li>
         <li>C. ${q.option_c}</li>
         <li>D. ${q.option_d}</li>
       </ul>
+
+      <!-- ✅ CORRECT ANSWER DIRECT SHOW -->
+      <p style="color:green; font-weight:600; margin-top:6px;">
+        ✔ Correct Answer: ${q.correct_option}
+      </p>
+
       <hr>
-    `;
-  });
+    </div>
+  `;
+});
 }
 
 document
