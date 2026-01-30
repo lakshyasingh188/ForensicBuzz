@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Previous Year Questions</title>
+  <link rel="stylesheet" href="previous-year.css">
+</head>
+<body>
+
+<section class="pyq-section">
+  <h2>Previous Year Questions</h2>
+
+  <div class="file-list">
+    <h3>Available Files</h3>
+    <ul id="fileContainer">
+      <!-- Supabase se files yaha aayengi -->
+    </ul>
+  </div>
+</section>
+
+<!-- FULL PAGE VIEWER -->
+<div class="viewer" id="viewer">
+  <iframe id="viewerFrame"></iframe>
+
+  <div class="viewer-footer">
+    <button id="closeViewer">Close</button>
+    <a id="downloadBtn" download>Download</a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="previous-year.js"></script>
+</body>
+</html>
