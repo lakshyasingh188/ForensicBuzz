@@ -1,17 +1,22 @@
-/* 🔐 SUPABASE CONFIG */
-const supabaseUrl = "https://bmmntjsxwufeuvfozkst.supabase.co";
-const supabaseKey = "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBVl";
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+/* ===============================
+   SUPABASE SETUP (ESM)
+================================ */
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-/* ✅ EXACT BUCKET NAME */
+const supabaseUrl = "https://bmmtjsxwufeuvfovzkst.supabase.co";
+const supabaseKey = "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBV";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
 const bucket = "syllabus.image";
 
+/* ===============================
+   DOM
+================================ */
 const gallery = document.getElementById("gallery");
-const modal = document.getElementById("modal");
-const modalContent = document.getElementById("modalContent");
-const closeModal = document.getElementById("closeModal");
 
-/* 🔹 Filename → Topic */
+/* ===============================
+   HELPERS
+================================ */
 function formatTitle(name) {
   return name
     .replace(/\.[^/.]+$/, "")
@@ -19,76 +24,51 @@ function formatTitle(name) {
     .replace(/\b\w/g, c => c.toUpperCase());
 }
 
-/* 🔹 FORCE DOWNLOAD (JS) */
-function forceDownload(url, filename) {
-  fetch(url)
-    .then(res => res.blob())
-    .then(blob => {
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(a.href);
-    });
-}
-
-/* 🔹 LOAD FILES */
+/* ===============================
+   DEBUG LOAD
+================================ */
 async function loadFiles() {
-  const { data, error } = await supabase.storage.from(bucket).list();
-  if (error) return console.error(error);
+  console.log("🔵 loadFiles() called");
 
-  gallery.innerHTML = "";
+  const { data, error } = await supabase.storage
+    .from(bucket)
+   .list("Files", { limit: 100 })
+  console.log("📦 list() response:", data);
+  console.log("❌ list() error:", error);
+
+  if (error) {
+    gallery.innerHTML = "<p style='color:red'>Supabase list error</p>";
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    gallery.innerHTML = "<p style='color:yellow'>No files found in bucket</p>";
+    return;
+  }
 
   data.forEach(file => {
-    const ext = file.name.split(".").pop().toLowerCase();
-    const title = formatTitle(file.name);
-    const url =
-      supabase.storage.from(bucket).getPublicUrl(file.name).data.publicUrl;
+    if (!file.name) return;
+
+    const { data: publicData } =
+      supabase.storage.from(bucket).getPublicUrl(file.name);
+
+    console.log("🔗 Public URL:", publicData.publicUrl);
 
     const card = document.createElement("div");
-    card.className = "card";
+    card.style.border = "1px solid #334155";
+    card.style.padding = "10px";
+    card.style.margin = "10px";
 
-    if (ext === "pdf") {
-      card.innerHTML = `
-        <div class="topic">${title}</div>
-        <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
-             onclick="openPDF('${url}')">
-        <button onclick="forceDownload('${url}','${file.name}')">
-          Download PDF
-        </button>
-      `;
-    } else {
-      card.innerHTML = `
-        <div class="topic">${title}</div>
-        <img src="${url}" onclick="openImage('${url}')">
-        <button onclick="forceDownload('${url}','${file.name}')">
-          Download Image
-        </button>
-      `;
-    }
+    card.innerHTML = `
+      <div>${formatTitle(file.name)}</div>
+      <a href="${publicData.publicUrl}" target="_blank">Open</a>
+    `;
 
     gallery.appendChild(card);
   });
 }
 
-/* 🔹 VIEWERS */
-function openImage(url) {
-  modal.style.display = "flex";
-  modalContent.innerHTML = `<img src="${url}">`;
-}
-
-function openPDF(url) {
-  modal.style.display = "flex";
-  modalContent.innerHTML = `<iframe src="${url}"></iframe>`;
-}
-
-/* 🔹 CLOSE MODAL */
-closeModal.onclick = () => {
-  modal.style.display = "none";
-  modalContent.innerHTML = "";
-};
-
-/* 🔹 INIT */
+/* ===============================
+   INIT
+================================ */
 loadFiles();
