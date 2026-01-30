@@ -25,24 +25,28 @@ async function loadFiles() {
     }
 
     data.forEach(file => {
-      const ext = file.name.split(".").pop().toLowerCase();
 
-      const { data: pub } = supabase.storage
-        .from(bucket)
-        .getPublicUrl(file.name);
+  // ❌ sirf empty placeholder skip karo
+  if (file.name === ".emptyFolderPlaceholder") return;
 
-      const card = document.createElement("div");
-      card.className = "card";
+  const ext = file.name.split(".").pop().toLowerCase();
 
-      card.innerHTML = `
-        <div class="topic">${file.name}</div>
-        <a href="${pub.publicUrl}" target="_blank" download>
-          <button>Download</button>
-        </a>
-      `;
+  const { data: pub } = supabase.storage
+    .from(bucket)
+    .getPublicUrl(file.name);
 
-      gallery.appendChild(card);
-    });
+  const card = document.createElement("div");
+  card.className = "card";
+
+  card.innerHTML = `
+    <div class="topic">${file.name}</div>
+    <a href="${pub.publicUrl}" download target="_blank">
+      <button>Download</button>
+    </a>
+  `;
+
+  gallery.appendChild(card);
+});
 
   } catch (err) {
     console.error("FINAL ERROR:", err);
