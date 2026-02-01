@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ForensicBuzz – Forensic Science Platform</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<title>ForensicBuzz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<!-- ===== GLASS HEADER (TOOLS24 STYLE) ===== -->
-<header class="glass-header">
-  <div class="glass-inner">
+<header class="header">
+  <div class="header-inner">
 
-    <!-- LOGO -->
-    <div class="glass-logo">
-      <div class="logo-circle">🔍</div>
+    <div class="logo">
+      <img src="logo.jpeg">
       <span>ForensicBuzz</span>
     </div>
 
@@ -26,127 +21,77 @@
     <nav class="glass-nav" id="glassNav">
       <a href="index.html">Home</a>
       <a href="/syllabus.html">Syllabus</a>
-      <a href="mock.html">Mock Tests</a>
+      <a href="books.html">Books & Notes</a>
       <a href="contact.html">Contact</a>
+     
     </nav>
-
-    <!-- RIGHT ACTIONS -->
-    <div class="header-actions">
-
-      <!-- DAY / NIGHT TOGGLE -->
-      <div class="theme-toggle">
-        <input type="checkbox" id="themeSwitch">
-        <label for="themeSwitch" class="toggle-label">
-          <span class="toggle-ball"></span>
-        </label>
-      </div>
-
-      <!-- MOBILE MENU BUTTON -->
-      <button id="mobileMenuBtn" class="menu-toggle">☰</button>
-
+    <!-- DARK / LIGHT TOGGLE -->
+    <div class="theme-toggle">
+      <input type="checkbox" id="themeSwitch">
+      <label for="themeSwitch">
+        <span></span>
+      </label>
     </div>
 
   </div>
 </header>
 
-  </div>
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
 
-  <!-- BIG BACKGROUND IMAGE -->
-  <div class=""></div>
+  <div class="hero-overlay"></div>
 
-  <div class="hero-content">
-    <h1>FORENSIC SCIENCE</h1>
-    <p>
-      India’s Modern Platform for Forensic Science MCQs,  
-      Mock Tests & Exam Preparation
-    </p>
-    <button onclick="window.location.href='mcq.html'">
-      Start Your Journey
-    </button>
+  <div class="hero-box">
+    <h1><span>FORENSIC</span><br>SCIENCE</h1>
+    <p>India’s modern platform for forensic MCQs, PYQs & mock tests</p>
+    <button class="cta">Start Your Journey</button>
   </div>
 
-  <!-- SMALL 4 IMAGES (UNCHANGED) -->
+  <!-- FLOATING IMAGES -->
   <div class="hero-images">
-    <img src="hero1.jpg">
-    <img src="hero2.webp">
-    <img src="hero4.jpg">
-    <img src="hero3.avif">
+    <img src="hero1.jpg" class="float f1">
+    <img src="hero2.webp" class="float f2">
+    <img src="hero3.avif" class="float f3">
+    <img src="hero4.jpg" class="float f4">
   </div>
 
 </section>
-<!-- ===== FEATURE CARDS ===== -->
+
+<!-- FEATURES -->
 <section class="features">
 
-  <div class="card blue">
-    <h3>Daily MCQs</h3>
-    <p>Fresh questions updated with topic</p>
-    <button onclick="window.location.href='mcq.html'">
-      Start Now
-    </button>
+  <div class="feature-card">
+    <h3>MCQs</h3>
+    <p>Fresh forensic questions updated daily</p>
+    <button class="card-btn">Start</button>
   </div>
 
-  <div class="card green">
+  <div class="feature-card">
     <h3>Previous Year Questions</h3>
-    <p>PYQs for competitive exams</p>
-    <button onclick="window.location.href='previous-year.html'">
-      Start Now
-    </button>
+    <p>Previous year forensic exam questions</p>
+    <button class="card-btn">Start</button>
   </div>
 
-  <div class="card orange">
+  <div class="feature-card">
     <h3>Mock Tests</h3>
-    <p>Full-length exam simulation</p>
-    <button onclick="window.location.href='mock.html'">
-      Start Now
-    </button>
+    <p>Real exam-like full length mock tests</p>
+    <button class="card-btn">Start</button>
   </div>
 
 </section>
-<!-- ===== LONG INFO SECTION ===== -->
-<section class="long-section">
-  <h2>Why Choose ForensicBuzz?</h2>
 
-  <div class="long-grid">
-    <div class="info-box">
-      <h3>Exam Focused Content</h3>
-      <p>
-        All MCQs and mock tests are prepared strictly
-        according to forensic science syllabus.
-      </p>
-    </div>
 
-    <div class="info-box">
-      <h3>Simple & Clean Interface</h3>
-      <p>
-        Apple-style clean design so students can focus
-        only on learning, not distractions.
-      </p>
-    </div>
+<script src="script.js"></script>
+</body>
+</html>
 
-    <div class="info-box">
-      <h3>Free Access</h3>
-      <p>
-        No login required for MCQs and PDFs.
-        Learn anytime, anywhere.
-      </p>
-    </div>
-
-    <div class="info-box">
-      <h3>Regular Updates</h3>
-      <p>
-        Daily MCQs and new content added frequently
-        by admin panel.
-      </p>
-    </div>
-  </div>
+  
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <p>© 2026 ForensicBuzz • Educational Purpose Only</p>
+<footer class="footer" id="contact">
+  © 2026 ForensicBuzz • Educational Purpose Only
 </footer>
+
 <script src="script.js"></script>
 </body>
 </html>
