@@ -1,25 +1,115 @@
-// ===== HERO SLIDER =====
-const heroImages = [
-  "heroine1.avif",
-  "heroine2.jpg",
-  "heroine3.jpg",
-  "forensic4.png"
-];
+/* =========================================
+   FORENSICBUZZ – FINAL WORKING SCRIPT
+========================================= */
 
-let index = 0;
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener("DOMContentLoaded", () => {
-  const hero = document.querySelector(".hero");
+  /* ===============================
+     DARK / LIGHT MODE TOGGLE
+  =============================== */
+  const themeSwitch = document.getElementById("themeSwitch");
 
-  if (hero) {
-    setInterval(() => {
-      index = (index + 1) % heroImages.length;
-      hero.style.backgroundImage = `url('${heroImages[index]}')`;
-    }, 3000);
+  if (themeSwitch) {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark");
+      themeSwitch.checked = true;
+    }
+
+    themeSwitch.addEventListener("change", function () {
+      if (this.checked) {
+        document.body.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.body.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+    });
   }
-});
 
-// ===== MOBILE MENU =====
-function toggleMenu() {
-  document.getElementById("glassNav").classList.toggle("show");
+  /* ===============================
+     HERO BUTTON – Start Your Journey
+  =============================== */
+  const heroBtn = document.querySelector(".cta");
+
+  if (heroBtn) {
+    heroBtn.addEventListener("click", function () {
+      // Smooth scroll to cards section
+      const featureSection = document.querySelector(".features");
+      if (featureSection) {
+        featureSection.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
+
+  /* ===============================
+     FEATURE CARD BUTTONS
+  =============================== */
+  const cardButtons = document.querySelectorAll(".card-btn");
+
+  if (cardButtons.length > 0) {
+    cardButtons.forEach(function (btn, index) {
+      btn.addEventListener("click", function () {
+
+        // DIRECT PAGE OPEN (NO DELAY)
+        if (index === 0) {
+          window.location.href = "mcq.html";
+        }
+
+        if (index === 1) {
+          window.location.href = "previous-year.html";
+        }
+
+        if (index === 2) {
+          window.location.href = "mock.html";
+        }
+
+      });
+    });
+  }
+
+  /* ===============================
+     NAVIGATION LINKS FIX
+  =============================== */
+  const navLinks = document.querySelectorAll("nav a");
+
+  navLinks.forEach(function (link) {
+    link.addEventListener("click", function (e) {
+
+      const href = this.getAttribute("href");
+
+      // Agar section link hai (#)
+      if (href && href.startsWith("#")) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+      // Agar page link hai
+      else if (href && href !== "#") {
+        window.location.href = href;
+      }
+
+    });
+  });
+
+});
+/* ===============================
+   HERO HEADING CLICK (BUTTON)
+=============================== */
+const heroHeadingBtn = document.getElementById("heroHeadingBtn");
+
+if (heroHeadingBtn) {
+  heroHeadingBtn.addEventListener("click", function () {
+    const featureSection = document.querySelector(".features");
+
+    if (featureSection) {
+      featureSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  });
 }
