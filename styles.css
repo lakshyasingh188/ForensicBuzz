@@ -78,7 +78,7 @@ nav a{
   display:flex;
   justify-content:space-between;
   gap:60px;
-  background:url("heroin-big.jpg") center/cover no-repeat;
+  background:url("heroin1.avif") center/cover no-repeat;
 }
 .hero-overlay{
   position:absolute;
