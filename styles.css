@@ -78,7 +78,7 @@ nav a{
   display:flex;
   justify-content:space-between;
   gap:60px;
-  background:url("heroin1.avif") center/cover no-repeat;
+  background:url("main-page.jpg") center/cover no-repeat;
 }
 .hero-overlay{
   position:absolute;
@@ -218,4 +218,74 @@ body.dark .card-btn{
     width:70px;
     height:70px;
   }
+}
+.about-section {
+    background: #1e1f26;
+    color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.about-section .container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.about-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-section h3 {
+    margin-top: 40px;
+    font-size: 24px;
+    color: #f0b90b;
+}
+
+.about-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 15px 0;
+    color: #d1d1d1;
+}
+
+.about-section ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.about-section ul li {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.about-btn {
+    margin-top: 30px;
+}
+
+.about-btn button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.about-btn button:hover {
+    transform: scale(1.05);
+}
+
+.extra-content {
+    display: none;
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
