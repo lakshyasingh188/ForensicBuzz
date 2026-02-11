@@ -113,3 +113,17 @@ if (heroHeadingBtn) {
     }
   });
 }
+document.addEventListener("DOMContentLoaded", function() {
+    const btn = document.getElementById("learnMoreBtn");
+    const extraContent = document.getElementById("extraContent");
+
+    btn.addEventListener("click", function() {
+        if (extraContent.style.display === "block") {
+            extraContent.style.display = "none";
+            btn.textContent = "Learn More";
+        } else {
+            extraContent.style.display = "block";
+            btn.textContent = "Show Less";
+        }
+    });
+});
