@@ -289,3 +289,49 @@ body.dark .card-btn{
     from {opacity: 0;}
     to {opacity: 1;}
 }
+/* Default Desktop */
+.glass-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* ========================= */
+/* MOBILE VERSION */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    .glass-nav {
+        position: absolute;
+        top: 90px;
+        right: 20px;
+        flex-direction: column;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        width: 200px;
+        display: none;  /* Hidden by default */
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        text-align: center;
+        z-index: 999;
+    }
+
+    .glass-nav.active {
+        display: flex;  /* Show when active */
+    }
+
+    .glass-nav a {
+        padding: 10px 0;
+        display: block;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 26px;
+        cursor: pointer;
+    }
+}
