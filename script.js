@@ -127,3 +127,15 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuToggle = document.getElementById("menuToggle");
+    const glassNav = document.getElementById("glassNav");
+
+    if (menuToggle && glassNav) {
+        menuToggle.addEventListener("click", function () {
+            glassNav.classList.toggle("active");
+        });
+    }
+
+});
