@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ForensicBuzz</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #4b4f56;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Card Style */
+.card {
+    width: 320px;
+    padding: 50px 20px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #cbd5f5, #e8c2d7);
+    text-align: center;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.card button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #ddd;
+}
+
+/* Popup Style */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 300px;
+}
+
+.popup-box h3 {
+    margin-bottom: 10px;
+}
+
+.popup-box button {
+    margin-top: 15px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #333;
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Main Page Card -->
+<div class="card">
+    <h2>Mock Tests</h2>
+    <p>Real exam-like full length mock tests</p>
+    <button onclick="openPopup()">Start</button>
+</div>
+
+<!-- Coming Soon Popup -->
+<div class="popup" id="popup">
+    <div class="popup-box">
+        <h3>🚀 Mock Tests</h3>
+        <p>Coming Soon...</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+<script>
+function openPopup() {
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
