@@ -335,3 +335,40 @@ body.dark .card-btn{
         cursor: pointer;
     }
 }
+/* ===== Government Scroll Bar ===== */
+
+.gov-scroll {
+    width: 100%;
+    background: grey;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    padding: 10px;
+}
+
+.scroll-text {
+    display: inline-block;
+    animation: scrollLeft 35s linear infinite;
+}
+
+.scroll-text a {
+    color: #00ffcc;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.scroll-text a:hover {
+    color: #ffffff;
+}
+
+@keyframes scrollLeft {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
