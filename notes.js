@@ -1,3 +1,4 @@
+
 const supabaseUrl = "https://bmmmtjsxwufeuvfozkst.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbW10anN4d3VmZXV2Zm96a3N0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkyNTYyODQsImV4cCI6MjA4NDgzMjI4NH0.btRW1CHoUbJodnXyvoUdji32dbwJW92mQOMXn7jVckM";
 
@@ -31,4 +32,8 @@ function openNote(id) {
     window.location.href = `note-view.html?id=${id}`;
 }
 
-loadNotes();
+window.addEventListener("load", function () {
+    loadNotes();  // pehle notes load karega
+    
+    document.getElementById("loader").style.display = "none"; // phir loader hide
+});
