@@ -32,3 +32,4 @@ function openNote(id) {
 }
 
 loadNotes();
+
