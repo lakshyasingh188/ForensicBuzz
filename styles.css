@@ -18,7 +18,7 @@ body{
 /* HEADER */
 .header-inner{
   margin:16px;
-  padding:30px 30px;
+  padding:40px 50px;
   border-radius:28px;
   background:var(--grad);
   display:flex;
@@ -371,4 +371,18 @@ body.dark .card-btn{
     to {
         transform: translateX(-100%);
     }
+}
+.visitor-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.visitor-label {
+    font-weight: 600;
+    color: #ffffff;   /* apne theme ke hisaab se change kar sakte ho */
+}
+
+.visitor-count img {
+    height: 22px;
 }
