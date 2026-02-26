@@ -2,153 +2,139 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Contact Us – ForensicBuzz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Tools24</title>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ====== RESET ====== */
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "San Francisco",
-               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ====== BODY ====== */
 body{
-  min-height:100vh;
-  background: linear-gradient(135deg, #e8ebf0, #f5f7fa);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#111;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 }
 
-/* ====== CARD ====== */
-.contact-card{
-  width:90%;
-  max-width:420px;
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius:20px;
-  padding:30px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-  text-align:center;
-  animation: fadeIn 0.8s ease;
+.container{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    padding:50px;
+    border-radius:20px;
+    width:90%;
+    max-width:650px;
+    text-align:center;
+    color:white;
+    box-shadow:0 0 40px rgba(0,0,0,0.4);
 }
 
-/* ====== TITLE ====== */
-.contact-card h1{
-  font-size:28px;
-  font-weight:600;
-  margin-bottom:10px;
+.container h1{
+    font-size:32px;
+    margin-bottom:10px;
 }
 
-/* ====== SUBTEXT ====== */
-.contact-card p{
-  font-size:15px;
-  color:#555;
-  margin-bottom:25px;
+.container p{
+    opacity:0.8;
+    margin-bottom:35px;
 }
 
-/* ====== EMAIL BOX ====== */
-.email-box{
-  background:#fff;
-  border-radius:14px;
-  padding:18px;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
-  margin-bottom:20px;
+.icons{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    margin-bottom:35px;
 }
 
-/* ====== EMAIL TEXT ====== */
-.email-box span{
-  display:block;
-  font-size:14px;
-  color:#777;
-  margin-bottom:6px;
+.icons a{
+    width:60px;
+    height:60px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    font-size:24px;
+    color:white;
+    text-decoration:none;
+    transition:0.4s;
 }
 
-.email-box a{
-  font-size:16px;
-  font-weight:500;
-  color:#007aff;
-  text-decoration:none;
-  word-break:break-all;
+.icons a:hover{
+    transform:scale(1.15);
 }
 
-.email-box a:hover{
-  text-decoration:underline;
+/* Individual Colors */
+.instagram{
+    background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
 }
 
-/* ====== BUTTON ====== */
-.mail-btn{
-  display:inline-block;
-  margin-top:10px;
-  padding:12px 22px;
-  background:#007aff;
-  color:#fff;
-  border-radius:12px;
-  font-size:15px;
-  font-weight:500;
-  text-decoration:none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 10px 20px rgba(0,122,255,0.3);
+.whatsapp{
+    background:rgb(17, 225, 17);
 }
 
-.mail-btn:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 14px 26px rgba(0,122,255,0.4);
+.email{
+    background:#ea4335;
 }
 
-/* ====== FOOTER ====== */
-.footer{
-  margin-top:25px;
-  font-size:13px;
-  color:#888;
+.website{
+    background:#00bcd4;
 }
 
-/* ====== ANIMATION ====== */
-@keyframes fadeIn{
-  from{
-    opacity:0;
-    transform:translateY(20px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+.home-btn{
+    display:inline-block;
+    padding:12px 30px;
+    background:#ff9800;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.home-btn:hover{
+    background:#e68900;
+    transform:scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
-<div class="contact-card">
-  <h1>Contact Us</h1>
-  <p>For any queries, suggestions or support</p>
+<div class="container">
+    <h1>Contact ForensicBuzz</h1>
+    <p>ForensicBuzz.com - India</p>
 
-  <div class="email-box">
-    <span>Email</span>
-    <a href="mailto:forensicbuzz.fb@gmail.com">
-      forensicbuzz.fb@gmail.com
-    </a>
-  </div>
+    <div class="icons">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/p/DVNMSooCGEK/?utm_source=ig_web_copy_link" target="_blank" class="instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
 
-  <a class="mail-btn" href="mailto:forensicbuzz.fb@gmail.com">
-    Send Email
-  </a>
+        <!-- WhatsApp Channel -->
+        <a href="https://whatsapp.com/channel/0029VbBZBGG8fewxDJKikw3j" target="_blank" class="whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
 
-  <div class="footer">
-    © 2026 ForensicBuzz
-  </div>
+        <!-- Email -->
+        <a href="mailto:forensicbuzz.fb@gmail.com" class="email">
+            <i class="fas fa-envelope"></i>
+        </a>
+
+        <!-- Website (Optional - Change if needed) -->
+        <a href="index.html" class="website">
+            <i class="fas fa-globe"></i>
+        </a>
+    </div>
+
+    <a href="index.html" class="home-btn">Back to Home</a>
 </div>
-
-<script>
-  // Future ke liye ready (abhi minimal JS)
-  console.log("ForensicBuzz Contact Page Loaded");
-</script>
 
 </body>
 </html>
