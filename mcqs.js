@@ -5,85 +5,138 @@ const supabaseKey = "sb_publishable_RiIZNtQDpXve8h6d1ajrFA_xienSBVl";
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Load topics
-async function loadTopics() {
-  const { data, error } = await supabase
-    .from("topics")
-    .select("*");
+/* LOAD TOPICS */
 
-  if (error) {
-    console.error("Topic error:", error);
-    return;
-  }
+async function loadTopics(){
 
-  const select = document.getElementById("topicSelect");
+const { data, error } = await supabase
+.from("topics")
+.select("*");
 
-  // 🔴 IMPORTANT: purane options remove karo (safety)
-  select.innerHTML = `<option value="">Select Topic</option>`;
-
-  data.forEach(topic => {
-    const opt = document.createElement("option");
-    opt.value = topic.id;
-
-    // ✅ YAHI MAIN FIX HAI
-    opt.textContent =
-      topic.topic_name || topic.name || topic.title || "Untitled Topic";
-
-    select.appendChild(opt);
-  });
+if(error){
+console.log("Topic error",error);
+return;
 }
 
-// Load MCQs
-async function loadMCQs(topicId) {
-  const { data, error } = await supabase
-    .from("mcqs")
-    .select("*")
-    .eq("topic_id", topicId);
+const container=document.getElementById("topics");
+container.innerHTML="";
 
-  if (error) {
-    console.error("MCQ error:", error);
-    return;
-  }
+data.forEach(topic=>{
 
-  const container = document.getElementById("mcq-list");
-  container.innerHTML = "";
+const topicName =
+topic.topic_name ||
+topic.name ||
+topic.title ||
+"Untitled Topic";
 
-  if (data.length === 0) {
-    container.innerHTML = "<p>No MCQs found.</p>";
-    return;
-  }
+const card=document.createElement("div");
+card.className="topic-card";
 
- data.forEach((q, i) => {
-  container.innerHTML += `
-    <div class="mcq-box">
-      <p><b>${i + 1}. ${q.question}</b></p>
+card.innerHTML=`<h3>${topicName}</h3>`;
 
-      <ul>
-        <li>A. ${q.option_a}</li>
-        <li>B. ${q.option_b}</li>
-        <li>C. ${q.option_c}</li>
-        <li>D. ${q.option_d}</li>
-      </ul>
+card.onclick=()=>{
+loadMCQs(topic.id);
+};
 
-      <!-- ✅ CORRECT ANSWER DIRECT SHOW -->
-      <p style="color:green; font-weight:600; margin-top:6px;">
-        ✔ Correct Answer: ${q.correct_option}
-      </p>
+container.appendChild(card);
 
-      <hr>
-    </div>
-  `;
 });
+
 }
 
-document
-  .getElementById("topicSelect")
-  .addEventListener("change", e => {
-    if (e.target.value) {
-      loadMCQs(e.target.value);
-    } else {
-      document.getElementById("mcq-list").innerHTML = "";
-    }
-  });
+
+/* LOAD MCQS */
+
+async function loadMCQs(topicId){
+
+const { data, error } = await supabase
+.from("mcqs")
+.select("*")
+.eq("topic_id",topicId);
+
+const container=document.getElementById("mcq-list");
+
+container.innerHTML="";
+
+if(data.length===0){
+container.innerHTML="<p>No MCQs Found</p>";
+return;
+}
+
+data.forEach((q,i)=>{
+
+const div=document.createElement("div");
+div.className="mcq-box";
+
+div.innerHTML=`
+
+<p><b>${i+1}. ${q.question}</b></p>
+
+<div class="options">
+
+<button onclick="checkAnswer(this,'A','${q.correct_option}')">
+A. ${q.option_a}
+</button>
+
+<button onclick="checkAnswer(this,'B','${q.correct_option}')">
+B. ${q.option_b}
+</button>
+
+<button onclick="checkAnswer(this,'C','${q.correct_option}')">
+C. ${q.option_c}
+</button>
+
+<button onclick="checkAnswer(this,'D','${q.correct_option}')">
+D. ${q.option_d}
+</button>
+
+</div>
+
+<p class="answer" style="display:none">
+Correct Answer: ${q.correct_option}
+</p>
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+window.checkAnswer=function(btn,selected,correct){
+
+const box=btn.parentElement.parentElement;
+
+const buttons=box.querySelectorAll("button");
+const answer=box.querySelector(".answer");
+
+buttons.forEach(b=>b.disabled=true);
+
+if(selected===correct){
+
+btn.classList.add("correct");
+
+}else{
+
+btn.classList.add("wrong");
+
+buttons.forEach(b=>{
+if(b.innerText.startsWith(correct)){
+b.classList.add("correct");
+}
+});
+
+}
+
+answer.style.display="block";
+
+}
+
+
+/* START */
 
 loadTopics();
