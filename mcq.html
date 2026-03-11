@@ -1,66 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MCQ Practice</title>
-  <link rel="stylesheet" href="mcq.css">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>MCQ Practice</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#eef2ff;
+margin:0;
+padding:20px;
+}
+
+h1{
+margin-bottom:20px;
+}
+
+/* TOPIC CARDS */
+
+.topic-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:30px;
+}
+
+.topic-card{
+background:linear-gradient(135deg,#8ec5fc,#e0c3fc);
+padding:20px;
+border-radius:15px;
+cursor:pointer;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.topic-card:hover{
+transform:translateY(-5px);
+}
+
+.topic-card h3{
+margin:0;
+font-size:18px;
+}
+
+/* MCQ BOX */
+
+.mcq-box{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 5px 12px rgba(0,0,0,0.1);
+}
+
+.options button{
+display:block;
+width:100%;
+padding:10px;
+margin:6px 0;
+border:none;
+border-radius:6px;
+background:#f1f1f1;
+cursor:pointer;
+}
+
+.options button:hover{
+background:#ddd;
+}
+
+.correct{
+background:#9be7a6 !important;
+}
+
+.wrong{
+background:#ff9c9c !important;
+}
+
+.answer{
+margin-top:10px;
+font-weight:bold;
+}
+
+</style>
 </head>
+
 <body>
-  <header class="header">
-  <div class="header-inner">
 
-    <div class="logo">
-      <img src="logo.jpeg">
-      <span>ForensicBuzz</span>
-    </div>
+<h1>MCQ Practice</h1>
 
-    <!-- NAV LINKS -->
-    <nav class="glass-nav" id="glassNav">
-      <a href="index.html">Home</a>
-      <a href="syllabus.html">Syllabus</a>
-      <a href="books.html">Books & Notes</a>
-      <a href="contact.html">Contact</a>
-     
-    </nav>
-    
-     <!-- Mobile Toggle Button -->
-    <div class="menu-toggle" id="menuToggle">
-        ☰
-    </div>
+<!-- TOPIC CARDS -->
+<div id="topics" class="topic-grid"></div>
 
-  </div>
-  <!-- Government Scrolling Links -->
-<div class="gov-scroll">
-  <div class="scroll-text">
-    
-    <a href="http://dfs.nic.in/vacancy.html" target="_blank">
-      DFS Vacancy
-    </a>
+<!-- MCQ LIST -->
+<div id="mcq-list"></div>
 
-    <a href="https://nfsu.ac.in/career" target="_blank">
-      NFSU Current Vacancy
-    </a>
+<script type="module" src="mcqs.js"></script>
 
-    <a href="https://fsl.delhi.gov.in/" target="_blank">
-      current Information FSL Delhi
-    </a>
-
-    <a href="https://upsifs.ac.in/" target="_blank">
-     UPSIFS 
-    </a>
-
-  </div>
-</header>
-
-  <h1>MCQ Practice</h1>
-
-  <select id="topicSelect">
-    <option value="">Select Topic</option>
-  </select>
-
-  <div id="mcq-list"></div>
-
-  <script type="module" src="mcqs.js"></script>
 </body>
 </html>
