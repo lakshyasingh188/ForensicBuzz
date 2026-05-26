@@ -1,29 +1,335 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mock Test</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>
+
+        Mock Test
+
+    </title>
 
     <link rel="stylesheet" href="mc.css">
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+    <style>
+        .loader {
+
+            position: fixed;
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%;
+
+            height: 100vh;
+
+            background: black;
+
+            color: #00e7ff;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 30px;
+
+            z-index: 999;
+
+        }
+    </style>
+
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="loader" id="loader">
 
-        <h1>Mock Test</h1>
-
-        <select id="unitSelect">
-            <option value="">Select Unit</option>
-        </select>
-
-        <div id="questionContainer"></div>
+        Checking Subscription...
 
     </div>
+
+
+    <div class="container" style="display:none" id="app">
+
+        <h1>
+
+            Mock Test
+
+        </h1>
+
+
+        <select id="unitSelect">
+
+            <option value="">
+
+                Select Unit
+
+            </option>
+
+        </select>
+
+
+        <div id="questionContainer">
+
+        </div>
+
+    </div>
+
+
+    <script src="supabase.js"></script>
+
+    <script>
+
+        async function checkAccess() {
+
+
+            try {
+
+
+                const {
+
+                    data
+
+                }
+
+                    =
+
+                    await supabaseClient
+
+                        .auth
+
+                        .getUser();
+
+
+
+                if (
+
+                    !data.user
+
+                ) {
+
+                    alert(
+
+                        "Login Required"
+
+                    );
+
+
+                    location.replace(
+
+                        "login.html"
+
+                    );
+
+                    return;
+
+                }
+
+
+
+                const email =
+
+                    data.user.email;
+
+
+
+                const {
+
+                    data: sub
+
+                }
+
+                    =
+
+                    await supabaseClient
+
+                        .from(
+
+                            "subscriptions"
+
+                        )
+
+                        .select("*")
+
+                        .eq(
+
+                            "email",
+
+                            email
+
+                        )
+
+                        .single();
+
+
+
+                if (
+
+                    !sub
+
+                ) {
+
+                    alert(
+
+                        "Subscription Required"
+
+                    );
+
+                    location.replace(
+
+                        "profile.html"
+
+                    );
+
+                    return;
+
+                }
+
+
+
+                if (
+
+                    sub.active !== true
+
+                ) {
+
+                    alert(
+
+                        "Subscription Expired"
+
+                    );
+
+                    location.replace(
+
+                        "profile.html"
+
+                    );
+
+                    return;
+
+                }
+
+
+
+                if (
+
+                    new Date(
+                        sub.end_date
+                    )
+
+                    <
+
+                    new Date()
+
+                ) {
+
+                    await
+
+                        supabaseClient
+
+                            .from(
+
+                                "subscriptions"
+
+                            )
+
+                            .update({
+
+                                active: false
+
+                            })
+
+                            .eq(
+
+                                "email",
+
+                                email
+
+                            );
+
+
+                    alert(
+
+                        "Plan Expired"
+
+                    );
+
+                    location.replace(
+
+                        "profile.html"
+
+                    );
+
+                    return;
+
+                }
+
+
+
+                document
+
+                    .getElementById(
+
+                        "loader"
+
+                    )
+
+                    .style.display =
+
+                    "none";
+
+
+                document
+
+                    .getElementById(
+
+                        "app"
+
+                    )
+
+                    .style.display =
+
+                    "block";
+
+
+
+            }
+
+
+            catch (e) {
+
+                console.log(e);
+
+                alert(
+
+                    "Access Error"
+
+                );
+
+                location =
+
+                    "profile.html";
+
+            }
+
+
+        }
+
+
+        checkAccess();
+
+    </script>
+
 
     <script src="mc.js"></script>
 
