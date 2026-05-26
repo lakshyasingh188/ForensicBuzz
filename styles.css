@@ -687,3 +687,29 @@ SNAKE SYSTEM
   z-index: 10;
 
 }
+
+.login-btn {
+
+  background: #00e5ff;
+
+  color: black;
+
+  padding: 12px 22px;
+
+  border-radius: 30px;
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  transition: .3s;
+
+}
+
+.login-btn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 0 20px cyan;
+
+}
