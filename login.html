@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>
+
+        ForensicBuzz Login
+
+    </title>
+
+    <link rel="stylesheet" href="login.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+</head>
+
+<body>
+
+
+    <div class="login-box">
+
+        <h1>
+
+            ForensicBuzz
+
+        </h1>
+
+        <h2>
+
+            Login
+
+        </h2>
+
+
+        <p id="msg"></p>
+
+
+        <input id="email" type="email" placeholder="Enter Email">
+
+
+        <input id="password" type="password" placeholder="Enter Password">
+
+
+
+
+
+        <button class="login" onclick="login()">
+
+            Login
+
+        </button>
+        <button class="create" onclick="createAccount()">
+
+            Create Account
+
+        </button>
+
+
+        <button class="forget" onclick="forgetPassword()">
+
+            Forgot Password
+
+        </button>
+
+
+    </div>
+
+
+    <script src="supabase.js"></script>
+
+    <script src="login.js"></script>
+
+</body>
+
+</html>

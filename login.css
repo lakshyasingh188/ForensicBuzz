@@ -1,0 +1,200 @@
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+
+        linear-gradient(135deg,
+            #000814,
+            #001d3d,
+            #003566);
+
+    font-family:
+
+        Arial;
+
+}
+
+.login-box {
+
+    width: 420px;
+
+    padding: 40px;
+
+    border-radius: 28px;
+
+    background:
+
+        rgba(5,
+            15,
+            40,
+            0.95);
+
+    box-shadow:
+
+        0 0 80px rgba(0,
+            255,
+            255,
+            0.15);
+
+}
+
+h1 {
+
+    color: white;
+
+    font-size: 58px;
+
+    text-align: center;
+
+    margin-bottom: 5px;
+
+}
+
+h2 {
+
+    color: #00eaff;
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+}
+
+#msg {
+
+    color: #00eaff;
+
+    text-align: center;
+
+    min-height: 28px;
+
+    margin-bottom: 15px;
+
+}
+
+input {
+
+    width: 100%;
+
+    padding: 18px;
+
+    margin-bottom: 18px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 15px;
+
+    font-size: 18px;
+
+    background: #eef3ff;
+
+}
+
+button {
+
+    width: 100%;
+
+    padding: 18px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    margin-top: 12px;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.create {
+
+    background: #00eaff;
+
+}
+
+.create:hover {
+
+    transform: scale(1.02);
+
+}
+
+.login {
+
+    background: #12d6ff;
+
+}
+
+.login:hover {
+
+    transform: scale(1.02);
+
+}
+
+.forget {
+
+    background: transparent;
+
+    border:
+
+        2px solid #00eaff;
+
+    color: #00eaff;
+
+}
+
+.forget:hover {
+
+    background: #00eaff;
+
+    color: black;
+
+}
+
+@media(max-width:600px) {
+
+    .login-box {
+
+        width: 92%;
+
+        padding: 25px;
+
+    }
+
+    h1 {
+
+        font-size: 40px;
+
+    }
+
+    button {
+
+        font-size: 18px;
+
+    }
+
+}
