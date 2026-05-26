@@ -25,7 +25,7 @@ async function pay(days) {
         const amount =
             days === 1
                 ?
-                200
+                100
                 :
                 14900;
 
