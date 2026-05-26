@@ -5,6 +5,79 @@ const client = supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
+(async () => {
+
+
+    const {
+        data
+    }
+        =
+        await supabaseClient
+            .auth
+            .getUser();
+
+
+    if (
+        !data.user
+    ) {
+
+        location =
+            "login.html";
+
+        return;
+
+    }
+
+
+
+    const {
+        data: sub
+    }
+        =
+        await supabaseClient
+
+            .from(
+                "subscriptions"
+            )
+
+            .select("*")
+
+            .eq(
+                "email",
+                data.user.email
+            )
+
+            .single();
+
+
+
+    if (
+
+        !sub ||
+
+        new Date(
+            sub.end_date
+        )
+
+        <
+
+        new Date()
+
+    ) {
+
+        location =
+            "profile.html";
+
+        alert(
+            "Subscription Required"
+        );
+
+        return;
+
+    }
+
+
+})();
 
 const unitSelect = document.getElementById("unitSelect");
 const questionContainer = document.getElementById("questionContainer");
