@@ -2,91 +2,88 @@ async function pay(days) {
 
     try {
 
-        const {
-            data: userData
-        }
-            =
-            await supabaseClient
-                .auth
-                .getUser();
+        const { data: userData, error: userError } =
+            await supabaseClient.auth.getUser();
 
-        if (
-            !userData.user
-        ) {
-
-            location =
-                "login.html";
-
+        if (userError || !userData.user) {
+            alert("Please Login First");
+            location.href = "login.html";
             return;
-
         }
-
 
         const amount =
-            days === 1
-                ?
-                200
-                :
-                9900;
-
+            days === 1 ? 200 : 9900;
 
         const options = {
 
-            key:
-                "rzp_live_StqyfGl52TIJj7",
+            key: "rzp_live_StqyfGl52TIJj7",
 
-            amount,
+            amount: amount,
 
-            currency:
-                "INR",
+            currency: "INR",
 
-            name:
-                "ForensicBuzz",
+            name: "ForensicBuzz",
 
-            description:
-                days + " Day Plan",
+            description: days + " Day Plan",
 
             handler: async function (response) {
 
-                const end = new Date();
+                try {
 
-                end.setDate(
-                    end.getDate() + days
-                );
+                    console.log("PAYMENT SUCCESS");
+                    console.log(response);
 
-                const { data: sessionData } =
-                    await supabaseClient.auth.getUser();
+                    const userId = userData.user.id;
 
-                const userId =
-                    sessionData.user.id;
+                    const startDate = new Date();
 
-                const { error } =
-                    await supabaseClient
-                        .from("subscriptions")
-                        .upsert({
-                            user_id: userId,
-                            start_date: new Date(),
-                            end_date: end,
-                            active: true,
-                            plan_name: days + " Day"
-                        });
+                    const endDate = new Date();
+                    endDate.setDate(
+                        endDate.getDate() + days
+                    );
 
-                if (error) {
-                    console.log(error);
-                    alert("Subscription Save Failed");
-                    return;
+                    const { data, error } =
+                        await supabaseClient
+                            .from("subscriptions")
+                            .insert([{
+                                user_id: userId,
+                                start_date: startDate.toISOString(),
+                                end_date: endDate.toISOString(),
+                                active: true,
+                                plan_name: days + " Day"
+                            }])
+                            .select();
+
+                    console.log("SUBSCRIPTION DATA:", data);
+                    console.log("SUBSCRIPTION ERROR:", error);
+
+                    if (error) {
+                        alert("Subscription Save Failed");
+                        console.log(error);
+                        return;
+                    }
+
+                    alert("Payment Success");
+
+                    window.location.href =
+                        "profile.html?refresh=" +
+                        Date.now();
+
+                } catch (err) {
+
+                    console.log(err);
+
+                    alert(
+                        "Database Save Error"
+                    );
+
                 }
 
-                alert("Payment Success");
-
-                location.href =
-                    "profile.html";
             },
-
 
             modal: {
 
-                ondismiss() {
+                ondismiss: function () {
 
                     alert(
                         "Payment Cancelled"
@@ -96,14 +93,10 @@ async function pay(days) {
 
             }
 
-
         };
 
-
         const rzp =
-            new Razorpay(
-                options
-            );
+            new Razorpay(options);
 
         rzp.open();
 
