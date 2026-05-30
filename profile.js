@@ -203,3 +203,35 @@ async function logout() {
         "login.html";
 
 }
+const subscriptionText =
+document.getElementById(
+"subscriptionText"
+);
+
+const mockBtn =
+document.getElementById(
+"mockBtn"
+);
+
+if(
+subscription &&
+subscription.active
+){
+
+subscriptionText.innerHTML =
+"Active Plan : " +
+subscription.plan;
+
+mockBtn.style.display =
+"block";
+
+}
+else{
+
+subscriptionText.innerHTML =
+"No Active Subscription";
+
+mockBtn.style.display =
+"none";
+
+}
