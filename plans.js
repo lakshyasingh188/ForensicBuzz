@@ -46,54 +46,42 @@ async function pay(days) {
             description:
                 days + " Day Plan",
 
-            handler:
-                async function (response) {
+            handler: async function (response) {
 
-                    const end =
-                        new Date();
+                const end = new Date();
 
-                    end.setDate(
-                        end.getDate()
-                        +
-                        days
-                    );
+                end.setDate(
+                    end.getDate() + days
+                );
 
+                const { data: sessionData } =
+                    await supabaseClient.auth.getUser();
 
+                const userId =
+                    sessionData.user.id;
+
+                const { error } =
                     await supabaseClient
-
-                        .from(
-                            "subscriptions"
-                        )
-
+                        .from("subscriptions")
                         .upsert({
-
-                            email:
-                                userData.user.email,
-
-                            plan:
-                                days + " Day",
-
-                            active:
-                                true,
-
-                            start_date:
-                                new Date(),
-
-                            end_date:
-                                end
-
+                            user_id: userId,
+                            start_date: new Date(),
+                            end_date: end,
+                            active: true,
+                            plan_name: days + " Day"
                         });
 
+                if (error) {
+                    console.log(error);
+                    alert("Subscription Save Failed");
+                    return;
+                }
 
-                    alert(
-                        "Payment Success"
-                    );
+                alert("Payment Success");
 
-
-                    location =
-                        "profile.html";
-
-                },
+                location.href =
+                    "profile.html";
+            },
 
 
             modal: {
