@@ -1,148 +1,128 @@
-const msg =
-    document.getElementById("msg");
+const msg = document.getElementById("msg");
 
+function showMessage(text, color = "#00e7ff") {
+    msg.innerHTML = text;
+    msg.style.color = color;
+}
 
 async function createAccount() {
 
     const email =
-        document
-            .getElementById(
-                "email"
-            )
-            .value
-            .trim();
-
+        document.getElementById("email").value.trim();
 
     const password =
-        document
-            .getElementById(
-                "password"
-            )
-            .value
-            .trim();
+        document.getElementById("password").value.trim();
 
+    if (!email || !password) {
 
-    const {
-        data,
-        error
+        showMessage(
+            "Enter Email and Password",
+            "red"
+        );
+
+        return;
     }
-        =
-        await supabaseClient
-            .auth
-            .signUp({
 
-                email,
+    if (password.length < 6) {
 
-                password
+        showMessage(
+            "Password must be at least 6 characters",
+            "red"
+        );
 
-            });
+        return;
+    }
 
+    const { data, error } =
+        await supabaseClient.auth.signUp({
+            email,
+            password
+        });
 
     if (error) {
 
-        msg.innerHTML =
-            error.message;
+        console.log(error);
+
+        showMessage(
+            error.message,
+            "red"
+        );
 
         return;
-
     }
 
-
-    msg.innerHTML =
-        "Account Created";
-
+    showMessage(
+        "Account Created Successfully ✅",
+        "lime"
+    );
 }
-
-
 
 async function login() {
 
-
     const email =
-        document
-            .getElementById(
-                "email"
-            )
-            .value
-            .trim();
-
+        document.getElementById("email").value.trim();
 
     const password =
-        document
-            .getElementById(
-                "password"
-            )
-            .value
-            .trim();
+        document.getElementById("password").value.trim();
 
-
-    const {
-        error
-    }
-        =
-        await supabaseClient
-            .auth
-            .signInWithPassword({
-
-                email,
-
-                password
-
-            });
-
+    const { error } =
+        await supabaseClient.auth.signInWithPassword({
+            email,
+            password
+        });
 
     if (error) {
 
-        msg.innerHTML =
-            error.message;
+        console.log(error);
+
+        showMessage(
+            error.message,
+            "red"
+        );
 
         return;
-
     }
 
-
-    location =
+    location.href =
         "profile.html";
-
 }
-
-
 
 async function forgetPassword() {
 
-
     const email =
-        document
-            .getElementById(
-                "email"
-            )
-            .value
-            .trim();
+        document.getElementById("email").value.trim();
 
+    if (!email) {
 
-    const {
-        error
+        showMessage(
+            "Enter Email First",
+            "red"
+        );
+
+        return;
     }
-        =
-        await
-            supabaseClient
-                .auth
-                .resetPasswordForEmail(
-                    email
-                );
 
+    const { error } =
+        await supabaseClient.auth.resetPasswordForEmail(
+            email,
+            {
+                redirectTo:
+                    "https://forensicbuzz.com/reset-password.html"
+            }
+        );
 
     if (error) {
 
-        msg.innerHTML =
-            error.message;
+        showMessage(
+            error.message,
+            "red"
+        );
 
         return;
-
     }
 
-
-    msg.innerHTML =
-        "Reset email sent";
-
+    showMessage(
+        "Password Reset Email Sent ✅",
+        "lime"
+    );
 }
