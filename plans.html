@@ -9,7 +9,7 @@
         Subscription
 
     </title>
-
+    <link rel="stylesheet" href="plans.css">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
@@ -18,28 +18,43 @@
 
 <body>
 
-    <h1>
+    <div class="container">
 
-        Choose Plan
+        <h1>Choose Your Plan</h1>
 
-    </h1>
+        <div class="plans">
 
-    <button onclick="pay(
-1
-)">
+            <div class="card" onclick="pay(1)">
 
-        1 Day ₹10
+                <h2>Basic Plan</h2>
 
-    </button>
+                <div class="price">₹10</div>
+
+                <p>1 Day Access</p>
+
+                <button>Buy Now</button>
+
+            </div>
+
+            <div class="card premium" onclick="pay(45)">
+
+                <div class="badge">POPULAR</div>
+
+                <h2>Premium Plan</h2>
+
+                <div class="price">₹99</div>
+
+                <p>45 Day Access</p>
+
+                <button>Buy Now</button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 
-    <button onclick="pay(
-45
-)">
-
-        45 Day ₹99
-
-    </button>
 
     <script src="supabase.js"></script>
 
