@@ -1,5 +1,4 @@
 const supabaseClient = window.supabaseClient;
-
 if (!supabaseClient) {
     alert("Supabase Not Connected");
     throw new Error("supabaseClient not found");
