@@ -3,151 +3,75 @@ async function loadProfile() {
     try {
 
         const {
-
             data,
-
             error
+        } =
+            await supabaseClient.auth.getUser();
 
-        }
+        if (error || !data.user) {
 
-            =
-
-            await supabaseClient
-
-                .auth
-
-                .getUser();
-
-
-        if (
-
-            error ||
-
-            !data.user
-
-        ) {
-
-            location.replace(
-
-                "login.html"
-
-            );
-
+            location.replace("login.html");
             return;
 
         }
 
+        const user = data.user;
 
-        const email =
-
-            data.user.email;
-
-
-        document
-
-            .getElementById(
-
-                "email"
-
-            )
-
-            .innerHTML =
-
-            "Email : " + email;
-
-
+        document.getElementById("email").innerHTML =
+            "Email : " + user.email;
 
         const {
-
-            data: sub
-
-        }
-
-            =
-
+            data: subscription,
+            error: subError
+        } =
             await supabaseClient
-
-                .from(
-
-                    "subscriptions"
-
-                )
-
+                .from("subscriptions")
                 .select("*")
-
-                .eq(
-
-                    "email",
-
-                    email
-
-                )
-
+                .eq("user_id", user.id)
+                .eq("active", true)
+                .order("id", {
+                    ascending: false
+                })
+                .limit(1)
                 .single();
 
+        console.log("Subscription:", subscription);
+        console.log("Subscription Error:", subError);
 
+        const status =
+            document.getElementById("status");
+
+        const mockBtn =
+            document.getElementById("mockBtn");
 
         if (
-
-            sub &&
-
-            sub.active &&
-
-            new Date(
-
-                sub.end_date
-
-            )
-
-            >
-
+            subscription &&
+            new Date(subscription.end_date) >
             new Date()
-
         ) {
 
-            document
+            status.innerHTML =
+                `
+                ✅ Active Plan : ${subscription.plan_name}
+                <br>
+                Valid Till :
+                ${new Date(subscription.end_date).toLocaleDateString()}
+                `;
 
-                .getElementById(
-
-                    "status"
-
-                )
-
-                .innerHTML =
-
-                "Subscription Active ✅";
-
-
-            document
-
-                .getElementById(
-
-                    "mockBtn"
-
-                )
-
-                .style.display =
-
+            mockBtn.style.display =
                 "block";
 
         }
 
         else {
 
-            document
+            status.innerHTML =
+                "❌ No Active Subscription";
 
-                .getElementById(
-
-                    "status"
-
-                )
-
-                .innerHTML =
-
-                "No Active Subscription";
+            mockBtn.style.display =
+                "none";
 
         }
-
 
     }
 
@@ -155,83 +79,38 @@ async function loadProfile() {
 
         console.log(e);
 
-        alert(
-
-            "Profile Error"
-
-        );
+        alert("Profile Error");
 
     }
 
 }
 
-
 loadProfile();
-
 
 
 function buy() {
 
-    location =
-
+    location.href =
         "plans.html";
 
 }
 
 
-
 function openMock() {
 
-    location =
-
+    location.href =
         "mc.html";
 
 }
 
 
-
 async function logout() {
 
     await supabaseClient
-
         .auth
-
         .signOut();
 
-    location =
-
+    location.href =
         "login.html";
-
-}
-const subscriptionText =
-document.getElementById(
-"subscriptionText"
-);
-
-const mockBtn =
-document.getElementById(
-"mockBtn"
-);
-
-if(
-subscription &&
-subscription.active
-){
-
-subscriptionText.innerHTML =
-"Active Plan : " +
-subscription.plan;
-
-mockBtn.style.display =
-"block";
-
-}
-else{
-
-subscriptionText.innerHTML =
-"No Active Subscription";
-
-mockBtn.style.display =
-"none";
 
 }
