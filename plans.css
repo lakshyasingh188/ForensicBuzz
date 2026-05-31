@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(135deg,
+            #050b18,
+            #08142d);
+
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    padding: 20px;
+}
+
+.container {
+
+    width: 100%;
+    max-width: 1000px;
+}
+
+h1 {
+
+    text-align: center;
+
+    font-size: 60px;
+
+    margin-bottom: 50px;
+}
+
+.plans {
+
+    display: flex;
+
+    gap: 30px;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+.card {
+
+    width: 320px;
+
+    background: #10182b;
+
+    border-radius: 25px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    border: 2px solid transparent;
+
+    position: relative;
+}
+
+.card:hover {
+
+    transform: translateY(-10px);
+
+    border-color: #00e7ff;
+
+    box-shadow:
+        0 0 30px rgba(0, 231, 255, .4);
+}
+
+.card h2 {
+
+    font-size: 32px;
+
+    margin-bottom: 20px;
+}
+
+.price {
+
+    font-size: 60px;
+
+    color: #00e7ff;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+.card p {
+
+    color: #bdbdbd;
+
+    font-size: 18px;
+
+    margin-bottom: 25px;
+}
+
+.card button {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #00e7ff;
+
+    color: black;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.badge {
+
+    position: absolute;
+
+    top: -12px;
+
+    right: 15px;
+
+    background: #00e7ff;
+
+    color: black;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+.premium {
+
+    border: 2px solid #00e7ff;
+}
+
+@media(max-width:768px) {
+
+    h1 {
+
+        font-size: 40px;
+    }
+
+    .card {
+
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .price {
+
+        font-size: 48px;
+    }
+}
