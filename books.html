@@ -1,95 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Books & Notes</title>
   <link rel="stylesheet" href="books.css">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <header class="header">
-  <div class="header-inner">
 
-    <div class="logo">
-      <img src="logo.jpeg">
-      <span>ForensicBuzz</span>
-    </div>
 
-    <!-- NAV LINKS -->
-    <nav class="glass-nav" id="glassNav">
-      <a href="index.html">Home</a>
-      <a href="syllabus.html">Syllabus</a>
-      <a href="books.html">Books & Notes</a>
-      <a href="contact.html">Contact</a>
-     
-    </nav>
-    
-     <!-- Mobile Toggle Button -->
-    <div class="menu-toggle" id="menuToggle">
-        ☰
-    </div>
 
+  <h1>📚 Books & Notes</h1>
+
+  <div id="books-list"></div>
+
+  <!-- Reader Modal -->
+  <div id="readerModal">
+    <span id="closeBtn">✖</span>
+    <iframe id="readerFrame"></iframe>
   </div>
-  <!-- Government Scrolling Links -->
-<div class="gov-scroll">
-  <div class="scroll-text">
-    
-    <a href="http://dfs.nic.in/vacancy.html" target="_blank">
-      DFS Vacancy
-    </a>
+  <div class="books-disclaimer">
+    <p>
+      All the books, PDFs, and study materials available on this website
+      (<strong>FORENSICBUZZ.COM</strong>) are shared strictly for
+      <strong>educational and informational purposes only</strong>.
+    </p>
 
-    <a href="https://nfsu.ac.in/career" target="_blank">
-      NFSU Current Vacancy
-    </a>
+    <p>
+      The content provided here is either freely available in the
+      <strong>public domain</strong>, or shared under the principles of
+      <strong>fair use</strong> for education, research, criticism, or review.
+    </p>
 
-    <a href="https://fsl.delhi.gov.in/" target="_blank">
-      current Information FSL Delhi
-    </a>
+    <p>
+      We do not claim ownership of any third-party content. All copyrights
+      belong to their respective authors and publishers.
+    </p>
 
-    <a href="https://upsifs.ac.in/" target="_blank">
-     UPSIFS 
-    </a>
-
+    <p>
+      If you are a copyright owner and believe that any content on this website
+      infringes your copyright, please contact us. Upon verification, the
+      content will be removed immediately.
+    </p>
   </div>
-</header>
-
-
-<h1>📚 Books & Notes</h1>
-
-<div id="books-list"></div>
-
-<!-- Reader Modal -->
-<div id="readerModal">
-  <span id="closeBtn">✖</span>
-  <iframe id="readerFrame"></iframe>
-</div>
-<div class="books-disclaimer">
-  <p>
-    All the books, PDFs, and study materials available on this website
-    (<strong>FORENSICBUZZ.COM</strong>) are shared strictly for
-    <strong>educational and informational purposes only</strong>.
-  </p>
-
-  <p>
-    The content provided here is either freely available in the
-    <strong>public domain</strong>, or shared under the principles of
-    <strong>fair use</strong> for education, research, criticism, or review.
-  </p>
-
-  <p>
-    We do not claim ownership of any third-party content. All copyrights
-    belong to their respective authors and publishers.
-  </p>
-
-  <p>
-    If you are a copyright owner and believe that any content on this website
-    infringes your copyright, please contact us. Upon verification, the
-    content will be removed immediately.
-  </p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="books.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="books.js"></script>
 </body>
+
 </html>
-
-
