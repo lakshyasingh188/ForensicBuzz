@@ -1487,3 +1487,110 @@ body {
   color: #ffffff;
   text-shadow: 0 0 10px #00e5ff;
 }
+.dna-wrapper{
+    position:relative;
+    width:350px;
+    height:500px;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.dna-strand{
+    position:relative;
+    width:220px;
+    height:450px;
+}
+
+.dna-strand span{
+    position:absolute;
+    left:50%;
+    width:140px;
+    height:3px;
+    background:linear-gradient(90deg,#00e5ff,#00ff88);
+    transform-origin:center;
+    animation:helix 3s linear infinite;
+    box-shadow:0 0 15px rgba(0,229,255,.8);
+}
+
+.dna-strand span::before,
+.dna-strand span::after{
+    content:"";
+    position:absolute;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.dna-strand span::before{
+    left:-8px;
+    background:#00e5ff;
+    box-shadow:0 0 15px #00e5ff;
+}
+
+.dna-strand span::after{
+    right:-8px;
+    background:#00ff88;
+    box-shadow:0 0 15px #00ff88;
+}
+
+.dna-strand span:nth-child(1){top:0;animation-delay:0s;}
+.dna-strand span:nth-child(2){top:25px;animation-delay:.15s;}
+.dna-strand span:nth-child(3){top:50px;animation-delay:.30s;}
+.dna-strand span:nth-child(4){top:75px;animation-delay:.45s;}
+.dna-strand span:nth-child(5){top:100px;animation-delay:.60s;}
+.dna-strand span:nth-child(6){top:125px;animation-delay:.75s;}
+.dna-strand span:nth-child(7){top:150px;animation-delay:.90s;}
+.dna-strand span:nth-child(8){top:175px;animation-delay:1.05s;}
+.dna-strand span:nth-child(9){top:200px;animation-delay:1.20s;}
+.dna-strand span:nth-child(10){top:225px;animation-delay:1.35s;}
+.dna-strand span:nth-child(11){top:250px;animation-delay:1.50s;}
+.dna-strand span:nth-child(12){top:275px;animation-delay:1.65s;}
+.dna-strand span:nth-child(13){top:300px;animation-delay:1.80s;}
+.dna-strand span:nth-child(14){top:325px;animation-delay:1.95s;}
+.dna-strand span:nth-child(15){top:350px;animation-delay:2.10s;}
+.dna-strand span:nth-child(16){top:375px;animation-delay:2.25s;}
+.dna-strand span:nth-child(17){top:400px;animation-delay:2.40s;}
+.dna-strand span:nth-child(18){top:425px;animation-delay:2.55s;}
+
+@keyframes helix{
+    0%{
+        transform:translateX(-50%) rotateY(0deg) scaleX(1);
+    }
+    50%{
+        transform:translateX(-50%) rotateY(180deg) scaleX(.25);
+    }
+    100%{
+        transform:translateX(-50%) rotateY(360deg) scaleX(1);
+    }
+}
+
+/* Floating particles */
+
+.particle{
+    position:absolute;
+    border-radius:50%;
+    background:#00e5ff;
+    box-shadow:0 0 20px #00e5ff;
+    animation:floatParticle 6s infinite ease-in-out;
+}
+
+.p1{width:8px;height:8px;top:50px;left:20px;}
+.p2{width:12px;height:12px;top:120px;right:30px;}
+.p3{width:10px;height:10px;bottom:150px;left:50px;}
+.p4{width:7px;height:7px;bottom:60px;right:40px;}
+.p5{width:14px;height:14px;top:220px;right:-10px;}
+
+@keyframes floatParticle{
+    0%,100%{
+        transform:translateY(0);
+        opacity:.4;
+    }
+    50%{
+        transform:translateY(-30px);
+        opacity:1;
+    }
+}
