@@ -1594,3 +1594,78 @@ body {
         opacity:1;
     }
 }
+/* WhatsApp Moving Banner */
+.whatsapp-runner {
+  width: 100%;
+  height: 55px;
+  overflow: hidden;
+  position: relative;
+
+  background: rgba(0, 255, 255, 0.05);
+  border-top: 1px solid rgba(0, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+
+  margin-top: 0;
+}
+
+.whatsapp-runner a {
+  position: absolute;
+  top: 50%;
+  left: -600px;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  animation: whatsappMove 18s linear infinite;
+}
+
+.whatsapp-runner img {
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px;
+  object-fit: contain;
+}
+
+.whatsapp-runner span {
+  color: #25D366;
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(37, 211, 102, .6);
+}
+
+@keyframes whatsappMove {
+  from {
+    left: -700px;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+.whatsapp-runner:hover a {
+  animation-play-state: paused;
+}
+
+/* Mobile */
+@media(max-width:768px) {
+
+  .whatsapp-runner {
+    height: 50px;
+  }
+
+  .whatsapp-runner img {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .whatsapp-runner span {
+    font-size: 14px;
+  }
+}
