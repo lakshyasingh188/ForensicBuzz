@@ -1577,7 +1577,7 @@ body {
   overflow: hidden;
   position: relative;
 
-  background: var(--primary-blue); /* Solid primary blue for whatsapp runner */
+  background: green; /* Solid primary blue for whatsapp runner */
   border-top: none;
   border-bottom: none;
 
