@@ -133,15 +133,26 @@ src=""
 frameborder="0">
 </iframe>
 
-<div class="modal-buttons">
+<div class="card-buttons">
 
-<button id="buyNowBtn">
+    <button
+        class="preview-btn"
+        onclick="previewPDF('${test.code}')">
 
-<i class="fa-solid fa-lock"></i>
+        <i class="fa-solid fa-eye"></i>
+        Preview Sample
 
-Unlock Test Series
+    </button>
 
-</button>
+    <button
+        class="buy-btn"
+        id="buy-${test.code}"
+        onclick="buyNow('${test.code}')">
+
+        <i class="fa-solid fa-lock"></i>
+        Unlock ₹${test.price}
+
+    </button>
 
 </div>
 
@@ -181,7 +192,13 @@ ForensicBuzz
 
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <script src="test-series.js"></script>
+
+</body>
 
 </body>
 
