@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="loader"></div> <!-- Pura CSS wahi purana wala -->
+    <h2>Please wait...</h2>
+    <script>
+        // URL se link uthane ka logic
+        const params = new URLSearchParams(window.location.search);
+        const pdfLink = params.get('url'); // URL se 'url' parameter lega
+
+        if (pdfLink) {
+            setTimeout(() => {
+                window.location.href = pdfLink;
+            }, 3000);
+        } else {
+            document.body.innerHTML = "<h2>Invalid Request!</h2>";
+        }
+    </script>
+</body>
+</html>
