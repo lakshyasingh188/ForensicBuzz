@@ -3,13 +3,14 @@
    =========================== */
 
 :root {
-  --bg-top: #020617;
-  --bg-middle: #061329;
-  --bg-bottom: #0a2240;
-  --accent: #00e7ff;
-  --accent-secondary: #0ea5e9;
-  --text-primary: #ffffff;
-  --text-muted: #94a3b8;
+  --bg-top: #F0F8FF; /* Light blue-ish background, common in government sites */
+  --bg-middle: #FFFFFF; /* White for main content areas */
+  --bg-bottom: #E0EBF5; /* Slightly darker light background for sections */
+  --primary-blue: #0A4275; /* Deep blue, primary color from igod.gov.in */
+  --secondary-blue: #1D5A96; /* Lighter blue, secondary color */
+  --accent-orange: #F47C3C; /* Orange accent, observed on igod.gov.in */
+  --text-primary: #333333; /* Dark grey for primary text */
+  --text-muted: #666666; /* Muted grey for secondary text */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -24,8 +25,8 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-middle) 50%, var(--bg-bottom) 100%);
+  font-family: 'Open Sans', sans-serif; /* Using Open Sans as observed on igod.gov.in */
+  background: var(--bg-top); /* Light blue-ish background */
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -36,13 +37,8 @@ body {
    =========================== */
 
 .background-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
+  /* Removed for a cleaner, government-style background */
+  display: none;
 }
 
 .gradient-bg {
@@ -72,30 +68,18 @@ body {
 }
 
 .orb-1 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(80, 121, 125, 0.4) 0%, transparent 70%);
-  top: 10%;
-  left: 10%;
-  animation: float 15s ease-in-out infinite;
+  /* Removed for a cleaner, government-style background */
+  display: none;
 }
 
 .orb-2 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.3) 0%, transparent 70%);
-  bottom: 10%;
-  right: 10%;
-  animation: float 20s ease-in-out infinite reverse;
+  /* Removed for a cleaner, government-style background */
+  display: none;
 }
 
 .orb-3 {
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(0, 231, 255, 0.2) 0%, transparent 70%);
-  top: 50%;
-  right: 20%;
-  animation: float 18s ease-in-out infinite;
+  /* Removed for a cleaner, government-style background */
+  display: none;
 }
 
 @keyframes float {
@@ -119,18 +103,8 @@ body {
 }
 
 .particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, rgba(0, 231, 255, 0.5), transparent),
-    radial-gradient(2px 2px at 60px 70px, rgba(14, 165, 233, 0.5), transparent),
-    radial-gradient(1px 1px at 50px 50px, rgba(0, 231, 255, 0.3), transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(14, 165, 233, 0.3), transparent),
-    radial-gradient(2px 2px at 90px 10px, rgba(0, 231, 255, 0.4), transparent);
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  animation: drift 20s linear infinite;
+  /* Removed for a cleaner, government-style background */
+  display: none;
 }
 
 @keyframes drift {
@@ -148,10 +122,10 @@ body {
   width: 100%;
   height: 100%;
   background-image:
-    linear-gradient(rgba(0, 231, 255, 0.03) 1px, transparent 6px),
-    linear-gradient(90deg, rgba(0, 231, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(10, 66, 117, 0.03) 1px, transparent 6px),
+    linear-gradient(90deg, rgba(10, 66, 117, 0.03) 1px, transparent 1px); /* Grid lines with primary blue */
   background-size: 50px 50px;
-  opacity: 0.5;
+  opacity: 0.1;
 }
 
 /* ===========================
@@ -162,16 +136,16 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(2, 6, 23, 0.7);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 231, 255, 0.1);
-  padding: 1rem 0;
+  background: var(--bg-middle); /* White background for navbar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for navbar */
+  border-bottom: none; /* Remove border-bottom */
+  padding: 0.8rem 0;
 }
 
 .navbar-container {
-  max-width: 1400px;
+  max-width: 1100px; /* Further refined width */
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem; /* Further adjusted padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -184,24 +158,25 @@ body {
 }
 
 .logo-text {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-blue); /* Primary blue for logo */
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
 }
 
 .nav-menu {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem; /* Slightly reduced gap */
   align-items: center;
 }
 
 .nav-link {
   color: var(--text-primary);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: var(--transition);
   position: relative;
+  padding: 0.5rem 0; /* Add padding for better click area */
 }
 
 .nav-link::after {
@@ -211,17 +186,18 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  background: var(--primary-blue); /* Primary blue for nav link hover */
   transition: width 0.3s ease;
 }
 
-.nav-link:hover::after {
+.nav-link:hover {
   width: 100%;
+  color: var(--primary-blue); /* Primary blue on hover */
 }
 
 .nav-buttons {
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem; /* Slightly reduced gap */
   align-items: center;
 }
 
@@ -234,7 +210,7 @@ body {
 .hamburger span {
   width: 25px;
   height: 3px;
-  background: var(--accent);
+  background: var(--primary-blue); /* Primary blue for hamburger icon */
   margin: 5px 0;
   transition: var(--transition);
   border-radius: 2px;
@@ -245,10 +221,10 @@ body {
    =========================== */
 
 .btn {
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
+  border-radius: 4px; /* Less rounded corners */
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
@@ -258,41 +234,42 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
-  color: var(--bg-top);
-  box-shadow: 0 0 20px rgba(0, 231, 255, 0.3);
+  background: var(--primary-blue); /* Primary blue for primary button */
+  color: white; /* White text */
+  box-shadow: 0 0 10px rgba(10, 66, 117, 0.3); /* Blue shadow */
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(0, 231, 255, 0.5);
+  background: var(--secondary-blue); /* Secondary blue on hover */
+  box-shadow: 0 0 15px rgba(29, 90, 150, 0.5); /* Darker blue shadow on hover */
 }
 
 .btn-secondary {
-  background: rgba(0, 231, 255, 0.1);
-  color: var(--accent);
-  border: 1px solid var(--accent);
+  background: rgba(10, 66, 117, 0.1); /* Light primary blue background */
+  color: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
 }
 
 .btn-secondary:hover {
-  background: rgba(0, 231, 255, 0.2);
+  background: rgba(10, 66, 117, 0.2); /* Slightly darker light primary blue on hover */
   transform: translateY(-2px);
 }
 
 .btn-login {
   background: transparent;
-  color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--primary-blue);
+  border: 1px solid rgba(10, 66, 117, 0.2); /* Border with primary blue */
 }
 
 .btn-login:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--accent);
+  background: rgba(10, 66, 117, 0.1); /* Light background with primary blue */
+  border-color: var(--primary-blue);
 }
 
 .btn-lg {
-  padding: 1rem 2rem;
-  font-size: 1rem;
+  padding: 0.8rem 1.8rem;
+  font-size: 0.95rem;
 }
 
 /* ===========================
@@ -300,24 +277,25 @@ body {
    =========================== */
 
 .hero {
-  min-height: 100vh;
+  min-height: 80vh; /* Slightly reduced height */
   display: flex;
   align-items: center;
-  padding: 4rem 2rem;
-  max-width: 1400px;
+  padding: 3rem 1.5rem; /* Adjusted padding */
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .hero-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  display: flex; /* Changed to flex for simpler vertical stacking */
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  gap: 1.5rem;
   width: 100%;
 }
 
 .hero-text {
-  animation: fadeUpIn 0.8s ease-out;
+  animation: none; /* Remove animation for a more static, official feel */
 }
 
 .hero-title {
@@ -325,29 +303,28 @@ body {
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-blue); /* Primary blue for hero title */
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.1rem; /* Slightly smaller font size */
   color: var(--text-muted);
-  margin-bottom: 2rem;
-  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
 }
 
 .hero-buttons {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
 .hero-visual {
-  position: relative;
-  height: 400px;
-  animation: fadeUpIn 0.8s ease-out 0.2s both;
+  /* Removed for a cleaner, government-style layout */
+  display: none;
 }
 
 .cyber-illustration {
@@ -358,7 +335,7 @@ body {
 
 .cyber-element {
   position: absolute;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--primary-blue); /* Primary blue for cyber elements */
   opacity: 0.6;
   animation: rotate 20s linear infinite;
 }
@@ -412,7 +389,7 @@ body {
   position: absolute;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(0, 231, 255, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(10, 66, 117, 0.2) 0%, transparent 70%); /* Blue glow effect */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -450,50 +427,50 @@ body {
 
 .stats {
   padding: 4rem 2rem;
-  background: rgba(0, 231, 255, 0.05);
-  border-top: 1px solid rgba(0, 231, 255, 0.1);
-  border-bottom: 1px solid rgba(0, 231, 255, 0.1);
+  background: var(--bg-bottom); /* Slightly darker light background */
+  border-top: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
+  border-bottom: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
 }
 
 .stats-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
 }
 
 .stat-card {
   text-align: center;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 231, 255, 0.1);
+  background: var(--bg-middle); /* White background for cards */
+  border: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
   border-radius: 12px;
   backdrop-filter: blur(10px);
   transition: var(--transition);
 }
 
 .stat-card:hover {
-  background: rgba(0, 231, 255, 0.1);
-  border-color: var(--accent);
+  background: rgba(10, 66, 117, 0.1); /* Light primary blue background on hover */
+  border-color: var(--primary-blue);
   transform: translateY(-5px);
 }
 
 .stat-number {
   font-size: 2.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-blue); /* Primary blue for stat numbers */
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
   margin-bottom: 0.5rem;
 }
 
 .stat-label {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 /* ===========================
@@ -509,16 +486,16 @@ body {
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-blue); /* Primary blue for section headers */
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
 }
 
 .section-header p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-muted);
-  max-width: 600px;
+  max-width: 700px; /* Slightly wider text */
   margin: 0 auto;
 }
 
@@ -527,21 +504,21 @@ body {
    =========================== */
 
 .features {
-  padding: 6rem 2rem;
-  max-width: 1400px;
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .feature-card {
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 231, 255, 0.1);
+  background: var(--bg-middle); /* White background for cards */
+  border: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
   border-radius: 12px;
   backdrop-filter: blur(10px);
   transition: var(--transition);
@@ -573,16 +550,17 @@ body {
 }
 
 .feature-card:hover {
-  background: rgba(0, 231, 255, 0.1);
-  border-color: var(--accent);
+  background: rgba(10, 66, 117, 0.1); /* Light primary blue background on hover */
+  border-color: var(--primary-blue);
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 231, 255, 0.1);
+  box-shadow: 0 10px 20px rgba(10, 66, 117, 0.1); /* Blue shadow on hover */
 }
 
 .feature-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
   display: inline-block;
+  color: var(--primary-blue); /* Primary blue for icons */
 }
 
 .feature-card h3 {
@@ -601,15 +579,15 @@ body {
    =========================== */
 
 .why-choose {
-  padding: 6rem 2rem;
-  max-width: 1400px;
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .timeline {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
 .timeline-item {
@@ -648,21 +626,21 @@ body {
   top: 0;
   width: 20px;
   height: 20px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  background: var(--primary-blue); /* Primary blue for timeline marker */
   border-radius: 50%;
   border: 3px solid var(--bg-top);
-  box-shadow: 0 0 20px rgba(0, 231, 255, 0.5);
+  box-shadow: 0 0 10px rgba(10, 66, 117, 0.5); /* Blue shadow */
 }
 
 .timeline-content h3 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  color: var(--text-primary);
+  color: var(--primary-blue);
 }
 
 .timeline-content p {
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* ===========================
@@ -670,21 +648,21 @@ body {
    =========================== */
 
 .categories {
-  padding: 6rem 2rem;
-  max-width: 1400px;
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
 .category-card {
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 231, 255, 0.1);
+  background: var(--bg-middle); /* White background for cards */
+  border: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
   border-radius: 12px;
   backdrop-filter: blur(10px);
   text-align: center;
@@ -717,26 +695,27 @@ body {
 }
 
 .category-card:hover {
-  background: rgba(0, 231, 255, 0.15);
-  border-color: var(--accent);
+  background: rgba(10, 66, 117, 0.15); /* Light primary blue background on hover */
+  border-color: var(--primary-blue);
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 231, 255, 0.15);
+  box-shadow: 0 15px 30px rgba(10, 66, 117, 0.15); /* Blue shadow on hover */
 }
 
 .category-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--primary-blue); /* Primary blue for icons */
 }
 
 .category-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 0.75rem;
-  color: var(--text-primary);
+  color: var(--primary-blue);
 }
 
 .category-card p {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 /* ===========================
@@ -744,8 +723,8 @@ body {
    =========================== */
 
 .mock-showcase {
-  padding: 6rem 2rem;
-  max-width: 1400px;
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -758,11 +737,11 @@ body {
   width: 100%;
   max-width: 600px;
   padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 231, 255, 0.2);
+  background: var(--bg-middle); /* White background for cards */
+  border: 1px solid rgba(10, 66, 117, 0.2); /* Border with primary blue */
   border-radius: 16px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 20px 60px rgba(0, 231, 255, 0.1);
+  box-shadow: 0 15px 40px rgba(10, 66, 117, 0.1); /* Blue shadow */
   animation: fadeUpIn 0.8s ease-out;
 }
 
@@ -772,17 +751,17 @@ body {
   align-items: center;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(0, 231, 255, 0.1);
+  border-bottom: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
 }
 
 .dashboard-header h3 {
-  font-size: 1.3rem;
-  color: var(--text-primary);
+  font-size: 1.2rem;
+  color: var(--primary-blue);
 }
 
 .badge {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
-  color: var(--bg-top);
+  background: var(--accent-orange); /* Orange accent for badge */
+  color: white; /* White text */
   padding: 0.4rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -803,7 +782,7 @@ body {
 .stat-title {
   display: block;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -813,10 +792,10 @@ body {
   display: block;
   font-size: 2rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-blue); /* Primary blue for stat value */
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
 }
 
 .dashboard-card .btn {
@@ -828,23 +807,23 @@ body {
    =========================== */
 
 .plans {
-  padding: 6rem 2rem;
-  max-width: 1400px;
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .plans-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
   max-width: 900px;
   margin: 0 auto;
 }
 
 .plan-card {
   padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 231, 255, 0.1);
+  background: var(--bg-middle); /* White background for cards */
+  border: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
   border-radius: 12px;
   backdrop-filter: blur(10px);
   transition: var(--transition);
@@ -861,16 +840,16 @@ body {
 }
 
 .plan-card.featured {
-  border-color: var(--accent);
-  background: rgba(0, 231, 255, 0.08);
+  border-color: var(--primary-blue);
+  background: rgba(10, 66, 117, 0.08); /* Light primary blue background for featured card */
   transform: scale(1.05);
-  box-shadow: 0 20px 60px rgba(0, 231, 255, 0.2);
+  box-shadow: 0 15px 40px rgba(10, 66, 117, 0.2); /* Blue shadow */
 }
 
 .plan-card:hover {
   transform: translateY(-10px) scale(1);
-  border-color: var(--accent);
-  box-shadow: 0 20px 60px rgba(0, 231, 255, 0.15);
+  border-color: var(--primary-blue);
+  box-shadow: 0 15px 40px rgba(10, 66, 117, 0.15); /* Blue shadow on hover */
 }
 
 .plan-card.featured:hover {
@@ -882,8 +861,8 @@ body {
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
-  color: var(--bg-top);
+  background: var(--accent-orange); /* Orange accent for plan badge */
+  color: white; /* White text */
   padding: 0.5rem 1.5rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -896,18 +875,18 @@ body {
 }
 
 .plan-header h3 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin-bottom: 0.75rem;
-  color: var(--text-primary);
+  color: var(--primary-blue);
 }
 
 .plan-price {
   font-size: 2.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-blue); /* Primary blue for plan price */
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
 }
 
 .currency {
@@ -922,7 +901,7 @@ body {
 .plan-features li {
   padding: 0.75rem 0;
   color: var(--text-muted);
-  border-bottom: 1px solid rgba(0, 231, 255, 0.05);
+  border-bottom: 1px solid rgba(10, 66, 117, 0.05); /* Border with primary blue */
 }
 
 .plan-features li:last-child {
@@ -938,21 +917,21 @@ body {
    =========================== */
 
 .testimonials {
-  padding: 6rem 2rem;
-  max-width: 1400px;
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .testimonial-card {
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 231, 255, 0.1);
+  background: var(--bg-middle); /* White background for cards */
+  border: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
   border-radius: 12px;
   backdrop-filter: blur(10px);
   transition: var(--transition);
@@ -972,8 +951,8 @@ body {
 }
 
 .testimonial-card:hover {
-  background: rgba(0, 231, 255, 0.1);
-  border-color: var(--accent);
+  background: rgba(10, 66, 117, 0.1); /* Light primary blue background on hover */
+  border-color: var(--primary-blue);
   transform: translateY(-10px);
 }
 
@@ -990,24 +969,24 @@ body {
 .testimonial-text {
   color: var(--text-muted);
   margin-bottom: 1.5rem;
-  line-height: 1.8;
+  line-height: 1.7;
   font-style: italic;
 }
 
 .testimonial-author {
   padding-top: 1rem;
-  border-top: 1px solid rgba(0, 231, 255, 0.1);
+  border-top: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
 }
 
 .author-name {
-  color: var(--text-primary);
+  color: var(--primary-blue);
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
 
 .author-role {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 /* ===========================
@@ -1015,8 +994,8 @@ body {
    =========================== */
 
 .faq {
-  padding: 6rem 2rem;
-  max-width: 1000px;
+  padding: 4rem 1.5rem;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -1027,8 +1006,8 @@ body {
 }
 
 .faq-item {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 231, 255, 0.1);
+  background: var(--bg-middle); /* White background for cards */
+  border: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
   border-radius: 12px;
   backdrop-filter: blur(10px);
   overflow: hidden;
@@ -1057,11 +1036,11 @@ body {
 
 .faq-question {
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.2rem 1.5rem;
   background: transparent;
   border: none;
   color: var(--text-primary);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -1071,13 +1050,13 @@ body {
 }
 
 .faq-question:hover {
-  background: rgba(0, 231, 255, 0.05);
+  background: rgba(10, 66, 117, 0.05); /* Light primary blue background on hover */
 }
 
 .faq-icon {
   font-size: 1.5rem;
   transition: var(--transition);
-  color: var(--accent);
+  color: var(--primary-blue);
 }
 
 .faq-item.active .faq-icon {
@@ -1095,9 +1074,9 @@ body {
 }
 
 .faq-answer p {
-  padding: 0 1.5rem 1.5rem 1.5rem;
+  padding: 0 1.5rem 1.2rem 1.5rem;
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 /* ===========================
@@ -1105,34 +1084,35 @@ body {
    =========================== */
 
 .footer {
-  background: rgba(2, 6, 23, 0.8);
-  border-top: 1px solid rgba(0, 231, 255, 0.1);
-  padding: 4rem 2rem 2rem;
-  margin-top: 4rem;
+  background: var(--primary-blue); /* Primary blue for footer */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* White border */
+  padding: 3rem 1.5rem 1.5rem; /* Adjusted padding */
+  margin-top: 3rem;
+  color: white; /* White text for footer */
 }
 
 .footer-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 3rem;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(0, 231, 255, 0.1);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* White border */
 }
 
 .footer-section h4 {
-  color: var(--text-primary);
+  color: white; /* White text for footer headings */
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
 
 .footer-section p {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.8); /* Lighter white for footer text */
   line-height: 1.8;
   margin-bottom: 1rem;
 }
@@ -1146,13 +1126,13 @@ body {
 }
 
 .footer-section a {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.8); /* Lighter white for footer links */
   text-decoration: none;
   transition: var(--transition);
 }
 
 .footer-section a:hover {
-  color: var(--accent);
+  color: var(--accent-orange); /* Orange accent on hover */
 }
 
 .social-icons {
@@ -1166,24 +1146,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 231, 255, 0.1);
-  border: 1px solid rgba(0, 231, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1); /* Light white background */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* White border */
   border-radius: 8px;
-  color: var(--accent);
+  color: white; /* White icon */
   text-decoration: none;
   transition: var(--transition);
   font-size: 1.2rem;
 }
 
 .social-icon:hover {
-  background: rgba(0, 231, 255, 0.2);
-  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.2); /* Slightly darker light white on hover */
+  border-color: var(--accent-orange);
   transform: translateY(-3px);
 }
 
 .footer-bottom {
   text-align: center;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.6); /* Muted white for footer bottom text */
   font-size: 0.9rem;
 }
 
@@ -1214,49 +1194,50 @@ body {
     gap: 2rem;
   }
 
-  .hero-title {
-    font-size: 2rem;
-  }
+.hero-title {
+  font-size: 2.2rem;
+}
 
-  .hero-subtitle {
-    font-size: 1rem;
-  }
+.hero-subtitle {
+  font-size: 1.05rem;
+}
 
   .hero-visual {
     height: 300px;
   }
 
-  .hero-buttons {
-    flex-direction: column;
-  }
+.hero-buttons {
+  flex-direction: row; /* Keep buttons in a row for desktop */
+  justify-content: center;
+}
 
-  .btn-lg {
-    width: 100%;
-  }
+.btn-lg {
+  width: auto; /* Allow buttons to size naturally */
+}
 
-  .section-header h2 {
-    font-size: 1.8rem;
-  }
+.section-header h2 {
+  font-size: 2rem;
+}
 
-  .features-grid,
+.features-grid,
   .categories-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Revert to multi-column for larger screens */
   }
 
-  .plans-container {
-    grid-template-columns: 1fr;
+.plans-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Revert to multi-column for larger screens */
   }
 
-  .plan-card.featured {
-    transform: scale(1);
+.plan-card.featured {
+    transform: scale(1.02); /* Slightly scale featured card */
   }
 
-  .plan-card:hover.featured {
-    transform: translateY(-10px) scale(1);
+.plan-card:hover.featured {
+    transform: translateY(-5px) scale(1.03); /* Slightly scale and lift on hover */
   }
 
-  .dashboard-stats {
-    grid-template-columns: repeat(2, 1fr);
+.dashboard-stats {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust for smaller screens */
     gap: 1rem;
   }
 
@@ -1264,127 +1245,127 @@ body {
     font-size: 1.5rem;
   }
 
-  .timeline {
-    grid-template-columns: 1fr;
+.timeline {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Revert to multi-column for larger screens */
   }
 
-  .testimonials-grid {
-    grid-template-columns: 1fr;
+.testimonials-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Revert to multi-column for larger screens */
   }
 
-  .navbar-container {
-    padding: 0 1rem;
+.navbar-container {
+    padding: 0 0.8rem;
   }
 
-  .nav-buttons {
-    gap: 0.5rem;
+.nav-buttons {
+    gap: 0.6rem;
   }
 
-  .btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
+.btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
   }
 
-  .hero {
-    padding: 2rem 1rem;
+.hero {
+    padding: 1.5rem 1rem;
     min-height: auto;
   }
 
-  .features,
+.features,
   .why-choose,
   .categories,
   .mock-showcase,
   .plans,
   .testimonials,
   .faq {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem;
   }
 
-  .section-header {
-    margin-bottom: 2rem;
+.section-header {
+    margin-bottom: 1.5rem;
   }
 
-  .footer-content {
-    gap: 2rem;
+.footer-content {
+    gap: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 1.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 0.9rem;
-  }
-
-  .section-header h2 {
-    font-size: 1.5rem;
-  }
-
-  .section-header p {
-    font-size: 0.95rem;
-  }
-
-  .feature-card,
-  .category-card,
-  .testimonial-card {
-    padding: 1.5rem;
-  }
-
-  .dashboard-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .plan-card {
-    padding: 1.5rem;
-  }
-
-  .faq-question {
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-
-  .faq-answer p {
-    padding: 0 1rem 1rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .stats-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  .stat-card {
-    padding: 1rem;
-  }
-
-  .stat-number {
+.hero-title {
     font-size: 1.8rem;
   }
 
-  .stat-label {
-    font-size: 0.8rem;
+.hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+.section-header h2 {
+    font-size: 1.6rem;
+  }
+
+.section-header p {
+    font-size: 0.9rem;
+  }
+
+.feature-card,
+  .category-card,
+  .testimonial-card {
+    padding: 1.2rem;
+  }
+
+.dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+.plan-card {
+    padding: 1.2rem;
+  }
+
+.faq-question {
+    padding: 0.8rem 1rem;
+    font-size: 0.85rem;
+  }
+
+.faq-answer p {
+    padding: 0 1rem 0.8rem 1rem;
+    font-size: 0.85rem;
+  }
+
+.stats-container {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+.stat-card {
+    padding: 0.8rem;
+  }
+
+.stat-number {
+    font-size: 1.6rem;
+  }
+
+.stat-label {
+    font-size: 0.75rem;
   }
 }
 
 .heading-logo {
-  width: 65px;
-  height: 65px;
+  width: 50px;
+  height: 50px;
   vertical-align: middle;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .container {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-middle); /* White background for container */
   backdrop-filter: blur(15px);
   padding: 50px;
-  border-radius: 20px;
+  border-radius: 10px; /* Slightly less rounded corners */
   width: 90%;
   max-width: 650px;
   text-align: center;
-  color: white;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  color: var(--text-primary); /* Primary text color */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .container h1 {
@@ -1423,49 +1404,49 @@ body {
 
 /* Individual Colors */
 .instagram {
-  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background: var(--accent-orange); /* Use accent orange */
 }
 
 .whatsapp {
-  background: rgb(17, 225, 17);
+  background: #25D366; /* Standard WhatsApp green */
 }
 
 .email {
-  background: #ea4335;
+  background: #D44638; /* Standard red for email */
 }
 
 .website {
-  background: #00bcd4;
+  background: var(--secondary-blue); /* Secondary blue for website icon */
 }
 
 .home-btn {
   display: inline-block;
-  padding: 12px 30px;
-  background: #ff9800;
+  padding: 9px 22px;
+  background: var(--primary-blue); /* Primary blue for home button */
   color: white;
   text-decoration: none;
-  border-radius: 30px;
+  border-radius: 4px; /* Less rounded corners */
   font-weight: bold;
   transition: 0.3s;
 }
 
 .home-btn:hover {
-  background: #e68900;
-  transform: scale(1.05);
+  background: var(--secondary-blue); /* Secondary blue on hover */
+  transform: scale(1.02);
 }
 
 .copyright-box {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 20px 3px;
-  background: rgba(255, 255, 255, 0.08);
+  gap: 8px;
+  padding: 8px 15px; /* Further adjusted padding */
+  background: var(--bg-middle); /* White background for copyright box */
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 50px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-  color: #ffffff;
-  font-size: 15px;
+  border: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
+  border-radius: 4px; /* Less rounded corners */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03); /* More subtle shadow */
+  color: var(--text-primary); /* Primary text color */
+  font-size: 13px;
   font-weight: 500;
 }
 
@@ -1477,24 +1458,19 @@ body {
 }
 
 .copyright-box a {
-  color: #00e5ff;
+  color: var(--accent-orange); /* Orange accent for links */
   text-decoration: none;
   font-weight: 300;
   transition: 0.3s ease;
 }
 
 .copyright-box a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 10px #00e5ff;
+  color: white; /* White on hover */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* White shadow on hover */
 }
 .dna-wrapper{
-    position:relative;
-    width:350px;
-    height:500px;
-    margin:auto;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    /* Removed for a cleaner, government-style background */
+    display: none;
 }
 
 .dna-strand{
@@ -1508,10 +1484,10 @@ body {
     left:50%;
     width:140px;
     height:3px;
-    background:linear-gradient(90deg,#00e5ff,#00ff88);
+    background:linear-gradient(90deg,var(--primary-blue),var(--secondary-blue)); /* Use blue colors */
     transform-origin:center;
     animation:helix 3s linear infinite;
-    box-shadow:0 0 15px rgba(0,229,255,.8);
+    box-shadow:0 0 15px rgba(10,66,117,.8); /* Blue shadow */
 }
 
 .dna-strand span::before,
@@ -1527,14 +1503,14 @@ body {
 
 .dna-strand span::before{
     left:-8px;
-    background:#00e5ff;
-    box-shadow:0 0 15px #00e5ff;
+    background:var(--primary-blue); /* Primary blue */
+    box-shadow:0 0 15px var(--primary-blue); /* Primary blue shadow */
 }
 
 .dna-strand span::after{
     right:-8px;
-    background:#00ff88;
-    box-shadow:0 0 15px #00ff88;
+    background:var(--secondary-blue); /* Secondary blue */
+    box-shadow:0 0 15px var(--secondary-blue); /* Secondary blue shadow */
 }
 
 .dna-strand span:nth-child(1){top:0;animation-delay:0s;}
@@ -1573,8 +1549,8 @@ body {
 .particle{
     position:absolute;
     border-radius:50%;
-    background:#00e5ff;
-    box-shadow:0 0 20px #00e5ff;
+    background:var(--primary-blue); /* Primary blue */
+    box-shadow:0 0 20px var(--primary-blue); /* Primary blue shadow */
     animation:floatParticle 6s infinite ease-in-out;
 }
 
@@ -1597,13 +1573,13 @@ body {
 /* WhatsApp Moving Banner */
 .whatsapp-runner {
   width: 100%;
-  height: 55px;
+  height: 50px; /* Slightly reduced height */
   overflow: hidden;
   position: relative;
 
-  background: rgba(0, 255, 255, 0.05);
-  border-top: 1px solid rgba(0, 255, 255, 0.3);
-  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  background: var(--primary-blue); /* Solid primary blue for whatsapp runner */
+  border-top: none;
+  border-bottom: none;
 
   margin-top: 0;
 }
@@ -1623,20 +1599,22 @@ body {
   white-space: nowrap;
 
   animation: whatsappMove 18s linear infinite;
+  color: white; /* Ensure link text is white */
 }
 
 .whatsapp-runner img {
-  width: 36px !important;
-  height: 36px !important;
-  min-width: 36px;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px;
   object-fit: contain;
+  filter: brightness(0) invert(1); /* Invert color to white for better contrast */
 }
 
 .whatsapp-runner span {
-  color: #25D366;
-  font-size: 20px;
+  color: white; /* White text for better contrast on blue background */
+  font-size: 18px;
   font-weight: 700;
-  text-shadow: 0 0 10px rgba(37, 211, 102, .6);
+  text-shadow: none;
 }
 
 @keyframes whatsappMove {
