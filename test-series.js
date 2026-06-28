@@ -1,11 +1,33 @@
 // =======================================
-// ForensicBuzz Test Series
-// Part 1
+// FORENSICBUZZ TEST SERIES v2
+// PART 1
 // =======================================
 
-// ----------------------
-// Test Series Data
-// ----------------------
+// =======================================
+// SUPABASE CONFIG
+// =======================================
+
+const SUPABASE_URL = "https://bmmmtjsxwufeuvfozkst.supabase.co";
+
+const SUPABASE_ANON_KEY =
+"YOUR_SUPABASE_ANON_KEY";
+
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_ANON_KEY
+);
+
+// =======================================
+// RAZORPAY
+// =======================================
+
+const RAZORPAY_KEY =
+"rzp_live_xxxxxxxxxxxxx";
+
+// =======================================
+// TEST SERIES
+// =======================================
 
 const testSeries = [
 
@@ -23,13 +45,13 @@ questions:100,
 
 pages:42,
 
-image:"biology.jpeg",
+cover:"biology.jpeg",
 
 sample:"biology-sample.pdf",
 
-full:"biology-sample.pdf",
+full:"biology-full.pdf",
 
-description:"Latest Biology Mock Test based on New Pattern."
+description:"Latest Biology Mock Test."
 
 },
 
@@ -47,7 +69,7 @@ questions:200,
 
 pages:85,
 
-image:"images/biology2.jpg",
+cover:"biology2.jpg",
 
 sample:"biology2-sample.pdf",
 
@@ -61,7 +83,7 @@ description:"Advanced Biology Practice Set."
 
 code:"CHE001",
 
-title:"Forensic Chemistry Test 01",
+title:"Forensic Chemistry Test",
 
 category:"Chemistry",
 
@@ -71,13 +93,13 @@ questions:150,
 
 pages:65,
 
-image:"images/chemistry.jpg",
+cover:"chemistry.jpg",
 
 sample:"chemistry-sample.pdf",
 
 full:"chemistry-full.pdf",
 
-description:"Important Chemistry Questions."
+description:"Latest Chemistry Mock Test."
 
 },
 
@@ -85,7 +107,7 @@ description:"Important Chemistry Questions."
 
 code:"DNA001",
 
-title:"DNA Test Series",
+title:"DNA Complete Test",
 
 category:"DNA",
 
@@ -95,29 +117,45 @@ questions:250,
 
 pages:120,
 
-image:"images/dna.jpg",
+cover:"dna.jpg",
 
 sample:"dna-sample.pdf",
 
 full:"dna-full.pdf",
 
-description:"Complete DNA Practice Book."
+description:"Complete DNA Practice Set."
 
 }
 
 ];
 
-// ----------------------
-// Elements
-// ----------------------
+// =======================================
+// ELEMENTS
+// =======================================
 
-const container=document.getElementById("testContainer");
+const container =
+document.getElementById("testContainer");
 
-const loading=document.getElementById("loadingScreen");
+const loading =
+document.getElementById("loadingScreen");
 
-// ----------------------
-// Card Generator
-// ----------------------
+const modal =
+document.getElementById("previewModal");
+
+const frame =
+document.getElementById("previewFrame");
+
+const previewTitle =
+document.getElementById("previewTitle");
+
+const closeBtn =
+document.querySelector(".close");
+
+let currentTest = null;
+
+// =======================================
+// LOAD CARDS
+// =======================================
 
 function loadCards(data){
 
@@ -131,7 +169,10 @@ container.innerHTML+=`
 
 <div class="card-image">
 
-<img src="${SUPABASE_URL}/storage/v1/object/public/test-cover/${test.cover}" alt="${test.title}">
+<img
+src="${SUPABASE_URL}/storage/v1/object/public/test-cover/${test.cover}"
+alt="${test.title}">
+
 <div class="price-tag">
 
 ₹${test.price}
@@ -144,7 +185,7 @@ container.innerHTML+=`
 
 <h2>${test.title}</h2>
 
-<p class="card-desc">
+<p>
 
 ${test.description}
 
@@ -173,9 +214,7 @@ ${test.description}
 <div class="card-buttons">
 
 <button
-
 class="preview-btn"
-
 onclick="previewPDF('${test.code}')">
 
 Preview
@@ -183,9 +222,8 @@ Preview
 </button>
 
 <button
-
 class="buy-btn"
-
+id="buy-${test.code}"
 onclick="buyNow('${test.code}')">
 
 Unlock ₹${test.price}
@@ -204,11 +242,11 @@ Unlock ₹${test.price}
 
 }
 
-// ----------------------
-// Loading Screen
-// ----------------------
+// =======================================
+// WINDOW LOAD
+// =======================================
 
-window.onload=()=>{
+window.onload=function(){
 
 loadCards(testSeries);
 
@@ -243,311 +281,227 @@ searchInput.addEventListener("keyup", () => {
 
 });
 
-
 // =======================================
 // CATEGORY FILTER
 // =======================================
 
-const categoryButtons = document.querySelectorAll(".category");
+const categoryButtons =
+document.querySelectorAll(".category");
 
-categoryButtons.forEach(button => {
+categoryButtons.forEach(button=>{
 
-    button.addEventListener("click", () => {
+button.addEventListener("click",()=>{
 
-        categoryButtons.forEach(btn =>
-            btn.classList.remove("active")
-        );
+categoryButtons.forEach(btn=>
+btn.classList.remove("active")
+);
 
-        button.classList.add("active");
+button.classList.add("active");
 
-        const category = button.innerText;
+const category=button.innerText;
 
-        if (category === "All") {
+if(category==="All"){
 
-            loadCards(testSeries);
+loadCards(testSeries);
 
-            return;
+return;
 
-        }
+}
 
-        const filtered = testSeries.filter(test =>
-            test.category === category
-        );
+const filtered=testSeries.filter(test=>
 
-        loadCards(filtered);
+test.category===category
 
-    });
+);
+
+loadCards(filtered);
 
 });
 
+});
 
 // =======================================
-// PREVIEW MODAL
+// PREVIEW PDF
 // =======================================
-
-const modal = document.getElementById("previewModal");
-
-const frame = document.getElementById("previewFrame");
-
-const title = document.getElementById("previewTitle");
-
-const closeBtn = document.querySelector(".close");
-
-let currentTest = null;
 
 function previewPDF(code){
 
-    const test = testSeries.find(item => item.code === code);
+const test=testSeries.find(
 
-    currentTest = test;
+item=>item.code===code
 
-    title.innerHTML = test.title;
-
-    // Sample PDF
-    // Abhi local folder se
-    // Baad me Supabase se aayega
-
-frame.src = `${SUPABASE_URL}/storage/v1/object/public/sample-pdf/${test.sample}`;
-    modal.style.display = "flex";
-
-}
-
-closeBtn.onclick = () => {
-
-    modal.style.display = "none";
-
-    frame.src = "";
-
-}
-
-window.onclick = (e)=>{
-
-    if(e.target==modal){
-
-        modal.style.display="none";
-
-        frame.src="";
-
-    }
-
-}
-
-
-// =======================================
-// BUY BUTTON
-// =======================================
-
-function buyNow(code){
-
-    const test = testSeries.find(item => item.code === code);
-
-    currentTest = test;
-
-    alert(
-
-`Payment Screen
-
-Test : ${test.title}
-
-Price : ₹${test.price}
-
-Next Step :
-Razorpay Open`
-
-    );
-
-}
-// =======================================
-// SUPABASE CONFIG
-// =======================================
-
-// Apni values yahan paste karna
-const SUPABASE_URL = "https://bmmmtjsxwufeuvfozkst.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbW10anN4d3VmZXV2Zm96a3N0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkyNTYyODQsImV4cCI6MjA4NDgzMjI4NH0.btRW1CHoUbJodnXyvoUdji32dbwJW92mQOMXn7jVckM";
-
-const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY
 );
 
-// =======================================
-// RAZORPAY KEY
-// =======================================
+currentTest=test;
 
-const RAZORPAY_KEY = "YOUR_RAZORPAY_KEY";
+previewTitle.innerHTML=test.title;
 
-// =======================================
-// LOGIN CHECK
-// =======================================
+frame.src=
+`${SUPABASE_URL}/storage/v1/object/public/sample-pdf/${test.sample}`;
 
-async function getCurrentUser(){
-
-    const { data } = await supabaseClient.auth.getUser();
-
-    return data.user;
+modal.style.display="flex";
 
 }
 
 // =======================================
-// PURCHASE CHECK
+// CLOSE MODAL
 // =======================================
 
-async function alreadyPurchased(testCode){
+closeBtn.onclick=function(){
 
-    const user = await getCurrentUser();
+modal.style.display="none";
 
-    if(!user){
+frame.src="";
 
-        return false;
+};
 
-    }
+window.onclick=function(e){
 
-    const { data } = await supabaseClient
-    .from("test_purchases")
-    .select("*")
-    .eq("user_id",user.id)
-    .eq("test_code",testCode)
-    .eq("status","paid")
-    .maybeSingle();
+if(e.target===modal){
 
-    return !!data;
+modal.style.display="none";
+
+frame.src="";
 
 }
 
+};
+
+// =======================================
+// CHANGE BUTTON AFTER PAYMENT
+// =======================================
+
+function showDownloadButton(test,downloadUrl){
+
+const btn=
+document.getElementById(`buy-${test.code}`);
+
+btn.innerHTML=`
+<i class="fa-solid fa-download"></i>
+Download PDF
+`;
+
+btn.classList.remove("buy-btn");
+
+btn.classList.add("download-btn");
+
+btn.onclick=function(){
+
+window.open(downloadUrl,"_blank");
+
+};
+
+}
 // =======================================
 // BUY NOW
 // =======================================
 
-async function buyNow(code){
+async function buyNow(code) {
 
-    const user = await getCurrentUser();
+    const test = testSeries.find(t => t.code === code);
 
-    if(!user){
-
-        alert("Please login first.");
-
+    if (!test) {
+        alert("Test Series not found.");
         return;
-
     }
 
-    const test = testSeries.find(t=>t.code===code);
+    try {
 
-    if(await alreadyPurchased(code)){
+        // Create Razorpay Order
+        const orderResponse = await fetch("/api/create-order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                amount: test.price,
+                testCode: test.code,
+                title: test.title
+            })
+        });
 
-        showDownloadButton(test);
+        const order = await orderResponse.json();
 
-        return;
-
-    }
-
-    const options={
-
-        key:RAZORPAY_KEY,
-
-        amount:test.price*100,
-
-        currency:"INR",
-
-        name:"ForensicBuzz",
-
-        description:test.title,
-
-        handler:async function(response){
-
-            await savePurchase(
-
-                code,
-
-                test.price,
-
-                response.razorpay_payment_id
-
-            );
-
-            alert("Payment Successful");
-
-            showDownloadButton(test);
-
+        if (!order.success) {
+            alert(order.message || "Unable to create order.");
+            return;
         }
 
-    };
+        const options = {
 
-    const rzp=new Razorpay(options);
+            key: order.key,
 
-    rzp.open();
+            amount: order.amount,
 
-}
+            currency: order.currency,
 
-// =======================================
-// SAVE PURCHASE
-// =======================================
+            name: "ForensicBuzz",
 
-async function savePurchase(code,amount,paymentId){
+            description: test.title,
 
-    const user=await getCurrentUser();
+            order_id: order.orderId,
 
-    await supabaseClient
+            handler: async function (response) {
 
-    .from("test_purchases")
+                const verifyResponse = await fetch("/api/verify-payment", {
 
-    .insert({
+                    method: "POST",
 
-        user_id:user.id,
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
 
-        test_code:code,
+                    body: JSON.stringify({
 
-        amount:amount,
+                        razorpay_order_id: response.razorpay_order_id,
 
-        payment_id:paymentId,
+                        razorpay_payment_id: response.razorpay_payment_id,
 
-        status:"paid"
+                        razorpay_signature: response.razorpay_signature,
 
-    });
+                        test_code: test.code,
 
-}
+                        amount: test.price
 
-// =======================================
-// DOWNLOAD BUTTON
-// =======================================
+                    })
 
-function showDownloadButton(test){
+                });
 
-    document.getElementById("buyNowBtn").innerHTML="Download PDF";
+                const verify = await verifyResponse.json();
 
-    document.getElementById("buyNowBtn").onclick=function(){
+                if (!verify.success) {
 
-        downloadPDF(test);
+                    alert(verify.message || "Payment verification failed.");
 
-    };
+                    return;
 
-}
+                }
 
-// =======================================
-// PRIVATE PDF DOWNLOAD
-// =======================================
+                showDownloadButton(
+                    test,
+                    verify.downloadUrl
+                );
 
-async function downloadPDF(test){
+                alert("Payment Successful!");
 
-    const { data,error } = await supabaseClient.storage
+            },
 
-    .from("full-pdf")
+            theme: {
+                color: "#0f62fe"
+            }
 
-    .createSignedUrl(
+        };
 
-        test.full,
+        const razorpay = new Razorpay(options);
 
-        300
+        razorpay.open();
 
-    );
+    } catch (err) {
 
-    if(error){
+        console.error(err);
 
-        alert("Unable to download.");
-
-        return;
+        alert("Something went wrong.");
 
     }
-
-    window.open(data.signedUrl,"_blank");
 
 }
