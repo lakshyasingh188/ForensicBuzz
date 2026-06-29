@@ -135,26 +135,35 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1001; /* Higher z-index to stay above the banner */
   background: var(--bg-middle); /* White background for navbar */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for navbar */
-  border-bottom: none; /* Remove border-bottom */
+  border-bottom: 1px solid rgba(10, 66, 117, 0.1); /* Added subtle border for better definition */
   padding: 0.8rem 0;
+  height: 70px; /* Fixed height to prevent layout shift */
+  display: flex;
+  align-items: center;
 }
 
 .navbar-container {
-  max-width: 1100px; /* Further refined width */
+  max-width: 1200px; /* Standard government portal width */
   margin: 0 auto;
-  padding: 0 1rem; /* Further adjusted padding */
+  padding: 0 2rem; /* Increased padding for better breathing room */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0; /* Prevent logo from shrinking and causing overlap */
+  margin-right: 2rem; /* Ensure a minimum gap from the nav menu */
 }
 
 .logo-text {
@@ -166,8 +175,10 @@ body {
 
 .nav-menu {
   display: flex;
-  gap: 1.5rem; /* Slightly reduced gap */
+  gap: 1.5rem;
   align-items: center;
+  flex-grow: 1; /* Allow menu to take available space */
+  justify-content: center; /* Center the navigation links */
 }
 
 .nav-link {
@@ -177,6 +188,9 @@ body {
   transition: var(--transition);
   position: relative;
   padding: 0.5rem 0; /* Add padding for better click area */
+  white-space: none; /* Prevent text from wrapping into two lines */
+  cursor: 10%; /* Ensure pointer cursor for links */
+  display: inline-block; /* Ensure proper box model for clicking */
 }
 
 .nav-link::after {
@@ -191,14 +205,16 @@ body {
 }
 
 .nav-link:hover {
-  width: 100%;
+  width: 10%;
   color: var(--primary-blue); /* Primary blue on hover */
 }
 
 .nav-buttons {
   display: flex;
-  gap: 0.8rem; /* Slightly reduced gap */
+  gap: 1rem;
   align-items: center;
+  flex-shrink: 0; /* Prevent buttons from shrinking */
+  justify-content: flex-end; /* Align buttons to the right */
 }
 
 .hamburger {
@@ -257,9 +273,11 @@ body {
 }
 
 .btn-login {
-  background: transparent;
-  color: var(--primary-blue);
-  border: 1px solid rgba(10, 66, 117, 0.2); /* Border with primary blue */
+  background: var(--primary-blue); /* Government style often uses solid primary colors for login */
+  color: white;
+  border: 1px solid var(--primary-blue);
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
 }
 
 .btn-login:hover {
@@ -280,7 +298,7 @@ body {
   min-height: 80vh; /* Slightly reduced height */
   display: flex;
   align-items: center;
-  padding: 3rem 1.5rem; /* Adjusted padding */
+  padding: 3rem 1.5rem; /* Reverting to standard padding as sticky elements are handled */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -430,6 +448,7 @@ body {
   background: var(--bg-bottom); /* Slightly darker light background */
   border-top: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
   border-bottom: 1px solid rgba(10, 66, 117, 0.1); /* Border with primary blue */
+  scroll-margin-top: 120px; /* Offset for sticky header (70px) + banner (50px) */
 }
 
 .stats-container {
@@ -507,6 +526,7 @@ body {
   padding: 4rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  scroll-margin-top: 120px; /* Offset for sticky header + banner */
 }
 
 .features-grid {
@@ -582,6 +602,7 @@ body {
   padding: 4rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  scroll-margin-top: 120px; /* Offset for sticky header + banner */
 }
 
 .timeline {
@@ -651,6 +672,7 @@ body {
   padding: 4rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  scroll-margin-top: 120px; /* Offset for sticky header + banner */
 }
 
 .categories-grid {
@@ -726,6 +748,7 @@ body {
   padding: 4rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  scroll-margin-top: 120px; /* Offset for sticky header + banner */
 }
 
 .mock-dashboard {
@@ -810,6 +833,7 @@ body {
   padding: 4rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  scroll-margin-top: 120px; /* Offset for sticky header + banner */
 }
 
 .plans-container {
@@ -920,6 +944,7 @@ body {
   padding: 4rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  scroll-margin-top: 120px; /* Offset for sticky header + banner */
 }
 
 .testimonials-grid {
@@ -997,6 +1022,7 @@ body {
   padding: 4rem 1.5rem;
   max-width: 900px;
   margin: 0 auto;
+  scroll-margin-top: 120px; /* Offset for sticky header + banner */
 }
 
 .faq-container {
@@ -1575,9 +1601,11 @@ body {
   width: 100%;
   height: 50px; /* Slightly reduced height */
   overflow: hidden;
-  position: relative;
+  position: sticky; /* Change to sticky to stay below the navbar */
+  top: 70px; /* Position it exactly below the fixed-height navbar */
+  z-index: 1000; /* Between navbar and main content */
 
-  background: green; /* Solid primary blue for whatsapp runner */
+  background: black; /* Solid primary blue for whatsapp runner */
   border-top: none;
   border-bottom: none;
 
@@ -1600,6 +1628,7 @@ body {
 
   animation: whatsappMove 18s linear infinite;
   color: white; /* Ensure link text is white */
+  pointer-events: auto; /* Ensure the link is clickable */
 }
 
 .whatsapp-runner img {
@@ -1611,7 +1640,7 @@ body {
 }
 
 .whatsapp-runner span {
-  color: white; /* White text for better contrast on blue background */
+  color: rgb(12, 248, 12); /* White text for better contrast on blue background */
   font-size: 18px;
   font-weight: 700;
   text-shadow: none;
@@ -1642,6 +1671,7 @@ body {
     width: 30px !important;
     height: 30px !important;
   }
+  
 
   .whatsapp-runner span {
     font-size: 14px;
