@@ -1,33 +1,677 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Daily MCQs | ForensicBuzz</title>
-  <link rel="stylesheet" href="daily-mcq.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily MCQ Quiz - 20 Questions</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 100%;
+            padding: 40px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .date-display {
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .progress-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+            min-width: 60px;
+            text-align: right;
+        }
+
+        .loading {
+            text-align: center;
+            color: #667eea;
+            font-size: 16px;
+            padding: 40px 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .question-section {
+            margin-bottom: 30px;
+        }
+
+        .question-number {
+            font-size: 12px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 15px;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            accent-color: #667eea;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex-grow: 1;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .option.correct {
+            border-color: #4caf50;
+            background: #f1f8f4;
+        }
+
+        .option.incorrect {
+            border-color: #f44336;
+            background: #fef5f5;
+        }
+
+        .option.correct::after {
+            content: '✓';
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .option.incorrect::after {
+            content: '✗';
+            color: #f44336;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-next:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-submit {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-submit:hover {
+            background: #e0e0e0;
+        }
+
+        .result-page {
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .score-display {
+            font-size: 60px;
+            font-weight: 700;
+            color: #667eea;
+            margin: 30px 0;
+        }
+
+        .score-text {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .score-message {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .score-breakdown {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+
+        .breakdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .breakdown-label {
+            color: #666;
+        }
+
+        .breakdown-value {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .btn-restart {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-restart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .no-data p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .question-text {
+                font-size: 16px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .score-display {
+                font-size: 48px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Daily MCQ Quiz</h1>
+            <div class="date-display" id="dateDisplay"></div>
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">0/20</div>
+            </div>
+        </div>
 
-  <!-- HEADER -->
-  <header class="top-bar">
-    <a href="index.html" class="back-btn">←</a>
-    <h1>Daily MCQs</h1>
-  </header>
-
-  <!-- SUB HEADER -->
-  <section class="sub-head">
-    <p>Forensic Science – Today’s Questions (Valid 24 Hours)</p>
-  </section>
-
-  <!-- MCQ AREA -->
-  <main class="page-wrapper">
-    <div class="mcq-container" id="mcqContainer">
-      <p class="loading">Loading today’s MCQs...</p>
+        <div id="content">
+            <div class="loading">
+                <div class="spinner"></div>
+                Loading today's questions...
+            </div>
+        </div>
     </div>
-  </main>
 
-  <!-- SCRIPTS -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="daily-mcq.js"></script>
+    <script>
+        // ============================================
+        // CONFIGURATION - UPDATE THESE VALUES
+        // ============================================
+        const SUPABASE_URL = 'https://bmmmtjsxwufeuvfozkst.supabase.co'; // e.g., https://xxxxx.supabase.co
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbW10anN4d3VmZXV2Zm96a3N0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkyNTYyODQsImV4cCI6MjA4NDgzMjI4NH0.btRW1CHoUbJodnXyvoUdji32dbwJW92mQOMXn7jVckM'; // Your public anon key
+        const TOTAL_QUESTIONS = 20; // Number of questions per day
 
+        // ============================================
+        // Initialize Supabase
+        // ============================================
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let allQuestions = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = []; // Store user answers
+        let quizStarted = false;
+
+        // ============================================
+        // Get today's date in YYYY-MM-DD format
+        // ============================================
+        function getTodayDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        // ============================================
+        // Format date for display
+        // ============================================
+        function formatDateDisplay(dateString) {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const date = new Date(dateString + 'T00:00:00');
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        // ============================================
+        // Fetch all questions for today from Supabase
+        // ============================================
+        async function fetchTodayQuestions() {
+            try {
+                const todayDate = getTodayDate();
+                const { data, error } = await supabaseClient
+  .from('daily_mcqs')
+  .select('*')
+  .eq('mcq_date', todayDate)
+  .order('id', { ascending: true });      // ✅ Correct
+
+                if (error) {
+                    showError('Failed to load questions. Please try again later.');
+                    return;
+                }
+
+                if (!data || data.length === 0) {
+                    showNoData();
+                    return;
+                }
+
+                allQuestions = data;
+                userAnswers = new Array(allQuestions.length).fill(null);
+                quizStarted = true;
+                renderQuestion();
+            } catch (err) {
+                console.error('Error:', err);
+                showError('An unexpected error occurred.');
+            }
+        }
+
+        // ============================================
+        // Render the current question
+        // ============================================
+        function renderQuestion() {
+            const content = document.getElementById('content');
+            const todayDate = getTodayDate();
+
+            // Update date display
+            document.getElementById('dateDisplay').textContent = formatDateDisplay(todayDate);
+
+            // Show progress section
+            document.getElementById('progressSection').style.display = 'flex';
+            updateProgress();
+
+            if (currentQuestionIndex >= allQuestions.length) {
+                showResults();
+                return;
+            }
+
+            const question = allQuestions[currentQuestionIndex];
+
+            let html = `
+                <div class="question-section">
+                    <div class="question-number">Question ${currentQuestionIndex + 1} of ${allQuestions.length}</div>
+                    <div class="question-text">${escapeHtml(question.question)}</div>
+                    <div class="options" id="optionsContainer">
+            `;
+
+            question.options.forEach((option, index) => {
+                const optionId = `option-${index}`;
+                const isSelected = userAnswers[currentQuestionIndex] === index;
+                html += `
+                    <div class="option ${isSelected ? 'selected' : ''}" id="option-box-${index}">
+                        <input type="radio" id="${optionId}" name="answer" value="${index}" ${isSelected ? 'checked' : ''}>
+                        <label for="${optionId}">${escapeHtml(option)}</label>
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+                </div>
+            `;
+
+            // Navigation buttons
+            html += `
+                <div class="button-group">
+                    ${currentQuestionIndex > 0 ? '<button class="btn-submit" onclick="previousQuestion()">← Previous</button>' : ''}
+                    ${currentQuestionIndex < allQuestions.length - 1 ? '<button class="btn-next" onclick="nextQuestion()">Next →</button>' : '<button class="btn-next" onclick="submitQuiz()">Submit Quiz</button>'}
+                </div>
+            `;
+
+            content.innerHTML = html;
+
+            // Add event listeners to options
+            const optionInputs = document.querySelectorAll('input[name="answer"]');
+            optionInputs.forEach(input => {
+                input.addEventListener('change', (e) => {
+                    userAnswers[currentQuestionIndex] = parseInt(e.target.value);
+                    updateSelectedOption();
+                });
+            });
+        }
+
+        // ============================================
+        // Update visual selection
+        // ============================================
+        function updateSelectedOption() {
+            document.querySelectorAll('.option').forEach((opt, index) => {
+                if (index === userAnswers[currentQuestionIndex]) {
+                    opt.classList.add('selected');
+                } else {
+                    opt.classList.remove('selected');
+                }
+            });
+        }
+
+        // ============================================
+        // Update progress bar
+        // ============================================
+        function updateProgress() {
+            const answered = userAnswers.filter(a => a !== null).length;
+            const percentage = (answered / allQuestions.length) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = `${answered}/${allQuestions.length}`;
+        }
+
+        // ============================================
+        // Navigate to next question
+        // ============================================
+        function nextQuestion() {
+            if (currentQuestionIndex < allQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // ============================================
+        // Navigate to previous question
+        // ============================================
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // ============================================
+        // Submit the quiz
+        // ============================================
+        function submitQuiz() {
+            if (userAnswers.includes(null)) {
+                const unanswered = userAnswers.filter(a => a === null).length;
+                if (!confirm(`You have ${unanswered} unanswered question(s). Submit anyway?`)) {
+                    return;
+                }
+            }
+            showResults();
+        }
+
+        // ============================================
+        // Calculate and show results
+        // ============================================
+        function showResults() {
+            const content = document.getElementById('content');
+            document.getElementById('progressSection').style.display = 'none';
+
+            let correctCount = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer === allQuestions[index].correct_answer) {
+                    correctCount++;
+                }
+            });
+
+            const percentage = Math.round((correctCount / allQuestions.length) * 100);
+            let message = '';
+
+            if (percentage === 100) {
+                message = '🎉 Perfect Score! You are a genius!';
+            } else if (percentage >= 80) {
+                message = '🌟 Excellent! Great job!';
+            } else if (percentage >= 60) {
+                message = '👍 Good! Keep practicing!';
+            } else if (percentage >= 40) {
+                message = '📚 Not bad. Study more and try again!';
+            } else {
+                message = '💪 Keep learning. You\'ll do better next time!';
+            }
+
+            let html = `
+                <div class="result-page">
+                    <h2 style="color: #333; margin-bottom: 20px;">Quiz Complete!</h2>
+                    <div class="score-display">${correctCount}/${allQuestions.length}</div>
+                    <div class="score-text">${percentage}%</div>
+                    <div class="score-message">${message}</div>
+                    <div class="score-breakdown">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Correct Answers</span>
+                            <span class="breakdown-value">${correctCount}</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Incorrect Answers</span>
+                            <span class="breakdown-value">${allQuestions.length - correctCount}</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Accuracy</span>
+                            <span class="breakdown-value">${percentage}%</span>
+                        </div>
+                    </div>
+                    <button class="btn-restart" onclick="location.reload()">Try Again Tomorrow</button>
+                </div>
+            `;
+
+            content.innerHTML = html;
+            window.scrollTo(0, 0);
+        }
+
+        // ============================================
+        // Show error message
+        // ============================================
+        function showError(message) {
+            const content = document.getElementById('content');
+            document.getElementById('progressSection').style.display = 'none';
+            content.innerHTML = `<div class="error">${escapeHtml(message)}</div>`;
+        }
+
+        // ============================================
+        // Show no data message
+        // ============================================
+        function showNoData() {
+            const content = document.getElementById('content');
+            const todayDate = getTodayDate();
+            document.getElementById('dateDisplay').textContent = formatDateDisplay(todayDate);
+            document.getElementById('progressSection').style.display = 'none';
+            content.innerHTML = `
+                <div class="no-data">
+                    <p>📭 No questions available for today.</p>
+                    <p style="font-size: 14px; color: #999;">Please check back tomorrow!</p>
+                </div>
+            `;
+        }
+
+        // ============================================
+        // Escape HTML to prevent XSS
+        // ============================================
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ============================================
+        // Initialize on page load
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if credentials are configured
+            if (SUPABASE_URL === 'YOUR_SUPABASE_URL' || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
+                showError('⚠️ Please configure your Supabase credentials in the HTML file.');
+                return;
+            }
+            fetchTodayQuestions();
+        });
+    </script>
 </body>
 </html>
