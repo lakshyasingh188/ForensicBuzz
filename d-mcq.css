@@ -1,0 +1,1077 @@
+/* ===================================
+   FORENSICBUZZ DAILY MCQ
+   PREMIUM CSS PART 2A
+=================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --primary:#5b5ff8;
+    --secondary:#7d5fff;
+    --success:#1cc88a;
+    --danger:#ff4d6d;
+    --warning:#f7b731;
+
+    --bg:#eef2ff;
+
+    --card:rgba(255,255,255,.75);
+
+    --text:#222;
+
+    --shadow:0 15px 40px rgba(0,0,0,.08);
+
+    --radius:24px;
+
+}
+
+body.dark{
+
+    --bg:#10131f;
+
+    --card:rgba(25,28,45,.88);
+
+    --text:#ffffff;
+
+    background:#10131f;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:linear-gradient(135deg,#eef3ff,#dfe7ff);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+/* Background */
+
+.bg1{
+
+    position:fixed;
+
+    width:450px;
+
+    height:450px;
+
+    background:#6c63ff;
+
+    filter:blur(180px);
+
+    opacity:.25;
+
+    top:-120px;
+
+    left:-120px;
+
+    z-index:-1;
+
+}
+
+.bg2{
+
+    position:fixed;
+
+    width:450px;
+
+    height:450px;
+
+    background:#00d4ff;
+
+    filter:blur(180px);
+
+    opacity:.22;
+
+    right:-100px;
+
+    bottom:-120px;
+
+    z-index:-1;
+
+}
+
+/* Container */
+
+.container{
+
+    width:95%;
+
+    max-width:1250px;
+
+    margin:auto;
+
+    padding:35px 0;
+
+}
+
+/* Header */
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#5b5ff8;
+
+}
+
+.logo i{
+
+    font-size:34px;
+
+}
+
+.header-right button{
+
+    width:55px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    box-shadow:var(--shadow);
+
+}
+
+/* Main Card */
+
+.quiz-card{
+
+    background:var(--card);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:var(--radius);
+
+    padding:35px;
+
+    box-shadow:var(--shadow);
+
+    border:1px solid rgba(255,255,255,.4);
+
+}
+
+/* Top */
+
+.top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    background:linear-gradient(45deg,#ff9800,#ff4d6d);
+
+    color:white;
+
+    border-radius:40px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+}
+
+.top h1{
+
+    font-size:34px;
+
+    font-weight:800;
+
+}
+
+.top p{
+
+    margin-top:8px;
+
+    color:#666;
+
+}
+
+.score-box{
+
+    width:110px;
+
+    height:110px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#5b5ff8,#8d63ff);
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:0 10px 30px rgba(91,95,248,.4);
+
+}
+
+.score-box span{
+
+    font-size:22px;
+
+}
+
+.score-box strong{
+
+    font-size:30px;
+
+}
+
+/* Progress */
+
+.progress-area{
+
+    margin-top:35px;
+
+}
+
+.progress-text{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-weight:600;
+
+    margin-bottom:12px;
+
+}
+
+#timer{
+
+    color:#ff4d6d;
+
+}
+
+.progress{
+
+    width:100%;
+
+    height:12px;
+
+    background:#d9ddff;
+
+    border-radius:40px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,#5b5ff8,#00d4ff);
+
+    border-radius:40px;
+
+    transition:.5s;
+
+}
+
+/* Image */
+
+.question-image{
+
+    margin-top:35px;
+
+}
+
+.question-image img{
+
+    width:100%;
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+}
+
+/* Question */
+
+.question{
+
+    margin-top:35px;
+
+}
+
+.question h2{
+
+    font-size:28px;
+
+    line-height:1.6;
+
+}
+
+/* Options */
+
+.options{
+
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+}
+
+.option{
+
+    background:white;
+
+    border:2px solid transparent;
+
+    padding:18px 20px;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    font-weight:600;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+
+.option:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#5b5ff8;
+
+}
+
+.option.selected{
+
+    background:#eef1ff;
+
+    border-color:#5b5ff8;
+
+}
+
+.option.correct{
+
+    background:#d4ffe8;
+
+    border-color:#1cc88a;
+
+}
+
+.option.wrong{
+
+    background:#ffe2e8;
+
+    border-color:#ff4d6d;
+
+}
+
+/* Buttons */
+
+.buttons{
+
+    margin-top:35px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.buttons button{
+
+    flex:1;
+
+    min-width:170px;
+
+    border:none;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+#prevBtn{
+
+    background:#ececff;
+
+}
+
+#submitBtn{
+
+    background:linear-gradient(45deg,#5b5ff8,#7d5fff);
+
+    color:white;
+
+}
+
+#nextBtn{
+
+    background:#00d4ff;
+
+    color:white;
+
+}
+
+.buttons button:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* Result */
+
+#result{
+
+    margin-top:28px;
+
+    font-size:23px;
+
+    font-weight:700;
+
+    text-align:center;
+
+}
+
+/* Explanation */
+
+.explanation{
+
+    margin-top:30px;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    display:none;
+
+    border-left:6px solid #5b5ff8;
+
+}
+
+.explanation h3{
+
+    margin-bottom:12px;
+
+}
+/* =========================================
+   FORENSICBUZZ DAILY MCQ
+   PREMIUM CSS PART 2B
+=========================================*/
+
+/* ===========================
+   STATS CARDS
+=========================== */
+
+.cards{
+
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+.card{
+
+    background:var(--card);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:22px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+    border:1px solid rgba(255,255,255,.25);
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+}
+
+.card i{
+
+    font-size:42px;
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+}
+
+.card h3{
+
+    font-size:17px;
+
+    color:#666;
+
+    margin-bottom:12px;
+
+}
+
+.card h2{
+
+    font-size:34px;
+
+    color:var(--text);
+
+}
+
+
+/* ===========================
+   ACTION BUTTONS
+=========================== */
+
+.action-buttons{
+
+    margin-top:35px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.action-buttons button{
+
+    padding:16px 28px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    background:white;
+
+    color:#444;
+
+    box-shadow:var(--shadow);
+
+}
+
+.action-buttons button i{
+
+    margin-right:8px;
+
+}
+
+.action-buttons button:hover{
+
+    transform:translateY(-5px);
+
+}
+
+#bookmarkBtn:hover{
+
+    background:#fff6d8;
+
+}
+
+#shareBtn:hover{
+
+    background:#eaf6ff;
+
+}
+
+#reportBtn:hover{
+
+    background:#ffe8e8;
+
+}
+
+
+/* ===========================
+   LEADERBOARD
+=========================== */
+
+.leaderboard{
+
+    margin-top:45px;
+
+    background:var(--card);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:25px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.leaderboard .title{
+
+    font-size:26px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.leaderboard table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.leaderboard th{
+
+    background:linear-gradient(45deg,var(--primary),var(--secondary));
+
+    color:white;
+
+    padding:16px;
+
+    text-align:left;
+
+}
+
+.leaderboard td{
+
+    padding:16px;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.leaderboard tbody tr{
+
+    transition:.25s;
+
+}
+
+.leaderboard tbody tr:hover{
+
+    background:#f7f8ff;
+
+}
+
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+
+    margin-top:50px;
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+
+/* ===========================
+   GLASS EFFECT
+=========================== */
+
+.quiz-card,
+.card,
+.leaderboard{
+
+    background:rgba(255,255,255,.75);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+}
+
+
+/* ===========================
+   CUSTOM SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#ececff;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(var(--primary),var(--secondary));
+
+    border-radius:50px;
+
+}
+
+
+/* ===========================
+   DARK MODE
+=========================== */
+
+body.dark .quiz-card,
+body.dark .card,
+body.dark .leaderboard{
+
+    background:#1b1f34;
+
+    color:white;
+
+}
+
+body.dark .option{
+
+    background:#252a42;
+
+    color:white;
+
+}
+
+body.dark .option:hover{
+
+    background:#303758;
+
+}
+
+body.dark .explanation{
+
+    background:#252a42;
+
+    color:white;
+
+}
+
+body.dark footer{
+
+    color:#bbb;
+
+}
+
+body.dark .leaderboard td{
+
+    border-color:#31364f;
+
+}
+
+body.dark .leaderboard tbody tr:hover{
+
+    background:#242940;
+
+}
+
+body.dark .action-buttons button{
+
+    background:#252a42;
+
+    color:white;
+
+}
+
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.quiz-card{
+
+    animation:fadeUp .7s ease;
+
+}
+
+.cards{
+
+    animation:fadeUp .9s ease;
+
+}
+
+.leaderboard{
+
+    animation:fadeUp 1.1s ease;
+
+}
+
+
+/* Floating */
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+.score-box{
+
+    animation:floating 4s infinite;
+
+}
+
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+.options{
+
+    grid-template-columns:1fr;
+
+}
+
+.buttons{
+
+    flex-direction:column;
+
+}
+
+header{
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.top{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+.score-box{
+
+    width:90px;
+
+    height:90px;
+
+}
+
+.question h2{
+
+    font-size:24px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.container{
+
+    width:94%;
+
+}
+
+.quiz-card{
+
+    padding:22px;
+
+}
+
+.top h1{
+
+    font-size:28px;
+
+}
+
+.question h2{
+
+    font-size:20px;
+
+}
+
+.option{
+
+    font-size:15px;
+
+    padding:15px;
+
+}
+
+.buttons button{
+
+    width:100%;
+
+}
+
+.action-buttons{
+
+    flex-direction:column;
+
+}
+
+.action-buttons button{
+
+    width:100%;
+
+}
+
+.leaderboard{
+
+    overflow-x:auto;
+
+}
+
+.card h2{
+
+    font-size:28px;
+
+}
+
+}
