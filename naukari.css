@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Segoe UI, Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b, #111827);
+    min-height: 100vh;
+    padding: 40px;
+    color: #fff;
+}
+
+h1 {
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.card {
+
+    background: rgba(255, 255, 255, .08);
+
+    border: 1px solid rgba(255, 255, 255, .15);
+
+    backdrop-filter: blur(18px);
+
+    border-radius: 25px;
+
+    padding: 30px;
+
+    transition: .4s;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .35);
+
+}
+
+.card:hover {
+
+    transform: translateY(-12px) scale(1.03);
+
+    box-shadow: 0 25px 50px rgba(0, 0, 0, .5);
+
+    border-color: #38bdf8;
+
+}
+
+.card img {
+
+    width: 380px;
+
+    height: 235px;
+
+    border-radius: 0px;
+
+    background: rgb(213, 212, 216);
+
+    padding: 5px;
+
+    margin-bottom: 5px;
+
+}
+
+.card h2 {
+
+    font-size: 30px;
+
+    margin-bottom: 12px;
+
+    color: white;
+
+}
+
+.card p {
+
+    font-size: 16px;
+
+    line-height: 28px;
+
+    color: #d1d5db;
+
+    margin-bottom: 25px;
+
+}
+
+.card a {
+
+    display: inline-block;
+
+    padding: 14px 30px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(90deg, #2563eb, #06b6d4);
+
+    color: white;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition: .3s;
+
+}
+
+.card a:hover {
+
+    transform: scale(1.05);
+
+    box-shadow: 0 10px 20px rgba(37, 99, 235, .5);
+
+}
+
+@media(max-width:768px) {
+
+    body {
+
+        padding: 20px;
+
+    }
+
+    h1 {
+
+        font-size: 35px;
+
+    }
+
+    .card {
+
+        padding: 22px;
+
+    }
+
+}
+
+.hero {
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.hero p {
+    color: #cbd5e1;
+    font-size: 18px;
+    margin: 15px 0 30px;
+}
+
+.search-box {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 18px 25px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    font-size: 17px;
+    background: rgba(255, 255, 255, .1);
+    color: white;
+    backdrop-filter: blur(15px);
+}
+
+.search-box input::placeholder {
+    color: #cbd5e1;
+}
+
+.categories {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.categories button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    background: #1e40af;
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.categories button:hover {
+    background: #06b6d4;
+}
