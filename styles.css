@@ -1677,3 +1677,121 @@ body {
     font-size: 14px;
   }
 }
+/* =========================================
+   FORENSICBUZZ — PREMIUM FABRIC FLAG
+   STATIC • REALISTIC CLOTH • NO ANIMATION
+   ========================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: transparent !important;
+}
+
+/* Main fabric */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -2%;
+    z-index: -3;
+
+    background:
+        /* Deep natural cloth folds */
+        linear-gradient(
+            112deg,
+            rgba(0,0,0,0.10) 0%,
+            rgba(255,255,255,0.18) 8%,
+            rgba(0,0,0,0.08) 16%,
+            transparent 25%,
+            rgba(255,255,255,0.16) 34%,
+            rgba(0,0,0,0.09) 44%,
+            transparent 54%,
+            rgba(255,255,255,0.17) 64%,
+            rgba(0,0,0,0.10) 74%,
+            transparent 84%,
+            rgba(255,255,255,0.12) 94%
+        ),
+
+        /* Secondary soft folds */
+        linear-gradient(
+            72deg,
+            transparent 5%,
+            rgba(0,0,0,0.07) 18%,
+            transparent 31%,
+            rgba(255,255,255,0.10) 43%,
+            transparent 56%,
+            rgba(0,0,0,0.08) 69%,
+            transparent 83%
+        ),
+
+        /* Indian Tricolour */
+        linear-gradient(
+            to bottom,
+            #FF9933 0%,
+            #FF9933 33.333%,
+            #FFFFFF 33.333%,
+            #FFFFFF 66.666%,
+            #138808 66.666%,
+            #138808 100%
+        );
+
+    background-blend-mode:
+        soft-light,
+        overlay,
+        normal;
+
+    transform: scale(1.03);
+}
+
+/* Fine cotton/silk texture */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    background:
+        /* horizontal threads */
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.035) 0px,
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+
+        /* vertical threads */
+        repeating-linear-gradient(
+            90deg,
+            rgba(0,0,0,0.025) 0px,
+            rgba(0,0,0,0.025) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+
+        /* soft cloth lighting */
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(255,255,255,0.12),
+            transparent 65%
+        );
+
+    opacity: 0.9;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+}
+
+/* Keep existing hero content above flag */
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero::before {
+        inset: -3%;
+        transform: scale(1.06);
+    }
+}
