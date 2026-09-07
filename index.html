@@ -1,423 +1,3166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="ForensicBuzz - Premium Digital Forensics & Cyber Security Learning Platform with Notes, MCQ Tests, Mock Tests, and Certification Preparation.">
-    <meta name="keywords"
-        content="Digital Forensics, Cyber Security, MCQ Tests, Mock Tests, Study Material, Certifications">
-    <meta name="author" content="ForensicBuzz">
-    <title>ForensicBuzz.com</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="logo.jpeg">
-</head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KG92RRRTNS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>ForensicBuzz — India's Most Trusted Platform for Forensic Science Preparation</title>
+  <meta name="description"
+    content="Comprehensive forensic science preparation with MCQs, notes, test series, mock tests and books.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    /* ========== CSS CUSTOM PROPERTIES ========== */
+    :root {
+      --bg: #FFFFFF;
+      --bg2: #FCFAFF;
+      --bg3: #F5F3FF;
+      --bg-pink: #FDF2F8;
+      --bg-yellow: #FEF9C3;
+      --bg-card: #FFFFFF;
+      --text: #171321;
+      --text2: #667085;
+      --text3: #9CA3AF;
+      --purple: #6D28D9;
+      --purple2: #8B5CF6;
+      --purple3: #C4B5FD;
+      --purple-bg: #F5F3FF;
+      --pink: #EC4899;
+      --pink2: #F9A8D4;
+      --pink-bg: #FDF2F8;
+      --yellow: #FACC15;
+      --yellow2: #FDE047;
+      --yellow-bg: #FEF9C3;
+      --cyan: #06B6D4;
+      --cyan-bg: #ECFEFF;
+      --border: rgba(109, 40, 217, .08);
+      --border2: rgba(109, 40, 217, .15);
+      --shadow-s: 0 1px 2px rgba(109, 40, 217, .05);
+      --shadow-m: 0 4px 12px rgba(109, 40, 217, .08);
+      --shadow-l: 0 8px 30px rgba(109, 40, 217, .1);
+      --shadow-xl: 0 20px 50px rgba(109, 40, 217, .12);
+      --header-bg: rgba(255, 255, 255, .88);
+      --header-b: rgba(109, 40, 217, .06);
+      --footer-bg: #1E1035;
+      --footer-t: #fff;
+      --footer2: #D4C8E8;
+      --footer-a: #F9A8D4;
+      --r-sm: 8px;
+      --r-md: 12px;
+      --r-lg: 16px;
+      --r-xl: 20px;
+      --r-2xl: 24px;
+      --r-full: 9999px;
+      --ease: cubic-bezier(.4, 0, .2, 1);
+      --tr: .3s var(--ease);
+    }
 
-  gtag('config', 'G-KG92RRRTNS');
-</script>
+    [data-theme="dark"] {
+      --bg: #0D0718;
+      --bg2: #110D1E;
+      --bg3: #171025;
+      --bg-pink: #1A0F1F;
+      --bg-yellow: #1A1508;
+      --bg-card: #171025;
+      --text: #FFFFFF;
+      --text2: #B8B0C7;
+      --text3: #7C7490;
+      --purple: #A78BFA;
+      --purple2: #C4B5FD;
+      --purple3: #DDD6FE;
+      --purple-bg: #1E1535;
+      --pink: #F472B6;
+      --pink2: #F9A8D4;
+      --pink-bg: #1E1025;
+      --yellow: #FACC15;
+      --yellow2: #FDE047;
+      --yellow-bg: #1E1A08;
+      --cyan: #22D3EE;
+      --cyan-bg: #0A1A1E;
+      --border: rgba(167, 139, 250, .1);
+      --border2: rgba(167, 139, 250, .2);
+      --shadow-s: 0 1px 2px rgba(0, 0, 0, .2);
+      --shadow-m: 0 4px 12px rgba(0, 0, 0, .3);
+      --shadow-l: 0 8px 30px rgba(0, 0, 0, .4);
+      --shadow-xl: 0 20px 50px rgba(0, 0, 0, .5);
+      --header-bg: rgba(13, 7, 24, .92);
+      --header-b: rgba(167, 139, 250, .1);
+      --footer-bg: #0A0512;
+      --footer-t: #fff;
+      --footer2: #9C93AD;
+      --footer-a: #F472B6;
+    }
+
+    /* ========== RESET ========== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: background var(--tr), color var(--tr)
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color var(--tr)
+    }
+
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all var(--tr)
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    @media(min-width:768px) {
+      .container {
+        padding: 0 32px
+      }
+    }
+
+    /* ========== UTILITIES ========== */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0
+    }
+
+    .grad-text {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-10px)
+      }
+    }
+
+    @keyframes floatSlow {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-6px)
+      }
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        opacity: .35
+      }
+
+      50% {
+        opacity: .65
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .anim-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s var(--ease), transform .65s var(--ease)
+    }
+
+    .anim-in.vis {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important
+      }
+
+      .anim-in {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    /* ========== SCROLLBAR ========== */
+    ::-webkit-scrollbar {
+      width: 7px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg2)
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--purple3);
+      border-radius: 4px
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--purple2)
+    }
+
+    /* ========== FOCUS ========== */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--purple);
+      outline-offset: 2px;
+      border-radius: 4px
+    }
+
+    /* ========== ANNOUNCEMENT BAR ========== */
+    .announce {
+      background: linear-gradient(90deg, var(--purple) 0%, var(--pink) 100%);
+      padding: 9px 0;
+      overflow: hidden;
+      position: relative;
+      z-index: 100
+    }
+
+    .announce-in {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden
+    }
+
+    .announce-in p {
+      color: #fff;
+      font-size: clamp(.68rem, .9vw, .8rem);
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .announce-in .wa-svg {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px
+    }
+
+    .announce-btn {
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, .2);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: var(--r-full);
+      border: 1px solid rgba(255, 255, 255, .25);
+      transition: all var(--tr)
+    }
+
+    .announce-btn:hover {
+      background: rgba(255, 255, 255, .3)
+    }
+
+    /* ========== HEADER ========== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: var(--header-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--header-b);
+      transition: all var(--tr)
+    }
+
+    .header-in {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0
+    }
+
+    .logo img {
+      height: 34px;
+      width: auto;
+      object-fit: contain
+    }
+
+    .logo-txt {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -.02em;
+      transition: color var(--tr)
+    }
+
+    .nav {
+      display: none;
+      align-items: center;
+      gap: 2px
+    }
+
+    @media(min-width:1024px) {
+      .nav {
+        display: flex
+      }
+    }
+
+    .nav a {
+      font-size: .825rem;
+      font-weight: 500;
+      color: var(--text2);
+      padding: 7px 13px;
+      border-radius: var(--r-sm);
+      position: relative;
+      transition: all var(--tr);
+      white-space: nowrap
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--purple);
+      background: var(--purple-bg)
+    }
+
+    .nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 1px;
+      left: 13px;
+      right: 13px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      border-radius: 1px
+    }
+
+    .hdr-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0
+    }
+
+    .btn-login {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text2);
+      padding: 7px 16px;
+      border-radius: var(--r-sm);
+      transition: all var(--tr)
+    }
+
+    .btn-login:hover {
+      color: var(--purple);
+      background: var(--purple-bg)
+    }
+
+    .btn-reg {
+      font-size: .8rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--purple);
+      padding: 7px 18px;
+      border-radius: var(--r-sm);
+      transition: all var(--tr)
+    }
+
+    .btn-reg:hover {
+      background: var(--purple2);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(109, 40, 217, .3)
+    }
+
+    .theme-btn {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--r-sm);
+      color: var(--text2);
+      transition: all var(--tr)
+    }
+
+    .theme-btn:hover {
+      color: var(--purple);
+      background: var(--purple-bg)
+    }
+
+    .theme-btn svg {
+      width: 18px;
+      height: 18px
+    }
+
+    .theme-btn .icon-sun {
+      display: none
+    }
+
+    .theme-btn .icon-moon {
+      display: block
+    }
+
+    [data-theme="dark"] .theme-btn .icon-sun {
+      display: block
+    }
+
+    [data-theme="dark"] .theme-btn .icon-moon {
+      display: none
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: var(--r-sm);
+      gap: 5px
+    }
+
+    .hamburger:hover {
+      background: var(--purple-bg)
+    }
+
+    .hamburger span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 1px;
+      transition: all .35s var(--ease)
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px)
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px)
+    }
+
+    @media(min-width:1024px) {
+      .hamburger {
+        display: none
+      }
+
+      .hdr-btns {
+        display: flex !important
+      }
+    }
+
+    @media(max-width:1023px) {
+      .hdr-btns {
+        display: none !important
+      }
+    }
+
+    /* ========== MOBILE MENU ========== */
+    .mob-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .45);
+      z-index: 199;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s ease;
+      backdrop-filter: blur(2px)
+    }
+
+    .mob-overlay.open {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    .mob-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      max-width: 85vw;
+      height: 100vh;
+      height: 100dvh;
+      background: var(--bg);
+      z-index: 200;
+      transform: translateX(100%);
+      transition: transform .35s var(--ease);
+      box-shadow: -8px 0 40px rgba(0, 0, 0, .15);
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      overflow-y: auto
+    }
+
+    .mob-menu.open {
+      transform: translateX(0)
+    }
+
+    .mob-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .mob-head span {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text)
+    }
+
+    .mob-close {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--r-sm);
+      color: var(--text2)
+    }
+
+    .mob-close:hover {
+      background: var(--purple-bg);
+      color: var(--purple)
+    }
+
+    .mob-nav {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px
+    }
+
+    .mob-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text2);
+      padding: 11px 14px;
+      border-radius: var(--r-md);
+      transition: all var(--tr)
+    }
+
+    .mob-nav a:hover,
+    .mob-nav a.active {
+      color: var(--purple);
+      background: var(--purple-bg)
+    }
+
+    .mob-nav a svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0
+    }
+
+    .mob-foot {
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .mob-foot .btn-login,
+    .mob-foot .btn-reg {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--r-md)
+    }
+
+    .mob-foot .btn-login {
+      border: 1px solid var(--border)
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: clamp(36px, 6vw, 80px) 0 clamp(40px, 6vw, 80px);
+      background: var(--bg);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -15%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(109, 40, 217, .06) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(236, 72, 153, .05) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none
+    }
+
+    .hero-in {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
+      position: relative;
+      z-index: 1
+    }
+
+    @media(min-width:1024px) {
+      .hero-in {
+        grid-template-columns: 1fr .82fr;
+        gap: 48px
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple-bg);
+      border: 1px solid var(--border);
+      color: var(--purple);
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: var(--r-full);
+      margin-bottom: 20px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: all var(--tr)
+    }
+
+    .hero-badge .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--pink);
+      border-radius: 50%;
+      animation: pulseGlow 2s ease-in-out infinite
+    }
+
+    .hero-h1 {
+      font-size: clamp(1.65rem, 4.2vw, 3.1rem);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -.035em;
+      color: var(--text);
+      margin-bottom: 18px;
+      transition: color var(--tr)
+    }
+
+    .hero-h1 .hl {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .hero-desc {
+      font-size: clamp(.88rem, 1.4vw, 1.04rem);
+      color: var(--text2);
+      line-height: 1.72;
+      margin-bottom: 28px;
+      max-width: 520px;
+      transition: color var(--tr)
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px
+    }
+
+    .btn-p {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple);
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: var(--r-md);
+      transition: all var(--tr)
+    }
+
+    .btn-p:hover {
+      background: var(--purple2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(109, 40, 217, .3)
+    }
+
+    .btn-p:active {
+      transform: translateY(0)
+    }
+
+    .btn-p svg {
+      width: 16px;
+      height: 16px
+    }
+
+    .btn-s {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      color: var(--text);
+      font-size: .85rem;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: var(--r-md);
+      border: 1px solid var(--border);
+      transition: all var(--tr)
+    }
+
+    .btn-s:hover {
+      border-color: var(--border2);
+      background: var(--purple-bg);
+      color: var(--purple);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-m)
+    }
+
+    .btn-s:active {
+      transform: translateY(0)
+    }
+
+    .btn-s svg {
+      width: 16px;
+      height: 16px
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .78rem;
+      color: var(--text3);
+      white-space: nowrap;
+      transition: color var(--tr)
+    }
+
+    .trust-item svg {
+      width: 15px;
+      height: 15px;
+      color: var(--purple2);
+      flex-shrink: 0
+    }
+
+    .trust-sep {
+      width: 1px;
+      height: 14px;
+      background: var(--border);
+      flex-shrink: 0
+    }
+
+    /* ========== HERO VISUAL ========== */
+    .hero-vis-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center
+    }
+
+    .hero-vis {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1/.92
+    }
+
+    @media(max-width:1023px) {
+      .hero-vis {
+        max-width: 280px
+      }
+    }
+
+    .hv-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none
+    }
+
+    .hv-g1 {
+      width: 180px;
+      height: 180px;
+      background: rgba(109, 40, 217, .12);
+      top: 8%;
+      left: 18%;
+      animation: pulseGlow 4s ease-in-out infinite
+    }
+
+    .hv-g2 {
+      width: 140px;
+      height: 140px;
+      background: rgba(236, 72, 153, .1);
+      bottom: 12%;
+      right: 8%;
+      animation: pulseGlow 4s ease-in-out infinite 1.2s
+    }
+
+    .hv-g3 {
+      width: 90px;
+      height: 90px;
+      background: rgba(250, 204, 21, .1);
+      top: 45%;
+      right: 25%;
+      animation: pulseGlow 4s ease-in-out infinite 2.4s
+    }
+
+    .hv-card {
+      position: absolute;
+      inset: 12%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-2xl);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--tr), border var(--tr), box-shadow var(--tr)
+    }
+
+    .hv-card svg {
+      width: 65%;
+      height: auto;
+      opacity: .12;
+      transition: opacity var(--tr)
+    }
+
+    [data-theme="dark"] .hv-card svg {
+      opacity: .08
+    }
+
+    .hv-float {
+      position: absolute;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-l);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--tr), border var(--tr)
+    }
+
+    .hv-float svg {
+      width: 22px;
+      height: 22px
+    }
+
+    .hv-f1 {
+      width: 46px;
+      height: 46px;
+      top: 0;
+      left: 0;
+      animation: float 3.5s ease-in-out infinite;
+      color: var(--purple)
+    }
+
+    .hv-f2 {
+      width: 42px;
+      height: 42px;
+      bottom: 6%;
+      right: 0;
+      animation: float 3.5s ease-in-out infinite 1.2s;
+      color: var(--pink)
+    }
+
+    .hv-f3 {
+      width: 40px;
+      height: 40px;
+      top: 6%;
+      right: 2%;
+      animation: float 3.5s ease-in-out infinite .6s;
+      color: var(--yellow)
+    }
+
+    .hv-f4 {
+      width: 44px;
+      height: 44px;
+      bottom: 0;
+      left: 12%;
+      animation: float 3.5s ease-in-out infinite 1.8s;
+      color: var(--cyan)
+    }
+
+    .hv-tag {
+      position: absolute;
+      background: var(--yellow);
+      color: #171321;
+      font-size: .65rem;
+      font-weight: 800;
+      padding: 5px 9px;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(250, 204, 21, .3);
+      letter-spacing: .02em;
+      transition: background var(--tr)
+    }
+
+    .hv-t1 {
+      top: 4%;
+      right: 12%;
+      animation: floatSlow 3s ease-in-out infinite .3s
+    }
+
+    .hv-t2 {
+      bottom: 10%;
+      left: 3%;
+      animation: floatSlow 3s ease-in-out infinite 1.5s
+    }
+
+    [data-theme="dark"] .hv-tag {
+      color: #171321
+    }
+
+    /* ========== SECTION COMMON ========== */
+    .sec {
+      padding: clamp(44px, 7vw, 88px) 0
+    }
+
+    .sec-alt {
+      background: var(--bg2);
+      transition: background var(--tr)
+    }
+
+    .sec-hd {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto clamp(28px, 4.5vw, 44px)
+    }
+
+    .sec-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 10px;
+      transition: color var(--tr)
+    }
+
+    .sec-label::before,
+    .sec-label::after {
+      content: '';
+      width: 18px;
+      height: 1px;
+      background: var(--purple3);
+      transition: background var(--tr)
+    }
+
+    .sec-title {
+      font-size: clamp(1.4rem, 3.2vw, 2.35rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.18;
+      color: var(--text);
+      margin-bottom: 10px;
+      transition: color var(--tr)
+    }
+
+    .sec-sub {
+      font-size: clamp(.84rem, 1.2vw, 1rem);
+      color: var(--text2);
+      line-height: 1.7;
+      transition: color var(--tr)
+    }
+
+    /* ========== STATS ========== */
+    .stats {
+      padding: clamp(28px, 4vw, 52px) 0;
+      background: var(--bg2);
+      transition: background var(--tr)
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px
+    }
+
+    @media(min-width:768px) {
+      .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px
+      }
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 22px 18px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--tr)
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      border-radius: 0 0 3px 3px;
+      opacity: 0;
+      transition: opacity var(--tr)
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-l);
+      border-color: var(--border2)
+    }
+
+    .stat-card:hover::before {
+      opacity: 1
+    }
+
+    .stat-ic {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--r-md);
+      background: var(--purple-bg);
+      transition: background var(--tr)
+    }
+
+    .stat-ic svg {
+      width: 20px;
+      height: 20px;
+      color: var(--purple);
+      transition: color var(--tr)
+    }
+
+    .stat-num {
+      font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+      font-weight: 800;
+      color: var(--purple);
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      transition: color var(--tr)
+    }
+
+    .stat-lbl {
+      font-size: .78rem;
+      color: var(--text2);
+      font-weight: 500;
+      margin-top: 3px;
+      transition: color var(--tr)
+    }
+
+    .stat-yel {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 8px;
+      height: 8px;
+      background: var(--yellow);
+      border-radius: 50%;
+      opacity: .6
+    }
+
+    /* ========== SYLLABUS ========== */
+    .syl-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      position: relative
+    }
+
+    @media(min-width:640px) {
+      .syl-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px
+      }
+    }
+
+    @media(min-width:1024px) {
+      .syl-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px
+      }
+    }
+
+    .syl-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 14px 16px;
+      transition: all var(--tr);
+      position: relative;
+      overflow: hidden
+    }
+
+    .syl-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--purple), var(--pink));
+      opacity: 0;
+      transition: opacity var(--tr)
+    }
+
+    .syl-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-m);
+      border-color: var(--border2)
+    }
+
+    .syl-item:hover::before {
+      opacity: 1
+    }
+
+    .syl-num {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--purple-bg);
+      color: var(--purple);
+      font-size: .7rem;
+      font-weight: 700;
+      border-radius: var(--r-sm);
+      flex-shrink: 0;
+      transition: all var(--tr)
+    }
+
+    .syl-ic {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0
+    }
+
+    .syl-ic svg {
+      width: 18px;
+      height: 18px;
+      color: var(--purple2);
+      transition: color var(--tr)
+    }
+
+    .syl-txt {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      transition: color var(--tr)
+    }
+
+    @media(max-width:400px) {
+      .syl-ic {
+        display: none
+      }
+
+      .syl-item {
+        gap: 10px;
+        padding: 12px 14px
+      }
+    }
+
+    /* ========== PREMIUM FEATURES ========== */
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px
+    }
+
+    @media(min-width:768px) {
+      .feat-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px
+      }
+    }
+
+    @media(min-width:1024px) {
+      .feat-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px
+      }
+    }
+
+    .feat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 26px 20px;
+      text-align: center;
+      transition: all var(--tr);
+      position: relative;
+      overflow: hidden
+    }
+
+    .feat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      transform: scaleX(0);
+      transition: transform var(--tr)
+    }
+
+    .feat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-l);
+      border-color: var(--border2)
+    }
+
+    .feat-card:hover::after {
+      transform: scaleX(1)
+    }
+
+    .feat-ic {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--r-lg);
+      transition: all var(--tr)
+    }
+
+    .feat-ic svg {
+      width: 24px;
+      height: 24px
+    }
+
+    .feat-card:nth-child(1) .feat-ic,
+    .feat-card:nth-child(4) .feat-ic,
+    .feat-card:nth-child(5) .feat-ic,
+    .feat-card:nth-child(8) .feat-ic {
+      background: var(--purple-bg)
+    }
+
+    .feat-card:nth-child(1) .feat-ic svg,
+    .feat-card:nth-child(4) .feat-ic svg,
+    .feat-card:nth-child(5) .feat-ic svg,
+    .feat-card:nth-child(8) .feat-ic svg {
+      color: var(--purple)
+    }
+
+    .feat-card:nth-child(2) .feat-ic,
+    .feat-card:nth-child(6) .feat-ic {
+      background: var(--pink-bg)
+    }
+
+    .feat-card:nth-child(2) .feat-ic svg,
+    .feat-card:nth-child(6) .feat-ic svg {
+      color: var(--pink)
+    }
+
+    .feat-card:nth-child(3) .feat-ic,
+    .feat-card:nth-child(7) .feat-ic {
+      background: var(--yellow-bg)
+    }
+
+    .feat-card:nth-child(3) .feat-ic svg,
+    .feat-card:nth-child(7) .feat-ic svg {
+      color: #B45309
+    }
+
+    [data-theme="dark"] .feat-card:nth-child(3) .feat-ic svg,
+    [data-theme="dark"] .feat-card:nth-child(7) .feat-ic svg {
+      color: var(--yellow)
+    }
+
+    .feat-title {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+      letter-spacing: -.01em;
+      transition: color var(--tr)
+    }
+
+    .feat-desc {
+      font-size: .78rem;
+      color: var(--text2);
+      line-height: 1.55;
+      margin-bottom: 14px;
+      transition: color var(--tr)
+    }
+
+    .feat-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--purple);
+      transition: gap var(--tr), color var(--tr)
+    }
+
+    .feat-link:hover {
+      gap: 8px
+    }
+
+    .feat-link svg {
+      width: 14px;
+      height: 14px
+    }
+
+    /* ========== MCQ SECTION ========== */
+    .mcq-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px
+    }
+
+    @media(min-width:768px) {
+      .mcq-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px
+      }
+    }
+
+    .mcq-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 30px 26px;
+      transition: all var(--tr);
+      position: relative;
+      overflow: hidden
+    }
+
+    .mcq-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px
+    }
+
+    .mcq-card:nth-child(1)::before {
+      background: linear-gradient(90deg, var(--purple), var(--purple2))
+    }
+
+    .mcq-card:nth-child(2)::before {
+      background: linear-gradient(90deg, var(--pink), var(--pink2))
+    }
+
+    .mcq-card:nth-child(3)::before {
+      background: linear-gradient(90deg, var(--yellow), var(--yellow2))
+    }
+
+    .mcq-card:nth-child(4)::before {
+      background: linear-gradient(90deg, var(--cyan), #67E8F9)
+    }
+
+    .mcq-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-l);
+      border-color: var(--border2)
+    }
+
+    .mcq-ic {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--r-lg);
+      margin-bottom: 18px
+    }
+
+    .mcq-ic svg {
+      width: 24px;
+      height: 24px
+    }
+
+    .mcq-card:nth-child(1) .mcq-ic {
+      background: var(--purple-bg)
+    }
+
+    .mcq-card:nth-child(1) .mcq-ic svg {
+      color: var(--purple)
+    }
+
+    .mcq-card:nth-child(2) .mcq-ic {
+      background: var(--pink-bg)
+    }
+
+    .mcq-card:nth-child(2) .mcq-ic svg {
+      color: var(--pink)
+    }
+
+    .mcq-card:nth-child(3) .mcq-ic {
+      background: var(--yellow-bg)
+    }
+
+    .mcq-card:nth-child(3) .mcq-ic svg {
+      color: #B45309
+    }
+
+    [data-theme="dark"] .mcq-card:nth-child(3) .mcq-ic svg {
+      color: var(--yellow)
+    }
+
+    .mcq-card:nth-child(4) .mcq-ic {
+      background: var(--cyan-bg)
+    }
+
+    .mcq-card:nth-child(4) .mcq-ic svg {
+      color: var(--cyan)
+    }
+
+    .mcq-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 7px;
+      letter-spacing: -.01em;
+      transition: color var(--tr)
+    }
+
+    .mcq-desc {
+      font-size: .84rem;
+      color: var(--text2);
+      line-height: 1.65;
+      margin-bottom: 18px;
+      transition: color var(--tr)
+    }
+
+    .mcq-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .8rem;
+      font-weight: 600;
+      padding: 9px 20px;
+      border-radius: var(--r-md);
+      transition: all var(--tr)
+    }
+
+    .mcq-btn svg {
+      width: 15px;
+      height: 15px
+    }
+
+    .mcq-card:nth-child(1) .mcq-btn {
+      background: var(--purple-bg);
+      color: var(--purple)
+    }
+
+    .mcq-card:nth-child(1) .mcq-btn:hover {
+      background: var(--purple);
+      color: #fff
+    }
+
+    .mcq-card:nth-child(2) .mcq-btn {
+      background: var(--pink-bg);
+      color: var(--pink)
+    }
+
+    .mcq-card:nth-child(2) .mcq-btn:hover {
+      background: var(--pink);
+      color: #fff
+    }
+
+    .mcq-card:nth-child(3) .mcq-btn {
+      background: var(--yellow-bg);
+      color: #B45309
+    }
+
+    .mcq-card:nth-child(3) .mcq-btn:hover {
+      background: var(--yellow);
+      color: #171321
+    }
+
+    [data-theme="dark"] .mcq-card:nth-child(3) .mcq-btn {
+      color: var(--yellow)
+    }
+
+    .mcq-card:nth-child(4) .mcq-btn {
+      background: var(--cyan-bg);
+      color: var(--cyan)
+    }
+
+    .mcq-card:nth-child(4) .mcq-btn:hover {
+      background: var(--cyan);
+      color: #fff
+    }
+
+    /* ========== NOTES / BOOKS ========== */
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px
+    }
+
+    @media(min-width:768px) {
+      .notes-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px
+      }
+    }
+
+    .note-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      transition: all var(--tr)
+    }
+
+    .note-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-l);
+      border-color: var(--border2)
+    }
+
+    .note-vis {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .note-card:nth-child(1) .note-vis {
+      background: linear-gradient(135deg, var(--purple-bg), var(--bg-pink))
+    }
+
+    .note-card:nth-child(2) .note-vis {
+      background: linear-gradient(135deg, var(--pink-bg), var(--yellow-bg))
+    }
+
+    .note-card:nth-child(3) .note-vis {
+      background: linear-gradient(135deg, var(--yellow-bg), var(--purple-bg))
+    }
+
+    .note-card:nth-child(4) .note-vis {
+      background: linear-gradient(135deg, var(--cyan-bg), var(--purple-bg))
+    }
+
+    .note-vis svg {
+      width: 36px;
+      height: 36px;
+      opacity: .45
+    }
+
+    .note-card:nth-child(1) .note-vis svg {
+      color: var(--purple)
+    }
+
+    .note-card:nth-child(2) .note-vis svg {
+      color: var(--pink)
+    }
+
+    .note-card:nth-child(3) .note-vis svg {
+      color: var(--yellow)
+    }
+
+    .note-card:nth-child(4) .note-vis svg {
+      color: var(--cyan)
+    }
+
+    .note-body {
+      padding: 18px
+    }
+
+    .note-title {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+      transition: color var(--tr)
+    }
+
+    .note-desc {
+      font-size: .78rem;
+      color: var(--text2);
+      line-height: 1.55;
+      margin-bottom: 12px;
+      transition: color var(--tr)
+    }
+
+    .note-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--purple);
+      transition: gap var(--tr), color var(--tr)
+    }
+
+    .note-link:hover {
+      gap: 8px
+    }
+
+    .note-link svg {
+      width: 14px;
+      height: 14px
+    }
+
+    /* ========== WHY CHOOSE ========== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px
+    }
+
+    @media(min-width:640px) {
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px
+      }
+    }
+
+    @media(min-width:1024px) {
+      .why-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px
+      }
+    }
+
+    .why-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 26px 22px;
+      transition: all var(--tr)
+    }
+
+    .why-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-m);
+      border-color: var(--border2)
+    }
+
+    .why-ic {
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--r-lg);
+      margin-bottom: 14px;
+      transition: all var(--tr)
+    }
+
+    .why-ic svg {
+      width: 22px;
+      height: 22px
+    }
+
+    .why-card:nth-child(1) .why-ic,
+    .why-card:nth-child(4) .why-ic {
+      background: var(--purple-bg)
+    }
+
+    .why-card:nth-child(1) .why-ic svg,
+    .why-card:nth-child(4) .why-ic svg {
+      color: var(--purple)
+    }
+
+    .why-card:nth-child(2) .why-ic,
+    .why-card:nth-child(5) .why-ic {
+      background: var(--pink-bg)
+    }
+
+    .why-card:nth-child(2) .why-ic svg,
+    .why-card:nth-child(5) .why-ic svg {
+      color: var(--pink)
+    }
+
+    .why-card:nth-child(3) .why-ic,
+    .why-card:nth-child(6) .why-ic {
+      background: var(--yellow-bg)
+    }
+
+    .why-card:nth-child(3) .why-ic svg,
+    .why-card:nth-child(6) .why-ic svg {
+      color: #B45309
+    }
+
+    [data-theme="dark"] .why-card:nth-child(3) .why-ic svg,
+    [data-theme="dark"] .why-card:nth-child(6) .why-ic svg {
+      color: var(--yellow)
+    }
+
+    .why-title {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+      transition: color var(--tr)
+    }
+
+    .why-desc {
+      font-size: .8rem;
+      color: var(--text2);
+      line-height: 1.6;
+      transition: color var(--tr)
+    }
+
+    /* ========== FAQ ========== */
+    .faq-list {
+      max-width: 740px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: all var(--tr)
+    }
+
+    .faq-item:hover {
+      border-color: var(--border2)
+    }
+
+    .faq-item.open {
+      border-color: var(--purple3);
+      box-shadow: var(--shadow-s)
+    }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: left;
+      gap: 14px;
+      transition: color var(--tr)
+    }
+
+    .faq-item.open .faq-q {
+      color: var(--purple)
+    }
+
+    .faq-toggle {
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--r-sm);
+      background: var(--purple-bg);
+      color: var(--purple);
+      font-size: 1.1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: all var(--tr);
+      line-height: 1
+    }
+
+    .faq-item.open .faq-toggle {
+      background: var(--purple);
+      color: #fff
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s var(--ease)
+    }
+
+    .faq-a-inner {
+      padding: 0 20px 16px;
+      font-size: .85rem;
+      color: var(--text2);
+      line-height: 1.7;
+      transition: color var(--tr)
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--footer-bg);
+      color: var(--footer-t);
+      padding: clamp(36px, 5vw, 64px) 0 0;
+      transition: background var(--tr)
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    @media(min-width:640px) {
+      .footer-grid {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 36px
+      }
+    }
+
+    @media(min-width:1024px) {
+      .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px
+      }
+    }
+
+    .footer-brand p {
+      font-size: .84rem;
+      color: var(--footer2);
+      line-height: 1.7;
+      margin-top: 14px;
+      max-width: 280px;
+      transition: color var(--tr)
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .footer-logo img {
+      height: 30px;
+      width: auto;
+      filter: brightness(10)
+    }
+
+    .footer-logo span {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px
+    }
+
+    .footer-social a {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--r-sm);
+      background: rgba(255, 255, 255, .06);
+      color: var(--footer2);
+      transition: all var(--tr)
+    }
+
+    .footer-social a:hover {
+      background: var(--purple);
+      color: #fff;
+      transform: translateY(-2px)
+    }
+
+    .footer-social a svg {
+      width: 17px;
+      height: 17px
+    }
+
+    .footer-col-title {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--footer-a);
+      margin-bottom: 18px;
+      transition: color var(--tr)
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 11px
+    }
+
+    .footer-links a {
+      font-size: .84rem;
+      color: var(--footer2);
+      transition: all var(--tr)
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+      padding-left: 4px
+    }
+
+    .footer-bottom {
+      padding: 22px 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px
+    }
+
+    .footer-bottom p {
+      font-size: .78rem;
+      color: var(--footer2);
+      transition: color var(--tr)
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 18px
+    }
+
+    .footer-bottom-links a {
+      font-size: .78rem;
+      color: var(--footer2);
+      transition: color var(--tr)
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--footer-a)
+    }
+
+    /* ========== CTA SECTION ========== */
+    .cta-sec {
+      background: linear-gradient(135deg, var(--purple) 0%, #7C3AED 40%, var(--pink) 100%);
+      padding: clamp(44px, 7vw, 80px) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .cta-sec::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 50%;
+      pointer-events: none
+    }
+
+    .cta-sec::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, .04);
+      border-radius: 50%;
+      pointer-events: none
+    }
+
+    .cta-sec .sec-title {
+      color: #fff
+    }
+
+    .cta-sec .sec-sub {
+      color: rgba(255, 255, 255, .8);
+      max-width: 500px;
+      margin: 0 auto 28px
+    }
+
+    .cta-sec .btn-p {
+      background: #fff;
+      color: var(--purple);
+      font-weight: 700
+    }
+
+    .cta-sec .btn-p:hover {
+      background: var(--yellow);
+      color: #171321;
+      box-shadow: 0 8px 24px rgba(250, 204, 21, .3)
+    }
+  </style>
+</head>
 
 <body>
-    <!-- Animated Background -->
-    <div class="background-container">
-        <div class="gradient-bg"></div>
-        <div class="animated-orbs">
-            <div class="orb orb-1"></div>
-            <div class="orb orb-2"></div>
-            <div class="orb orb-3"></div>
-        </div>
-        <div class="particles"></div>
-        <div class="grid-overlay"></div>
+
+  <!-- ========== ANNOUNCEMENT BAR ========== -->
+  <div class="announce" role="banner">
+    <div class="container">
+      <div class="announce-in">
+        <svg class="wa-svg" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        <p>Join our WhatsApp Group for Job Vacancies, Exam Alerts, Recruitment News, Career Updates.</p>
+        <a href="https://whatsapp.com/channel/0029VbBZBGG8fewxDJKikw3j" class="announce-btn"
+          aria-label="Join WhatsApp group">Join Now</a>
+      </div>
     </div>
+  </div>
 
-    <!-- Header/Navigation -->
-    <header class="navbar">
-        <div class="navbar-container">
-            <div class="circle-logo">
-                <img src="logo.jpeg" alt="Logo" class="heading-logo">
-                <span class="logo-text">ForensicBuzz</span>
-            </div>
-            <nav class="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="notes.html" class="nav-link">Notes</a>
-                <a href="mcq.html" class="nav-link">MCQ Tests</a>
-            
-                <a href="books.html" class="nav-link">Books</a>
-                <a href="test-series.html" class="nav-link">Test-Series</a>
-               
-
-                <a href="contact.html" class="nav-link">Contact</a>
-            </nav>
-            <div class="nav-buttons">
-
-                
-
-
-            </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </header>
-    <div class="whatsapp-runner">
-    <a href="https://chat.whatsapp.com/LdOTj900JbwF4WOs9mJBAT?s=sw&p=i&ilr=0&amv=0"_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-        <span>Join our WhatsApp Group for Job Vacancies,  Exam Alerts, Recruitment News,  Career Updates.</span>
-    </a>
-</div>
-<div class="waving-flag">
-    <div class="flag">
-        <div class="flag-saffron"></div>
-        <div class="flag-white">
-            <div class="chakra">☸</div>
-        </div>
-        <div class="flag-green"></div>
-    </div>
-</div>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">India’s Most Trusted Platform for Forensic Science Preparation</h1>
-                <p class="hero-subtitle">Premium Notes, Mock Tests, MCQs, Study Material and Certification Preparation
-                    Platform.</p>
-                <div class="hero-buttons">
-                    
-                   
-                </div>
-            </div>
-            <div class="hero-visual">
-        <div class="cyber-illustration">
-
-          <div class="dna-wrapper">
-            <div class="dna-strand">
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span>
-            </div>
-
-            <div class="particle p1"></div>
-            <div class="particle p2"></div>
-            <div class="particle p3"></div>
-            <div class="particle p4"></div>
-            <div class="particle p5"></div>
-          </div>
-
-          <div class="glow-effect"></div>
-
+  <!-- ========== HEADER ========== -->
+  <header class="header" role="navigation">
+    <div class="container">
+      <div class="header-in">
+        <a href="/" class="logo" aria-label="ForensicBuzz Home">
+          <img src="logo.jpeg" alt="ForensicBuzz Logo"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="logo-txt" style="display:none">ForensicBuzz</span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="index.html" class="active">Home</a>
+          <a href="notes.html">Notes</a>
+          <a href="mcq.html">MCQ Tests</a>
+          <a href="books.html">Books</a>
+          <a href="test-series.html">Test-Series</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="hdr-right">
+          <div class="hdr-btns" style="display:none"></div>
+          <button class="theme-btn" aria-label="Toggle dark mode">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </button>
+          <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
-    </section>
+    </div>
+  </header>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-number" data-target="500">0</div>
-                <p class="stat-label">MCQs</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="100">0</div>
-                <p class="stat-label">Notes</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="50">0</div>
-                <p class="stat-label">Topics</p>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-number" data-target="1000">0</div>
-                <p class="stat-label">Students</p>
-            </div>
+  <!-- ========== MOBILE MENU ========== -->
+  <div class="mob-overlay" aria-hidden="true"></div>
+  <aside class="mob-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="mob-head">
+      <span>Menu</span>
+      <button class="mob-close" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg></button>
+    </div>
+    <nav class="mob-nav">
+      <a href="/" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>Home</a>
+      <a href="/notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="16" y1="13" x2="8" y2="13" />
+          <line x1="16" y1="17" x2="8" y2="17" />
+        </svg>Notes</a>
+      <a href="mcq.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" />
+          <line x1="12" y1="17" x2="12.01" y2="17" />
+        </svg>MCQ Tests</a>
+      <a href="books.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+        </svg>Books</a>
+      <a href="test-series.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>Test-Series</a>
+      <a href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+          <polyline points="22,6 12,13 2,6" />
+        </svg>Contact</a>
+    </nav>
+    <div class="mob-foot">
+
+    </div>
+  </aside>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-in">
+        <div class="hero-left">
+          <div class="hero-badge"><span class="dot"></span> India's #1 Forensic Science Platform</div>
+          <h1 class="hero-h1">India's Most Trusted Platform for <span class="hl">Forensic Science</span>
+            Preparation</h1>
+          <p class="hero-desc">Comprehensive study material, practice tests, and expert-curated resources
+            designed to help you excel in forensic science examinations and build a successful career.</p>
+          <div class="hero-btns">
+            <a href="mcq-list.html" class="btn-p">Start Learning <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg></a>
+            <a href="notes.html" class="btn-s">Browse Notes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg></a>
+          </div>
+          <div class="hero-trust">
+            <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>Verified Content</span>
+            <span class="trust-sep"></span>
+            <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                <path d="M16 3.13a4 4 0 010 7.75" />
+              </svg>1,000+ Students</span>
+            <span class="trust-sep"></span>
+            <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0110 0v4" />
+              </svg>Secure Access</span>
+          </div>
         </div>
-    </section>
-
-    <!-- Features Grid Section -->
-    <section class="features" id="features">
-        <div class="section-header">
-            <h2>Our Premium Features</h2>
-            <p>Empowering students and professionals with complete Forensic Science education.</p>
+        <div class="hero-vis-wrap">
+          <div class="hero-vis">
+            <div class="hv-glow hv-g1"></div>
+            <div class="hv-glow hv-g2"></div>
+            <div class="hv-glow hv-g3"></div>
+            <div class="hv-card">
+              <svg viewBox="0 0 200 220" fill="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="fpg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#6D28D9" />
+                    <stop offset="100%" stop-color="#EC4899" />
+                  </linearGradient>
+                </defs>
+                <path d="M58,35 Q100,12 142,35" stroke="url(#fpg)" stroke-width="1.8" stroke-linecap="round"
+                  opacity=".85" />
+                <path d="M48,47 Q100,18 152,47" stroke="url(#fpg)" stroke-width="1.8" stroke-linecap="round"
+                  opacity=".8" />
+                <path d="M40,60 Q100,26 160,60" stroke="url(#fpg)" stroke-width="1.7" stroke-linecap="round"
+                  opacity=".78" />
+                <path d="M34,73 Q100,35 166,73" stroke="url(#fpg)" stroke-width="1.7" stroke-linecap="round"
+                  opacity=".75" />
+                <path d="M29,86 Q100,44 171,86" stroke="url(#fpg)" stroke-width="1.6" stroke-linecap="round"
+                  opacity=".72" />
+                <path d="M25,99 Q100,54 175,99" stroke="url(#fpg)" stroke-width="1.6" stroke-linecap="round"
+                  opacity=".7" />
+                <path d="M22,112 Q100,64 178,112" stroke="url(#fpg)" stroke-width="1.5" stroke-linecap="round"
+                  opacity=".68" />
+                <path d="M20,125 Q100,74 180,125" stroke="url(#fpg)" stroke-width="1.5" stroke-linecap="round"
+                  opacity=".65" />
+                <path d="M19,138 Q100,84 181,138" stroke="url(#fpg)" stroke-width="1.4" stroke-linecap="round"
+                  opacity=".62" />
+                <path d="M20,150 Q100,94 180,150" stroke="url(#fpg)" stroke-width="1.4" stroke-linecap="round"
+                  opacity=".6" />
+                <path d="M22,162 Q100,104 178,162" stroke="url(#fpg)" stroke-width="1.3" stroke-linecap="round"
+                  opacity=".58" />
+                <path d="M25,173 Q100,114 175,173" stroke="url(#fpg)" stroke-width="1.3" stroke-linecap="round"
+                  opacity=".55" />
+                <path d="M30,183 Q100,124 170,183" stroke="url(#fpg)" stroke-width="1.2" stroke-linecap="round"
+                  opacity=".5" />
+                <path d="M36,193 Q100,135 164,193" stroke="url(#fpg)" stroke-width="1.2" stroke-linecap="round"
+                  opacity=".45" />
+                <path d="M82,195 Q78,205 88,210 Q100,216 100,218" stroke="url(#fpg)" stroke-width="1.3"
+                  stroke-linecap="round" opacity=".5" />
+                <path d="M118,195 Q122,205 112,210 Q100,216 100,218" stroke="url(#fpg)" stroke-width="1.3"
+                  stroke-linecap="round" opacity=".5" />
+                <path d="M72,190 Q65,205 82,214 Q95,220 98,218" stroke="url(#fpg)" stroke-width="1.2"
+                  stroke-linecap="round" opacity=".4" />
+                <path d="M128,190 Q135,205 118,214 Q105,220 102,218" stroke="url(#fpg)" stroke-width="1.2"
+                  stroke-linecap="round" opacity=".4" />
+              </svg>
+            </div>
+            <div class="hv-float hv-f1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+            <div class="hv-float hv-f2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 15c6.667-6 13.333 0 20-6" />
+                <path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993" />
+                <path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993" />
+                <path d="M17 6l-2.5-2.5" />
+                <path d="M14 8l-1-1" />
+                <path d="M7 18l2.5 2.5" />
+                <path d="M3.5 14.5l.5.5" />
+                <path d="M20 9l.5.5" />
+                <path d="M6.5 12.5l1 1" />
+                <path d="M16.5 10.5l1 1" />
+                <path d="M10 16l1.5 1.5" />
+              </svg></div>
+            <div class="hv-float hv-f3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg></div>
+            <div class="hv-float hv-f4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 3h6v6l3 7H6l3-7V3z" />
+                <line x1="9" y1="3" x2="15" y2="3" />
+              </svg></div>
+            <div class="hv-tag hv-t1">#01</div>
+            <div class="hv-tag hv-t2">#02</div>
+          </div>
         </div>
-            <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📑</div>
-                <h3>Test Series</h3><a href="test-series.html" class="btn btn-primary btn-lg=">Test Series</a>
-            </div>
-                 <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📚</div>
-                <h3>Notes</h3><a href="notes.html" class="btn btn-primary btn-lg=">Notes</a>
-                <p>Comprehensive, systematically organized notes covering the entire spectrum of forensic science disciplines, designed for academic learning, competitive examinations, and professional reference.</p>
-            </div>
-                <div class="feature-card">
-                <div class="feature-icon">📝</div>
-                <h3>Premium Notes</h3><a href="premium-notes.html" class="btn btn-primary btn-lg=">Premium-Notes</a>
-                <p>Unlock Exclusive Study Material for UGC NET, FACT, FSL Recruitment & University Exams.</p>
-            </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="feature-card">
-                <div class="feature-icon">✓</div>
-                <h3>MCQ Practice</h3><a href="mcq.html" class="btn btn-primary btn-lg=">MCQ</a>
-                <p>500+ carefully curated multiple choice questions to test and strengthen your knowledge.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📝</div>
-
-                <h3>Daily MCQ</h3><a href="daily-mcq.html" class="btn btn-primary btn-lg=">Daily MCQ</a>
-
-                <p></p>
-            </div>
-                <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-
-                <h3>Mock test</h3><a href="mc.html" class="btn btn-primary btn-lg=">Mock Test</a>
-
-                <p>Full-length mock tests that simulate real exam conditions with detailed performance analytics.</p>
-            </div>
-                <div class="feature-card">
-                <div class="feature-icon">💼</div>
-                <h3>Job Notification</h3><a href="naukari.html" class="btn btn-primary btn-lg=">Important Notice</a>
-                <p>Stay updated with the latest Government Jobs, Exam Notifications, Results, Admit Cards, and Recruitment News — all in one place.</p>
-            </div>
-                
-
-            <div class="feature-card">
-                <div class="feature-icon">📖</div>
-                <h3>Books & Resources</h3><a href="books.html" class="btn btn-primary btn-lg=">Books</a>
-                <p>Access to premium study materials, reference books, and curated learning resources.</p>
-            </div>
-            
+  <!-- ========== STATISTICS ========== -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card anim-in">
+          <div class="stat-yel"></div>
+          <div class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg></div>
+          <div class="stat-num">500+</div>
+          <div class="stat-lbl">MCQs</div>
         </div>
-    </section>
-    <div class="whatsapp-runner">
-    <a href="https://chat.whatsapp.com/LdOTj900JbwF4WOs9mJBAT?s=sw&p=i&ilr=0&amv=0"_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-        <span>Join our WhatsApp Group for Job Vacancies,  Exam Alerts, Recruitment News,  Career Updates.</span>
-    </a>
-</div>
-
-    <!-- Why Choose ForensicBuzz Section -->
-    <section class="why-choose">
-        <div class="section-header">
-            <h2>Why Choose ForensicBuzz?</h2>
-            <p>The complete solution for your digital forensics journey</p>
+        <div class="stat-card anim-in" style="transition-delay:.1s">
+          <div class="stat-yel"></div>
+          <div class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg></div>
+          <div class="stat-num">100+</div>
+          <div class="stat-lbl">Notes</div>
         </div>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <h3>Updated Content</h3>
-                    <p>Regularly updated materials aligned with the latest industry standards and certifications.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <h3>Mobile Friendly</h3>
-                    <p>Learn anytime, anywhere with our fully responsive and mobile-optimized platform.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <h3>Fast Learning</h3>
-                    <p>Optimized learning paths designed for quick comprehension and retention.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <h3>Certification Prep</h3>
-                    <p>Comprehensive preparation for major digital forensics and cyber security certifications.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <h3>Affordable Plans</h3>
-                    <p>Flexible subscription options that fit every budget without compromising quality.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <h3>Professional Resources</h3>
-                    <p>Access to industry-standard tools, guides, and professional learning materials.</p>
-                </div>
-            </div>
+        <div class="stat-card anim-in" style="transition-delay:.2s">
+          <div class="stat-yel"></div>
+          <div class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+            </svg></div>
+          <div class="stat-num">50+</div>
+          <div class="stat-lbl">Topics</div>
         </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq">
-        <div class="section-header">
-            <h2>Frequently Asked Questions</h2>
-            <p>Find answers to common questions</p>
+        <div class="stat-card anim-in" style="transition-delay:.3s">
+          <div class="stat-yel"></div>
+          <div class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 00-3-3.87" />
+              <path d="M16 3.13a4 4 0 010 7.75" />
+            </svg></div>
+          <div class="stat-num">1,000+</div>
+          <div class="stat-lbl">Students</div>
         </div>
-        <div class="faq-container">
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>What is included in the subscription?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Our subscription includes access to all MCQ questions, mock tests, study materials, notes, and
-                        performance analytics. You can access everything on any device.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>Can I cancel my subscription anytime?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Yes, you can cancel your subscription anytime. We don't have any long-term commitments. Your
-                        access will continue until the end of your billing period.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>Is the platform mobile-friendly?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Absolutely! ForensicBuzz is fully responsive and optimized for mobile devices. You can learn on
-                        your smartphone, tablet, or desktop.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>How often is the content updated?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>We regularly update our content to align with the latest industry standards, certifications, and
-                        best practices. New questions and materials are added frequently.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>Do you offer certificates?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Yes, upon successful completion of mock tests and achieving the required score, you'll receive a
-                        certificate of completion that you can share on your professional profiles.</p>
-                </div>
-            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SYLLABUS ========== -->
+  <section class="sec sec-alt" id="syllabus">
+    <div class="container">
+      <div class="sec-hd anim-in">
+        <div class="sec-label">Syllabus</div>
+        <h2 class="sec-title">Our Syllabus Coverage</h2>
+        <p class="sec-sub">Comprehensive forensic science subjects designed for academic and competitive
+          examination preparation.</p>
+      </div>
+      <div class="syl-grid">
+        <div class="syl-item anim-in"><span class="syl-num">01</span><span class="syl-ic"><svg viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
+            </svg></span><span class="syl-txt">Forensic Science Fundamentals</span></div>
+        <div class="syl-item anim-in" style="transition-delay:.05s"><span class="syl-num">02</span><span
+            class="syl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 15c6.667-6 13.333 0 20-6" />
+              <path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993" />
+              <path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993" />
+            </svg></span><span class="syl-txt">Forensic Biology</span></div>
+        <div class="syl-item anim-in" style="transition-delay:.1s"><span class="syl-num">03</span><span
+            class="syl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M58,35 Q100,12 142,35" stroke="currentColor" stroke-width="2" />
+            </svg></span><span class="syl-txt">Fingerprint Science</span></div>
+        <div class="syl-item anim-in" style="transition-delay:.15s"><span class="syl-num">04</span><span
+            class="syl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3h6v6l3 7H6l3-7V3z" />
+              <line x1="9" y1="3" x2="15" y2="3" />
+            </svg></span><span class="syl-txt">Forensic Chemistry</span></div>
+        <div class="syl-item anim-in" style="transition-delay:.2s"><span class="syl-num">05</span><span
+            class="syl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+            </svg></span><span class="syl-txt">Forensic Toxicology</span></div>
+        <div class="syl-item anim-in" style="transition-delay:.25s"><span class="syl-num">06</span><span
+            class="syl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <path d="M9 15l2 2 4-4" />
+            </svg></span><span class="syl-txt">Forensic Document Examination</span></div>
+        <div class="syl-item anim-in" style="transition-delay:.3s"><span class="syl-num">07</span><span
+            class="syl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg></span><span class="syl-txt">Digital Forensics</span></div>
+        <div class="syl-item anim-in" style="transition-delay:.35s"><span class="syl-num">08</span><span
+            class="syl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg></span><span class="syl-txt">Crime Scene Investigation</span></div>
+        <div class="syl-item anim-in" style="transition-delay:.4s"><span class="syl-num">09</span><span
+            class="syl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a8 8 0 018 8c0 6-8 12-8 12S4 16 4 10a8 8 0 018-8z" />
+              <path d="M12 6v4l3 3" />
+            </svg></span><span class="syl-txt">Forensic Psychology</span></div>
+        <div class="syl-item anim-in" style="transition-delay:.45s"><span class="syl-num">10</span><span
+            class="syl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            </svg></span><span class="syl-txt">Forensic Medicine</span></div>
+        <div class="syl-item anim-in" style="transition-delay:.5s"><span class="syl-num">11</span><span
+            class="syl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg></span><span class="syl-txt">Cyber Forensics</span></div>
+        <div class="syl-item anim-in" style="transition-delay:.55s"><span class="syl-num">12</span><span
+            class="syl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <circle cx="12" cy="15" r="2" />
+            </svg></span><span class="syl-txt">Questioned Documents</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PREMIUM FEATURES ========== -->
+  <section class="sec" id="features">
+    <div class="container">
+      <div class="sec-hd anim-in">
+        <div class="sec-label">Features</div>
+        <h2 class="sec-title">Our Premium Features</h2>
+        <p class="sec-sub">Everything you need to prepare smarter, practice better and succeed.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-card anim-in">
+          <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg></div>
+          <div class="test-series.html">Test Series</div>
+          <div class="feat-desc">Structured test series for comprehensive exam preparation.</div>
+          <a href="test-series.html" class="feat-link">Explore <svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></a>
         </div>
-    </section>
+        <div class="feat-card anim-in" style="transition-delay:.05s">
+          <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg></div>
+          <div class="feat-title">Notes</div>
+          <div class="feat-desc">Well-organized notes covering every important topic.</div>
+          <a href="notes.html" class="feat-link">View Notes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></a>
+        </div>
+        <div class="feat-card anim-in" style="transition-delay:.1s">
+          <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+              <path d="M12 6v6l4 2" />
+            </svg></div>
+          <div class="feat-title">Premium Notes</div>
+          <div class="feat-desc">In-depth premium study material with detailed explanations.</div>
+          <a href="premium-notes.html" class="feat-link">Learn More <svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></a>
+        </div>
+        <div class="feat-card anim-in" style="transition-delay:.15s">
+          <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg></div>
+          <div class="feat-title">MCQ Practice</div>
+          <div class="feat-desc">500+ MCQs to test and strengthen your knowledge.</div>
+          <a href="mcq.html" class="feat-link">Start Practice <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></a>
+        </div>
+        <div class="feat-card anim-in" style="transition-delay:.2s">
+          <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+              <path d="M8 14h.01" />
+              <path d="M12 14h.01" />
+              <path d="M16 14h.01" />
+              <path d="M8 18h.01" />
+              <path d="M12 18h.01" />
+              <path d="M16 18h.01" />
+            </svg></div>
+          <div class="feat-title">Daily MCQ</div>
+          <div class="feat-desc">Practice fresh questions every day to stay consistent.</div>
+          <a href="mcq.html" class="feat-link">Today's MCQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></a>
+        </div>
+        <div class="feat-card anim-in" style="transition-delay:.25s">
+          <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" />
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+              <path d="M9 14l2 2 4-4" />
+            </svg></div>
+          <div class="feat-title">Mock Test</div>
+          <div class="feat-desc">Real exam-style practice with performance analysis.</div>
+          <a href="test-series.html" class="feat-link">Take Test <svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></a>
+        </div>
+        <div class="feat-card anim-in" style="transition-delay:.3s">
+          <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 01-3.46 0" />
+            </svg></div>
+          <div class="feat-title">Job Notification</div>
+          <div class="feat-desc">Stay updated with latest forensic job vacancies.</div>
+          <a href="naukari.html" class="feat-link">Get Alerts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></a>
+        </div>
+        <div class="feat-card anim-in" style="transition-delay:.35s">
+          <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+            </svg></div>
+          <div class="feat-title">Books</div>
+          <div class="feat-desc">Curated forensic science books and study material.</div>
+          <a href="books.html" class="feat-link">Browse Books <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>ForensicBuzz</h4>
-                    <p>Your premier platform for forensics science education.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="home.html">Home</a></li>
-                        <li><a href="notes.html">Notes</a></li>
-                        <li><a href="mcq.html">MCQ</a></li>
-                      
-                        <li><a href="plans.html">Plans</a></li>
-                        <li><a href="test-series.html">test series</a></li>
-                        
-                        
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="refund.html">Refund and cancellation policy</a></li>
-                        <li><a href="term.html">Terms of Service</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="copyright.html">Copyright Policy</a></li>
-                        <li><a href="disclaimer.html">Disclaimer</a></li>
-                    </ul>
-                </div>
+  <!-- ========== MCQ / MOCK TEST ========== -->
+  <section class="sec sec-alt" id="mcq-section">
+    <div class="container">
+      <div class="sec-hd anim-in">
+        <div class="sec-label">Practice</div>
+        <h2 class="sec-title">Master Your Preparation</h2>
+        <p class="sec-sub">Structured practice tools designed to build confidence and track your progress
+          effectively.</p>
+      </div>
+      <div class="mcq-grid">
+        <div class="mcq-card anim-in">
+          <div class="mcq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg></div>
+          <div class="mcq-title">MCQ Practice</div>
+          <div class="mcq-desc">500+ carefully curated multiple choice questions to test and strengthen your
+            knowledge.</div>
+          <a href="mcq.html" class="mcq-btn">Start Practicing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              <a href="mcq.html" class="mcq-btn">Start Practicing <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg></a>
+        </div>
+        <div class="mcq-card anim-in" style="transition-delay:.1s">
+          <div class="mcq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg></div>
+          <div class="mcq-title">Daily MCQ</div>
+          <div class="mcq-desc">Practice fresh questions every day. Build a consistent habit of learning and
+            revision.</div>
+          <a href="daily-mcq.html" class="mcq-btn">Today's Question <svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></a>
+        </div>
+        <div class="mcq-card anim-in" style="transition-delay:.2s">
+          <div class="mcq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" />
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+              <path d="M9 14l2 2 4-4" />
+            </svg></div>
+          <div class="mcq-title">Mock Test</div>
+          <div class="mcq-desc">Real examination-style practice with detailed performance analysis and time
+            tracking.</div>
+          <a href="mc.html" class="mcq-btn">Take Mock Test <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></a>
+        </div>
+        <div class="mcq-card anim-in" style="transition-delay:.3s">
+          <div class="mcq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg></div>
+          <div class="mcq-title">Test Series</div>
+          <div class="mcq-desc">Structured tests designed specifically for competitive forensic science
+            examinations.</div>
+          <a href="test-series.html" class="mcq-btn">View Series <svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ========== NOTES / BOOKS ========== -->
+  <section class="sec" id="notes-section">
+    <div class="container">
+      <div class="sec-hd anim-in">
+        <div class="sec-label">Study Material</div>
+        <h2 class="sec-title">Notes & Books</h2>
+        <p class="sec-sub">Access expertly curated study resources to strengthen your understanding of forensic
+          science.</p>
+      </div>
+      <div class="notes-grid">
+        <div class="note-card anim-in">
+          <div class="note-vis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg></div>
+          <div class="note-body">
+            <div class="note-title">Notes</div>
+            <div class="note-desc">Concise subject-wise notes for quick revision and exam preparation.</div>
+            <a href="notes.html" class="note-link">Read Notes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="note-card anim-in" style="transition-delay:.1s">
+          <div class="note-vis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+              <path d="M12 6v6l4 2" />
+            </svg></div>
+          <div class="note-body">
+            <div class="premium-notes.html">Premium Notes</div>
+            <div class="premium-notes.html">Detailed in-depth notes with diagrams, case studies and analysis.</div>
+            <a href="premium-notes.html" class="note-link">Unlock Premium <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="note-card anim-in" style="transition-delay:.2s">
+          <div class="note-vis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+            </svg></div>
+          <div class="note-body">
+            <div class="note-title">Books</div>
+            <div class="note-desc">Recommended forensic science books from top authors and publishers.</div>
+            <a href="books.html" class="note-link">Browse Books <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="note-card anim-in" style="transition-delay:.3s">
+          <div class="note-vis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <path d="M12 18v-6" />
+              <path d="M8 18v-1" />
+              <path d="M16 18v-3" />
+            </svg></div>
+          <div class="note-body">
+            <div class="note-title">Study Material</div>
+            <div class="note-desc">Comprehensive study packages combining notes, MCQs and references.</div>
+            <a href="notes.html" class="note-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                <div class="icons">
-                    <!-- Instagram -->
-                    <a href="https://www.instagram.com/forensicbuzz_fb?igsh=NjdnYzlydW83Nm9p&utm_source=qr" target="_blank"
-                        class="instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+  <!-- ========== WHY CHOOSE ========== -->
+  <section class="sec sec-alt" id="why">
+    <div class="container">
+      <div class="sec-hd anim-in">
+        <div class="sec-label">Why Us</div>
+        <h2 class="sec-title">Why Choose ForensicBuzz?</h2>
+        <p class="sec-sub">The complete solution for your Forensic Science learning journey.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card anim-in">
+          <div class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10" />
+              <polyline points="1 20 1 14 7 14" />
+              <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
+            </svg></div>
+          <div class="why-title">Updated Content</div>
+          <div class="why-desc">Content is regularly updated to align with the latest syllabus and exam
+            patterns.</div>
+        </div>
+        <div class="why-card anim-in" style="transition-delay:.05s">
+          <div class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
+            </svg></div>
+          <div class="why-title">Mobile Friendly</div>
+          <div class="why-desc">Study anytime, anywhere with a fully responsive mobile-optimized platform.
+          </div>
+        </div>
+        <div class="why-card anim-in" style="transition-delay:.1s">
+          <div class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg></div>
+          <div class="why-title">Fast Learning</div>
+          <div class="why-desc">Structured content designed for efficient learning and quick concept mastery.
+          </div>
+        </div>
+        <div class="why-card anim-in" style="transition-delay:.15s">
+          <div class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="7" />
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+            </svg></div>
+          <div class="why-title">Certification Prep</div>
+          <div class="why-desc">Focused preparation materials for forensic certification examinations.</div>
+        </div>
+        <div class="why-card anim-in" style="transition-delay:.2s">
+          <div class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23" />
+              <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+            </svg></div>
+          <div class="why-title">Affordable Plans</div>
+          <div class="why-desc">Premium quality education at prices that are accessible to every student.
+          </div>
+        </div>
+        <div class="why-card anim-in" style="transition-delay:.25s">
+          <div class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg></div>
+          <div class="why-title">Professional Resources</div>
+          <div class="why-desc">Curated by forensic science experts with real-world experience and knowledge.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                    <!-- WhatsApp Channel -->
-                    <a href="https://whatsapp.com/channel/0029VbBZBGG8fewxDJKikw3j" target="_blank" class="whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-
-                    <!-- Email -->
-                    <a href="mailto:forensicbuzz.fb@gmail.com" class="email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-
-                    <!-- Website (Optional - Change if needed) -->
-                    <a href="index.html" class="website">
-                        <i class="fas fa-globe"></i>
-                    </a>
-                </div>
-                <div class="copyright-box">
-                    <span>© 2026 Copyright -</span>
-
-                    <a href="https://taskforce4ai.com" target="_blank" class="company-link">
-                        <img src="logoeag.png" alt="Taskforce AI Logo" class="company-logo">
-                        Taskforce AI Pvt Ltd
-                    </a>
-                </div>
+  <!-- ========== FAQ ========== -->
+  <section class="sec" id="faq">
+    <div class="container">
+      <div class="sec-hd anim-in">
+        <div class="sec-label">FAQ</div>
+        <h2 class="sec-title">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item anim-in">
+          <button class="faq-q" aria-expanded="false">
+            <span>What is included in the subscription?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" role="region">
+            <div class="faq-a-inner">Our subscription includes access to all MCQs, notes, premium notes,
+              test series, mock tests, daily MCQs, and study material. You get complete access to every
+              resource on the platform for the duration of your subscription.</div>
+          </div>
+        </div>
+        <div class="faq-item anim-in" style="transition-delay:.05s">
+          <button class="faq-q" aria-expanded="false">
+            <span>Can I cancel my subscription anytime?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" role="region">
+            <div class="faq-a-inner">Yes, you can cancel your subscription at any time. Your access will
+              continue until the end of the current billing period. There are no cancellation fees or
+              hidden charges.</div>
+          </div>
+        </div>
+        <div class="faq-item anim-in" style="transition-delay:.1s">
+          <button class="faq-q" aria-expanded="false">
+            <span>Is the platform mobile-friendly?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" role="region">
+            <div class="faq-a-inner">Absolutely. ForensicBuzz is fully optimized for mobile devices. You can
+              study, practice MCQs, and take tests seamlessly on your smartphone or tablet from anywhere.
             </div>
-    </footer>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="script.js"></script>
-    <div class="whatsapp-runner">
-    <a href="https://chat.whatsapp.com/LdOTj900JbwF4WOs9mJBAT?s=sw&p=i&ilr=0&amv=0" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-        <span>Join our WhatsApp Group for Job Vacancies,  Exam Alerts, Recruitment News,  Career Updates.</span>
-    </a>
-        <div id="hc-site-counter" style="display:inline-block;font-size:24px;font-weight:bold;color:#ffffff;display:inline-flex;gap:3px;font-family:monospace;">···</div>
+          </div>
+        </div>
+        <div class="faq-item anim-in" style="transition-delay:.15s">
+          <button class="faq-q" aria-expanded="false">
+            <span>How often is the content updated?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" role="region">
+            <div class="faq-a-inner">We update our content regularly to keep pace with the latest exam
+              patterns, syllabus changes, and developments in forensic science. New MCQs and notes are
+              added on a weekly basis.</div>
+          </div>
+        </div>
+        <div class="faq-item anim-in" style="transition-delay:.2s">
+          <button class="faq-q" aria-expanded="false">
+            <span>Do you offer certificates?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" role="region">
+            <div class="faq-a-inner">Yes, upon successful completion of test series and mock tests, you
+              receive performance certificates that can add value to your academic and professional
+              profile.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-(function(){
-  var ns = 'forensicbuzz-com', key = 'hits', start = 1, style = 'odometer', bg = '#3541e3', txt = '#ffffff';
+  <!-- ========== CTA SECTION ========== -->
+  <section class="cta-sec">
+    <div class="container" style="position:relative;z-index:1">
+      <div class="sec-hd anim-in">
+        <h2 class="sec-title">Ready to Start Your Forensic Science Journey?</h2>
+        <p class="sec-sub">Join thousands of students preparing smarter with ForensicBuzz.</p>
+        <a href="test-series.html" class="btn-p" style="display:inline-flex">Get Started Free <svg width="16" height="16"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg></a>
+      </div>
+    </div>
+  </section>
 
-  function render(val) {
-    var n = (val + start).toString().padStart(6, '0');
-    var el = document.getElementById('hc-site-counter');
-    if (!el) return;
-    if (style === 'odometer') {
-      el.innerHTML = n.split('').map(function(c) {
-        return '<span style="background:'+bg+';color:'+txt+';padding:4px 8px;border-radius:3px;border:1px solid rgba(255,255,255,.15);">'+c+'</span>';
-      }).join('');
-    } else {
-      el.textContent = n;
-    }
-  }
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="logo.jpeg" alt="ForensicBuzz"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+            <span style="display:none">ForensicBuzz</span>
+          </div>
+          <p>India's most trusted platform for forensic science preparation. Comprehensive resources designed
+            for academic and competitive exam success.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg></a>
+            <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+              </svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z" />
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+              </svg></a>
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Quick Links</div>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="notes.html">Notes</a>
+            <a href="mcq.html">MCQ Tests</a>
+            <a href="books.html">Books</a>
+            <a href="test-series.html">Test Series</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Legal</div>
+          <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="term.htmll">Terms of Service</a>
+            <a href="refund.html">Refund Policy</a>
+            <a href="copyright.html">Cookie Policy</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-links">
+            <a href="contact.html">support@forensicbuzz.com</a>
+            <a href="https://whatsapp.com/channel/0029VbBZBGG8fewxDJKikw3j">WhatsApp Group</a>
+            <a href="https://t.me/forensicbuzz">Telegram Channel</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 ForensicBuzz. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy</a>
+          <a href="terms-of-service.html">Terms</a>
+          <a href="sitemap.html">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-  fetch('https://api.counterapi.dev/v1/' + ns + '/' + key + '/up')
-    .then(function(r){ return r.json(); })
-    .then(function(d){ render(d.count || 0); })
-    .catch(function(){ render(0); });
-})();
-</script>
-</div>
+  <script>
+    /* ========== THEME MANAGEMENT ========== */
+    (function () {
+      const key = 'forensicbuzz-theme';
+      const get = () => localStorage.getItem(key);
+      const set = v => localStorage.setItem(key, v);
+      const root = document.documentElement;
+      const btn = document.querySelector('.theme-btn');
+
+      function apply(theme) {
+        root.setAttribute('data-theme', theme);
+        set(theme);
+      }
+
+      // First visit: check system preference, default to light
+      const saved = get();
+      if (saved) {
+        apply(saved);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches) {
+        apply('dark');
+      } else {
+        apply('light');
+      }
+
+      btn.addEventListener('click', function () {
+        const current = root.getAttribute('data-theme');
+        apply(current === 'dark' ? 'light' : 'dark');
+      });
+    })();
+
+    /* ========== MOBILE MENU ========== */
+    (function () {
+      const hamburger = document.querySelector('.hamburger');
+      const menu = document.querySelector('.mob-menu');
+      const overlay = document.querySelector('.mob-overlay');
+      const closeBtn = document.querySelector('.mob-close');
+      let isOpen = false;
+
+      function toggle(open) {
+        isOpen = typeof open === 'boolean' ? open : !isOpen;
+        hamburger.classList.toggle('active', isOpen);
+        menu.classList.toggle('open', isOpen);
+        overlay.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+        overlay.setAttribute('aria-hidden', !isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
+
+      hamburger.addEventListener('click', () => toggle());
+      closeBtn.addEventListener('click', () => toggle(false));
+      overlay.addEventListener('click', () => toggle(false));
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && isOpen) toggle(false);
+      });
+
+      // Close on nav link click
+      menu.querySelectorAll('.mob-nav a').forEach(function (a) {
+        a.addEventListener('click', () => toggle(false));
+      });
+    })();
+
+    /* ========== FAQ ACCORDION ========== */
+    (function () {
+      document.querySelectorAll('.faq-q').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const item = this.parentElement;
+          const answer = item.querySelector('.faq-a');
+          const inner = answer.querySelector('.faq-a-inner');
+          const isOpen = item.classList.contains('open');
+
+          // Close all others
+          document.querySelectorAll('.faq-item.open').forEach(function (openItem) {
+            if (openItem !== item) {
+              openItem.classList.remove('open');
+              openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+              openItem.querySelector('.faq-toggle').textContent = '+';
+              openItem.querySelector('.faq-a').style.maxHeight = '0';
+            }
+          });
+
+          // Toggle current
+          if (isOpen) {
+            item.classList.remove('open');
+            this.setAttribute('aria-expanded', 'false');
+            this.querySelector('.faq-toggle').textContent = '+';
+            answer.style.maxHeight = '0';
+          } else {
+            item.classList.add('open');
+            this.setAttribute('aria-expanded', 'true');
+            this.querySelector('.faq-toggle').textContent = '−';
+            answer.style.maxHeight = inner.scrollHeight + 'px';
+          }
+        });
+      });
+    })();
+
+    /* ========== SCROLL ANIMATIONS ========== */
+    (function () {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('vis');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.anim-in').forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+
+    /* ========== LOGO FALLBACK ========== */
+    (function () {
+      document.querySelectorAll('.logo img, .footer-logo img').forEach(function (img) {
+        if (img.complete && img.naturalWidth === 0) {
+          img.style.display = 'none';
+          var fallback = img.nextElementSibling;
+          if (fallback) fallback.style.display = 'flex';
+        }
+        img.addEventListener('error', function () {
+          this.style.display = 'none';
+          var fallback = this.nextElementSibling;
+          if (fallback) fallback.style.display = 'flex';
+        });
+        img.addEventListener('load', function () {
+          this.style.display = 'block';
+          var fallback = this.nextElementSibling;
+          if (fallback) fallback.style.display = 'none';
+        });
+      });
+    })();
+  </script>
 </body>
 
 </html>
